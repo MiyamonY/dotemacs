@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: begin
+# key: C-c . b
+# binding: C-c . b
+# --
+begin
+$0
+end
