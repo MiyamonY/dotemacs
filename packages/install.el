@@ -40,3 +40,6 @@
 (el-get-bundle undohist)
 (el-get-bundle undo-tree)
 (el-get-bundle emacsmirror/sequential-command)
+
+;; input
+(el-get-bundle auto-complete)
