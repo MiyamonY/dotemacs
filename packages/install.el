@@ -35,3 +35,6 @@
 (el-get-bundle yasnippet)
 (el-get-bundle yatemplate)
 (el-get-bundle highlight-symbol)
+
+;; operation
+(el-get-bundle undohist)
