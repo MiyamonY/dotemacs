@@ -20,6 +20,7 @@
 (el-get-bundle nyan-mode)
 (el-get-bundle rainbow-delimiters)
 (el-get-bundle smart-mode-line)
+(el-get-bundle hl-line+)
 
 ;; Japansese
 (el-get-bundle ddskk)
