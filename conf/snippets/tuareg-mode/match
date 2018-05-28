@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: match
+# key: match
+# binding: C-c . i
+# --
+match $1 with
+| $2 -> $3
