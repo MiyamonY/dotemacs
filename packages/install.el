@@ -21,6 +21,7 @@
 (el-get-bundle rainbow-delimiters)
 (el-get-bundle smart-mode-line)
 (el-get-bundle emacsmirror/hl-line-plus :name hl-line+)
+(el-get-bundle pcre2el)
 
 ;; Japansese
 (el-get-bundle ddskk)
