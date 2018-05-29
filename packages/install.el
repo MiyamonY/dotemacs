@@ -17,6 +17,7 @@
 ;; interface
 (el-get-bundle helm)
 (el-get-bundle helm-swoop)
+(el-get-bundle yasuyk/ac-helm)
 (el-get-bundle nyan-mode)
 (el-get-bundle rainbow-delimiters)
 (el-get-bundle smart-mode-line)
