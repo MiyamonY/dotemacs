@@ -8,6 +8,7 @@
   :bind
   (("C-." . undo-tree-redo)
    :map undo-tree-visualizer-mode-map
-   ("C-m" . undo-tree-visualizer-quit)))
+   ("C-m" . undo-tree-visualizer-quit)
+   ("C-g" . undo-tree-visualizer-quit)))
 
 (global-undo-tree-mode)
