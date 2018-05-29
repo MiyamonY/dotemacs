@@ -1,6 +1,7 @@
 (use-package skk
   :hook
-  ((text-mode . skk-auto-fill-mode))
+  ((text-mode . skk-auto-fill-mode)
+   (adoc-mode . skk-mode))
   :init
   (progn
     (setq skk-user-directory
