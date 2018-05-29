@@ -5,12 +5,13 @@
 ;; Author:  <ymiyamoto@ymiyamoto-desktop>
 ;; Keywords:
 (use-package sequential-command-config
+  :bind
+  (("C-/" . seq-undo)
+   :map undo-tree-map
+   ("C-/" . seq-undo))
   :config
   (progn
-    (define-sequential-command seq-undo undo-tree-undo undo-tree-visualize)
-    (define-sequential-command seq-home
-      beginning-of-line beginning-of-buffer seq-return)
-    (define-sequential-command seq-end
-      end-of-line end-of-buffer seq-return)))
+    (define-sequential-command seq-undo
+      undo-tree-undo undo-tree-visualize)))
 
 (sequential-command-setup-keys)
