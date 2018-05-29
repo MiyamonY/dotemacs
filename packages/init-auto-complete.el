@@ -11,6 +11,7 @@
         ("C-p" . ac-previous))
   :init
   (progn
+    (setq ac-comphist-file (concat init-emacs-local-files "/auto-complete/ac-comphist.data"))
     (setq ac-auto-show-menu 0.5)
     (setq ac-use-menu-map t))
   :config
