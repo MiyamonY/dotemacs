@@ -8,6 +8,7 @@
           (file-name-as-directory
            (concat (file-name-as-directory init-emacs-local-files) ".ddskk")))
     (setq default-input-method "japanese-skk")
+    (setq skk-isearch-mode-enable nil)
     (setq skk-show-icon t))
   :config
   (progn
