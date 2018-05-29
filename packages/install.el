@@ -54,3 +54,7 @@
 
 ;; input
 (el-get-bundle auto-complete)
+
+;; doc
+(el-get-bundle asciidoc)
+(el-get-bundle adoc-mode)
