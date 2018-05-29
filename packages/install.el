@@ -38,3 +38,4 @@
 
 ;; operation
 (el-get-bundle undohist)
+(el-get-bundle undo-tree)
