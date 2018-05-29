@@ -39,3 +39,5 @@
 ;; operation
 (el-get-bundle undohist)
 (el-get-bundle undo-tree)
+(el-get-bundle sequential-command)
+(el-get-bundle sequential-command-config)
