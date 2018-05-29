@@ -5,6 +5,8 @@
 ;; Author:  <ymiyamoto@ymiyamoto-desktop>
 ;; Keywords:
 (use-package sequential-command-config
+  :commands
+  (sequential-command-setup-keys)
   :bind
   (("C-/" . seq-undo)
    :map undo-tree-map
