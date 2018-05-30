@@ -1,4 +1,6 @@
 (use-package skk
+  :hook
+  ((text-mode . skk-auto-fill-mode))
   :init
   (progn
     (setq skk-user-directory
@@ -10,7 +12,7 @@
   (progn
     (defun init-check-jisyo-file ()
       (unless (file-exists-p
-	       (concat skk-user-directory "SKK-JISYO.L"))
+               (concat skk-user-directory "SKK-JISYO.L"))
         (unless (file-exists-p skk-user-directory)
           (make-directory skk-user-directory))
         (url-copy-file "http://openlab.jp/skk/dic/SKK-JISYO.L.gz" "SKK-JISYO.L.gz")
