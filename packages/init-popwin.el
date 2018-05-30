@@ -34,6 +34,7 @@
              ("*ack*":height 12 :position bottom)
              ("^\*Org.+\*$" :height 20 :position bottom :regexp t)
              ("^\*magit.+\*$" :height 25 :position bottom :regexp t)
+             ("^\*helm auto complete.+\*$":height 25 :position bottom :regexp t)
              (" *undo-tree*" :width 0.3 :position right)) popwin:special-display-config))))
 
 (popwin-mode 1)
