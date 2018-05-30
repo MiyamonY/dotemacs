@@ -21,7 +21,10 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package aggressive-indent)
+(use-package aggressive-indent
+  :config
+  (progn
+    (add-to-list 'aggressive-indent-excluded-modes 'go-mode)))
 
 (global-aggressive-indent-mode)
 
