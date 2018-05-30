@@ -38,6 +38,7 @@
 (el-get-bundle yasnippet)
 (el-get-bundle yatemplate)
 (el-get-bundle highlight-symbol)
+(el-get-bundle aggressive-indent)
 
 ;; operation
 (el-get-bundle undohist)
