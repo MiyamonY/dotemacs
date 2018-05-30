@@ -24,6 +24,7 @@
 (el-get-bundle smart-mode-line)
 (el-get-bundle emacsmirror/hl-line-plus :name hl-line+)
 (el-get-bundle pcre2el)
+(el-get-bundle popwin)
 
 ;; Japansese
 (el-get-bundle ddskk)
