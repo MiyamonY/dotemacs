@@ -6,7 +6,7 @@
 ;; Keywords:
 (use-package highlight-symbol
   :hook
-  ((prog-mode-hook . highlight-symbol-mode))
+  ((prog-mode . highlight-symbol-mode))
   :config
   (progn
     (setq highlight-symbol-idle-delay 0.2)))
