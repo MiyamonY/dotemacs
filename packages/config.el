@@ -82,17 +82,17 @@
 ;; フォントの設定
 (cond ((display-graphic-p)
        (create-fontset-from-ascii-font
-        "Ricty Diminished Discord-12"
+        "Ricty Diminished Discord-12:weight=normal:slant=normal"
         nil
         "Ricty_Diminished_Discord")
        (set-fontset-font
-        "fontset-Ricty_Diminished_Discord"
+        "fontset-ricty_diminished_discord"
         'unicode
-        "Ricty Diminished Discord-12"
+        (font-spec :family "Ricty Diminished Discord" :weight 'normal :slant 'normal)
         nil
         'append)
        (add-to-list 'default-frame-alist
-                    '(font . "fontset-Ricty_Diminished_Discord"))
+                    '(font . "fontset-ricty_diminished_discord"))
        (add-to-list 'initial-frame-alist
                     '(font . "fontset-Ricty_Diminished_Discord"))))
 
