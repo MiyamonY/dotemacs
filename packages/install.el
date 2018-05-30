@@ -41,6 +41,11 @@
 (el-get-bundle yatemplate)
 (el-get-bundle highlight-symbol)
 (el-get-bundle aggressive-indent)
+(el-get-bundle flycheck)
+
+;;; golang
+(el-get-bundle go-mode)
+(el-get-bundle go-autocomplete)
 
 ;; operation
 (el-get-bundle undohist)
