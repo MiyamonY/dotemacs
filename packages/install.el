@@ -42,6 +42,7 @@
 (el-get-bundle highlight-symbol)
 (el-get-bundle aggressive-indent)
 (el-get-bundle flycheck)
+(el-get-bundle flycheck-pos-tip)
 
 ;;; golang
 (el-get-bundle go-mode)
