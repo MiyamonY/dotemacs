@@ -36,6 +36,9 @@
     (setq save-place-file (concat init-emacs-local-files "/.places"))))
 (save-place-mode 1)
 
+;; backup fileの設定
+(setq backup-directory-alist '((".*" . "/tmp")))
+
 (use-package recentf
   :init
   (progn
