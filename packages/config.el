@@ -82,6 +82,23 @@
   (ad-set-arg 0 t))
 (ad-activate 'quit-window)
 
+;; org-agenda
+(use-package org-agenda
+  :bind
+  (("C-c a" . 'org-agenda))
+  :init
+  (progn
+    (setq org-agenda-files '("~/src/github.com/MiyamonY/todos/todo.org"))))
+
+(use-package org-capture
+  :bind
+  (("C-c c" . 'org-capture))
+  :init
+  (progn
+    (setq org-capture-templates
+          '(("t" "Task" entry (file "~/src/github.com/MiyamonY/todos/todo.org")
+             "* TODO %?\n    %i %T")))))
+
 ;; フォントの設定
 (cond ((display-graphic-p)
        (create-fontset-from-ascii-font
