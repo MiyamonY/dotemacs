@@ -9,5 +9,5 @@
   ((prog-mode . highlight-symbol-mode))
   :config
   (progn
-    (set-face-attribute 'highlight-symbol-face nil :background "dark orange")
+    (set-face-attribute 'highlight-symbol-face nil :background "gray30")
     (setq highlight-symbol-idle-delay 0.2)))
