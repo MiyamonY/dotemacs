@@ -14,6 +14,8 @@
             helm-source-files-in-current-dir
             helm-source-ghq
             helm-source-locate))
+    (setq helm-boring-buffer-regexp-list
+          (-concat '("\*Compile-Log\*" "magit.*" "~/\.Trash/.*") helm-boring-buffer-regexp-list))
     (setq helm-ff-skip-boring-files t))
   :config
   (progn
