@@ -24,6 +24,9 @@
 
 ;;; Code:
 (use-package flycheck-pos-tip
+  :init
+  (progn
+    (setq flycheck-pos-tip-timeout 10))
   :hook
   ((flycheck-mode . flycheck-pos-tip-mode)))
 
