@@ -43,6 +43,7 @@
 (el-get-bundle aggressive-indent)
 (el-get-bundle flycheck)
 (el-get-bundle flycheck-pos-tip)
+(el-get-bundle web-mode)
 
 ;;; golang
 (el-get-bundle go-mode)
