@@ -12,6 +12,7 @@
 
 ;; git
 (el-get-bundle magit)
+(el-get-bundle magit-gitflow)
 (el-get-bundle git-gutter+)
 
 ;; interface
