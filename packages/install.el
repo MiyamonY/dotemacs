@@ -46,6 +46,7 @@
 (el-get-bundle flycheck-pos-tip)
 (el-get-bundle emmet-mode)
 (el-get-bundle web-mode)
+(el-get-bundle js2-mode)
 
 ;;; golang
 (el-get-bundle go-mode)
