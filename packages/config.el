@@ -1,5 +1,8 @@
 ;; -*- coding: utf-8 -*-
-(setq gc-cons-threshold (* 2 1024 1024))
+(setq gc-cons-threshold (* gc-cons-threshold 10))
+;; make curor move faster
+;; https://emacs.stackexchange.com/questions/28736/emacs-pointcursor-movement-lag
+(setq auto-window-vscroll nil)
 
 (defun init-open-dotemacs ()
   (interactive)
