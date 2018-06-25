@@ -19,6 +19,7 @@
 (el-get-bundle helm)
 (el-get-bundle helm-ag)
 (el-get-bundle helm-ghq)
+(el-get-bundle helm-descbinds)
 (el-get-bundle helm-swoop)
 (el-get-bundle yasuyk/ac-helm)
 (el-get-bundle nyan-mode)
