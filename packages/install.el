@@ -10,6 +10,9 @@
 ;; elscreen
 (el-get-bundle elscreen)
 
+;; mode-line(elscreenの後に呼び出すこと)
+(el-get-bundle powerline)
+
 ;; git
 (el-get-bundle magit)
 (el-get-bundle magit-gitflow)
@@ -22,9 +25,7 @@
 (el-get-bundle helm-descbinds)
 (el-get-bundle helm-swoop)
 (el-get-bundle yasuyk/ac-helm)
-(el-get-bundle nyan-mode)
 (el-get-bundle rainbow-delimiters)
-(el-get-bundle smart-mode-line)
 (el-get-bundle emacsmirror/hl-line-plus :name hl-line+)
 (el-get-bundle pcre2el)
 (el-get-bundle popwin)
@@ -45,6 +46,7 @@
 (el-get-bundle aggressive-indent)
 (el-get-bundle flycheck)
 (el-get-bundle flycheck-pos-tip)
+(el-get-bundle flycheck-color-mode-line)
 (el-get-bundle emmet-mode)
 (el-get-bundle web-mode)
 (el-get-bundle js2-mode)
