@@ -50,6 +50,8 @@
 (el-get-bundle emmet-mode)
 (el-get-bundle web-mode)
 (el-get-bundle js2-mode)
+(el-get-bundle gtags)
+(el-get-bundle helm-gtags)
 
 ;;; golang
 (el-get-bundle go-mode)
