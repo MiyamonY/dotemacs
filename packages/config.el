@@ -8,6 +8,7 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 (bind-key* "C-h" 'delete-backward-char)
+(bind-key "C-h" 'isearch-delete-char isearch-mode-map)
 (bind-key "C-m" 'newline-and-indent)
 (bind-key "C-c l" 'toggle-truncate-lines)
 (bind-key "M-l" 'goto-line)
