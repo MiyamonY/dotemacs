@@ -23,6 +23,18 @@
 ;;
 
 ;;; Code:
+(defun shorten-directory (dir max-length)
+  (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
+        (output ""))
+    (when (and path (equal "" (car path)))
+      (setq path (cdr path)))
+    (while (and path (< (length output) (- max-length 4)))
+      (setq output (concat (car path) "/" output))
+      (setq path (cdr path)))
+    (when path
+      (setq output (concat ".../" output)))
+    output))
+
 (use-package powerline
   :init
   (progn
@@ -47,7 +59,10 @@
                                            (powerline-buffer-size face0 'l))
                                          (when powerline-display-mule-info
                                            (powerline-raw mode-line-mule-info face0 'l))
-                                         (powerline-buffer-id `(mode-line-buffer-id ,face0) 'l)
+                                         (funcall separator-left face0 face1)
+                                         (powerline-raw (shorten-directory default-directory 15) face1 'l)
+                                         (funcall separator-left face1 face0)
+                                         (powerline-buffer-id nil 'r)
                                          (when (and (boundp 'which-func-mode) which-func-mode)
                                            (powerline-raw which-func-format face0 'l))
                                          (powerline-raw " " face0)
