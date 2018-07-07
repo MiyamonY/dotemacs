@@ -26,6 +26,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (auto-image-file-mode t)
 (scroll-bar-mode -1)
+(delete-selection-mode 1)
 (setq-default show-trailing-whitespace t)
 (setq-default bidi-display-reordering nil)
 (setq-default tab-width 2)
