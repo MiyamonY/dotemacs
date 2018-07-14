@@ -52,6 +52,8 @@
 (el-get-bundle js2-mode)
 (el-get-bundle gtags)
 (el-get-bundle helm-gtags)
+(el-get-bundle jedi)
+(el-get-bundle py-yapf)
 
 ;;; golang
 (el-get-bundle go-mode)
