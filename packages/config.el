@@ -28,6 +28,7 @@
 (auto-image-file-mode t)
 (scroll-bar-mode -1)
 (delete-selection-mode 1)
+(global-display-line-numbers-mode 1)
 (setq-default show-trailing-whitespace t)
 (setq-default bidi-display-reordering nil)
 (setq-default tab-width 2)
