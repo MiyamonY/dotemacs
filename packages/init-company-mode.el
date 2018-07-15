@@ -24,6 +24,13 @@
 
 ;;; Code:
 (use-package company
+  :bind
+  (:map company-active-map
+        ("M-n" . nil)
+        ("M-p" . nil)
+        ("C-n" . company-select-next)
+        ("C-p" . company-select-previous)
+        ("C-h" . nil))
   :init
   (progn
     (setq company-idle-delay 0.2)
