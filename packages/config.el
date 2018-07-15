@@ -58,6 +58,8 @@
     (setq recentf-exclude (-concat '(".recentf") recentf-exclude))))
 
 (recentf-mode 1)
+(setq make-backup-files nil)
+(setq create-lockfiles nil)
 (setq auto-save-list-file-prefix (concat init-emacs-local-files "/auto-save-list/.saves-"))
 
 ;; 括弧の設定
