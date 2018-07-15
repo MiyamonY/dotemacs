@@ -17,6 +17,7 @@
 (el-get-bundle magit)
 (el-get-bundle magit-gitflow)
 (el-get-bundle git-gutter+)
+(el-get-bundle git-gutter-fringe+)
 
 ;; interface
 (el-get-bundle helm)
