@@ -20,12 +20,13 @@
 (el-get-bundle git-gutter-fringe+)
 
 ;; interface
+(el-get-bundle company-mode)
 (el-get-bundle helm)
 (el-get-bundle helm-ag)
 (el-get-bundle helm-ghq)
 (el-get-bundle helm-descbinds)
 (el-get-bundle helm-swoop)
-(el-get-bundle yasuyk/ac-helm)
+(el-get-bundle helm-company)
 (el-get-bundle rainbow-delimiters)
 (el-get-bundle emacsmirror/hl-line-plus :name hl-line+)
 (el-get-bundle pcre2el)
@@ -53,20 +54,18 @@
 (el-get-bundle js2-mode)
 (el-get-bundle gtags)
 (el-get-bundle helm-gtags)
-(el-get-bundle jedi)
+(el-get-bundle company-jedi)
 (el-get-bundle py-yapf)
 
 ;;; golang
 (el-get-bundle go-mode)
-(el-get-bundle go-autocomplete)
+(el-get-bundle go-company)
 
 ;; operation
 (el-get-bundle undohist)
 (el-get-bundle undo-tree)
 (el-get-bundle emacsmirror/sequential-command)
 
-;; input
-(el-get-bundle auto-complete)
 
 ;; doc
 (el-get-bundle asciidoc)
