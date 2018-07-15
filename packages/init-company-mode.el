@@ -33,7 +33,8 @@
         ("C-h" . nil))
   :init
   (progn
-    (setq company-idle-delay 0.2)
+    (setq company-idle-delay 0.1)
+    (setq company-selection-wrap-around t)
     (global-company-mode 1)))
 
 (provide 'init-company-mode)
