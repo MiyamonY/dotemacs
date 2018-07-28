@@ -33,6 +33,8 @@
         ("C-h" . nil))
   :init
   (progn
+    (setq company-minimum-prefix-length 3)
+    (setq completion-ignore-case t)
     (setq company-idle-delay 0.1)
     (setq company-selection-wrap-around t)
     (global-company-mode 1)))
