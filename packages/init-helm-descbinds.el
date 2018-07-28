@@ -23,8 +23,10 @@
 ;;
 
 ;;; Code:
-(use-package helm-descbinds)
-
+(use-package helm-descbinds
+  :init
+  (progn
+    (helm-descbinds-install)))
 
 (provide 'init-helm-descbinds)
 ;;; init-helm-descbinds.el ends here
