@@ -57,6 +57,7 @@
 (el-get-bundle company-jedi)
 (el-get-bundle py-yapf)
 (el-get-bundle lua-mode)
+(el-get-bundle yaml-mode)
 
 ;;; golang
 (el-get-bundle go-mode)
