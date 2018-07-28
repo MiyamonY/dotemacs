@@ -56,6 +56,7 @@
 (el-get-bundle helm-gtags)
 (el-get-bundle company-jedi)
 (el-get-bundle py-yapf)
+(el-get-bundle lua-mode)
 
 ;;; golang
 (el-get-bundle go-mode)
