@@ -43,6 +43,7 @@
 ;; prog
 (el-get-bundle smartparens)
 (el-get-bundle yasnippet)
+(el-get-bundle yasnippet-snippets)
 (el-get-bundle yatemplate)
 (el-get-bundle highlight-symbol)
 (el-get-bundle aggressive-indent)

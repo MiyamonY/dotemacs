@@ -12,8 +12,6 @@
         ("C-x i v" . yas-visit-snippet-file)
         ("TAB" . yas-next-field)
         ("<tab>" . nil)
-        ("C-i" . nil))
-  :init
-  (setq yas-snippet-dirs (locate-user-emacs-file "conf/insert/")))
+        ("C-i" . nil)))
 
 (yas-global-mode 1)
