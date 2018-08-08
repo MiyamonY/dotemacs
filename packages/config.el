@@ -96,7 +96,7 @@
   (("C-c a" . 'org-agenda))
   :init
   (progn
-    (setq org-agenda-files '("~/src/github.com/MiyamonY/todos/todo.org"))))
+    (setq org-agenda-files '("~/src/github.com/MiyamonY/memo/todos/todo.org"))))
 
 (use-package org-capture
   :bind
@@ -104,7 +104,7 @@
   :init
   (progn
     (setq org-capture-templates
-          '(("t" "Task" entry (file "~/src/github.com/MiyamonY/todos/todo.org")
+          '(("t" "Task" entry (file "~/src/github.com/MiyamonY/memo/todos/todo.org")
              "* TODO %?\n    %i %T")))))
 
 ;; フォントの設定
