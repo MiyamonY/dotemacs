@@ -98,14 +98,22 @@
   (progn
     (setq org-agenda-files '("~/src/github.com/MiyamonY/memo/todos/todo.org"))))
 
+(defun capture-report-data-file (path)
+  (expand-file-name (format "%s.org"
+                            (format-time-string "%Y-%m-%d")) path))
+
 (use-package org-capture
   :bind
   (("C-c c" . 'org-capture))
   :init
   (progn
     (setq org-capture-templates
-          '(("t" "Task" entry (file "~/src/github.com/MiyamonY/memo/todos/todo.org")
-             "* TODO %?\n    %i %T")))))
+          `(("t" "Task" entry (file "~/src/github.com/MiyamonY/memo/todos/todo.org")
+             "* TODO %?\n    %i %T")
+            ("m" "One Line Memo" entry (file "~/src/github.com/MiyamonY/memo/memo.org")
+             "* %?\n %a\n %T")
+            ("n" "Note" entry (file ,(capture-report-data-file "~/src/github.com/MiyamonY/memo/")) "* %?")))))
+
 
 ;; フォントの設定
 (cond ((display-graphic-p)
