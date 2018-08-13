@@ -59,6 +59,7 @@
 (el-get-bundle py-yapf)
 (el-get-bundle lua-mode)
 (el-get-bundle yaml-mode)
+(el-get-bundle clang-format)
 
 ;;; golang
 (el-get-bundle go-mode)
