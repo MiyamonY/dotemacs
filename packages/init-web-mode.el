@@ -27,6 +27,11 @@
   :bind
   (:map web-mode-map
         ("<tab>" . emmet-expand-line))
+  :init
+  (progn
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2))
   :mode "\\.html\\'")
 
 (provide 'init-web-mode)
