@@ -59,6 +59,10 @@
 (el-get-bundle py-yapf)
 (el-get-bundle lua-mode)
 (el-get-bundle yaml-mode)
+(el-get-bundle clang-format)
+(el-get-bundle AdamNiederer/vue-mode)
+(el-get-bundle add-node-modules-path)
+(el-get-bundle pug-mode)
 
 ;;; golang
 (el-get-bundle go-mode)
@@ -75,3 +79,4 @@
 (el-get-bundle adoc-mode)
 (el-get-bundle markdown-mode)
 (el-get-bundle bm)
+(el-get-bundle recentf-ext)

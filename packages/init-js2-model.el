@@ -1,4 +1,4 @@
-;;; init-web-mode.el --- initalize web-mode          -*- lexical-binding: t; -*-
+;;; init-js2-model.el --- initialize js2 mode        -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2018
 
@@ -16,21 +16,16 @@
 ;; GNU General Public License for more details.
 
 ;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
 ;;
 
 ;;; Code:
-(use-package web-mode
-  :init
-  (progn
-    (setq web-mode-markup-indent-offset 2)
-    (setq web-mode-css-indent-offset 2)
-    (setq web-mode-code-indent-offset 2)
-    (add-hook 'web-mode-hook 'emmet-mode-hook))
-  :mode "\\.html\\'")
+(use-package js2-mode
+  :mode "\\.js\\'")
 
-(provide 'init-web-mode)
-;;; init-web-mode.el ends here
+
+(provide 'init-js2-model)
+;;; init-js2-model.el ends here

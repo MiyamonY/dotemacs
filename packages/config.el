@@ -45,7 +45,7 @@
 ;; backup fileの設定
 (setq backup-directory-alist '((".*" . "/tmp")))
 
-(use-package recentf
+(use-package recentf-ext
   :init
   (progn
     (setq recentf-save-file (concat init-emacs-local-files "/recentf/.recentf"))
