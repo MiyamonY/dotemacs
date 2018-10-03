@@ -15,8 +15,8 @@
             helm-source-ghq
             helm-source-locate))
     (setq helm-boring-buffer-regexp-list
-          (-concat '("\*Compile-Log\*" "magit.*" "~/\.Trash/.*") helm-boring-buffer-regexp-list))
-    (setq helm-ff-skip-boring-files t))
-  :config
-  (progn
-    (setq helm-boring-file-regexp-list (-concat '("\\.pyc$") helm-boring-file-regexp-list))))
+          (-concat '("\*Compile-Log\*"
+                     "magit.*" "~/\.Trash/.*") helm-boring-buffer-regexp-list))
+    (setq helm-boring-file-regexp-list
+          (-concat '("\\.pyc$" "\GPATH\..*$" "\GRTAG\..*$" "GSYMS$" "GTAGS$") helm-boring-file-regexp-list))
+    (setq helm-ff-skip-boring-files t)))
