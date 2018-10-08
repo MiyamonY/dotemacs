@@ -60,6 +60,9 @@
 (el-get-bundle lua-mode)
 (el-get-bundle yaml-mode)
 (el-get-bundle clang-format)
+(el-get-bundle AdamNiederer/vue-mode)
+(el-get-bundle add-node-modules-path)
+(el-get-bundle pug-mode)
 
 ;;; golang
 (el-get-bundle go-mode)
