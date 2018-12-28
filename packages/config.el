@@ -61,6 +61,9 @@
 (setq make-backup-files nil)
 (setq create-lockfiles nil)
 (setq auto-save-list-file-prefix (concat init-emacs-local-files "/auto-save-list/.saves-"))
+(setq auto-save-default nil)
+(setq tramp-auto-save-directory (concat init-emacs-local-files "/auto-save-list/"))
+(setq tramp-ssh-controlmaster-options "")
 
 ;; 括弧の設定
 (use-package paren
