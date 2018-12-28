@@ -76,4 +76,6 @@
 ;; doc
 (el-get-bundle asciidoc)
 (el-get-bundle adoc-mode)
+(el-get-bundle markdown-mode)
+(el-get-bundle bm)
 (el-get-bundle recentf-ext)
