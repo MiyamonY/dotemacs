@@ -27,6 +27,10 @@
   :config
   (progn
     (setq gofmt-command "goimports")
+    (add-hook 'go-mode-hook
+              (lambda ()
+                (set (make-local-variable 'company-backends)
+                     '((company-dabbrev-code company-yasnippet)))))
     (add-hook 'before-save-hook 'gofmt-before-save)))
 
 (provide 'init-go-mode)
