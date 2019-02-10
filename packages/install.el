@@ -67,6 +67,9 @@
 (el-get-bundle go-mode)
 (el-get-bundle go-company)
 
+;; rust
+(el-get-bundle brotzeit/rustic)
+
 ;; operation
 (el-get-bundle undohist)
 (el-get-bundle undo-tree)
