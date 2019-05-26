@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: print_vec
+# key: print_vec
+# --
+#[allow(unused_macros)]
+macro_rules! print_vec{
+    ($vec:expr) => {
+        for (i, &v) in $vec.iter().enumerate() {
+          if i != 0 {
+              print!(" ");
+          }
+          print!("{}", v);
+          }
+        println!();
+    };
+}

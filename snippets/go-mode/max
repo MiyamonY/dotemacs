@@ -1,0 +1,7 @@
+# key: max
+# name: max
+# --
+func max(slice... int)int{
+  sort.Ints(slice)
+  return slice[len(slice)-1]
+}
