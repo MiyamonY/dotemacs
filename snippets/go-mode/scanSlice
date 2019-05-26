@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: scanSlice
+# key: scanSlice
+# --
+func scanSlice(slice []int){
+  for i:= range slice{
+    fmt.Scan(&slice[i])
+  }
+}

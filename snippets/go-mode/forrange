@@ -1,0 +1,6 @@
+# key: forrange
+# name: forrange
+# --
+for ${2:iter} ${3:$$(if (not (string= yas-text " ")) (concat ", " yas-text) yas-text)} := range ${1:slice}{
+  $0
+}
