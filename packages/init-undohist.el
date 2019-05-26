@@ -5,6 +5,7 @@
 ;; Author:  <ymiyamoto@ymiyamoto-desktop>
 ;; Keywords:
 (use-package undohist
+  :disabled
   :config
   (progn
     (setq undohist-ignored-files '("COMMIT_EDITMSG")))
