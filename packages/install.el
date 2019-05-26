@@ -62,13 +62,14 @@
 (el-get-bundle AdamNiederer/vue-mode)
 (el-get-bundle add-node-modules-path)
 (el-get-bundle pug-mode)
+(el-get-bundle racket-mode)
 
 ;;; golang
 (el-get-bundle go-mode)
 (el-get-bundle go-company)
 
 ;; rust
-(el-get-bundle brotzeit/rustic)
+(el-get-bundle rustic)
 
 ;; operation
 (el-get-bundle undohist)
@@ -82,3 +83,4 @@
 (el-get-bundle markdown-mode)
 (el-get-bundle bm)
 (el-get-bundle recentf-ext)
+(el-get-bundle proof-general)

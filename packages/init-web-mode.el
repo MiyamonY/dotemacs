@@ -31,6 +31,6 @@
     (setq web-mode-code-indent-offset 2)
     (add-hook 'web-mode-hook 'emmet-mode-hook))
   :mode "\\.html\\'")
-
+(define-key emmet-mode-keymap (kbd "C-j") nil)
 (provide 'init-web-mode)
 ;;; init-web-mode.el ends here
