@@ -57,6 +57,14 @@
   (toggle-hl-line-when-idle)
   (set-face-background 'hl-line "gray30"))
 
+(use-package recentf
+  :init
+  (setq recentf-save-file
+	(locate-user-emacs-file (convert-standard-filename "locals/recentf")))
+  (setq recentf-max-saved-items 500)
+  (setq recentf-max-menu-items 15)
+  (setq recentf-auto-cleanup 'never))
+
 (use-package company
   :straight t
   :hook (prog-mode . company-mode)
