@@ -71,3 +71,11 @@
   (setq company-minimum-prefx-length 2)
   (setq company-selection-wrap-around t))
 
+(use-package counsel
+  :straight t
+  :bind (("C-s" . swiper))
+  :config
+  (setq ivy-height 30)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  (ivy-mode 1))
