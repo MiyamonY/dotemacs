@@ -74,8 +74,10 @@
 (use-package counsel
   :straight t
   :bind (("C-s" . swiper))
-  :config
+  :init
   (setq ivy-height 30)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
+  :config
   (ivy-mode 1))
+
