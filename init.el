@@ -56,3 +56,18 @@
   :config
   (toggle-hl-line-when-idle)
   (set-face-background 'hl-line "gray30"))
+
+(use-package company
+  :straight t
+  :hook (prog-mode . company-mode)
+  :bind (:map company-active-map
+	      ("M-n" . nil)
+	      ("M-p" . nil)
+	      ("C-n" . company-select-next)
+	      ("C-p" . company-select-previous)
+	      ("C-h" . nil))
+  :config
+  (setq company-idle-delay 0.1)
+  (setq company-minimum-prefx-length 2)
+  (setq company-selection-wrap-around t))
+
