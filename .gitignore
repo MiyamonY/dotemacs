@@ -2,4 +2,4 @@ straight/*
 elpa
 *.elc
 *~
-
+locals/*

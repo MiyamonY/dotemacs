@@ -16,4 +16,12 @@
 (use-package dracula-theme
   :straight t)
 
-
+(use-package magit
+  :straight t
+  :commands (magit-status)
+  :bind (("C-c g" . magit-status)
+	 ("C-c C-g" . magit-status))
+  :init
+  (setq transient-history-file
+	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el")))
+)
