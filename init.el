@@ -14,7 +14,7 @@
 (straight-use-package 'use-package)
 
 (use-package util
-  :load-path ".")
+  :load-path "./lisp")
 
 (use-package bind-key
   :bind (("C-h" . delete-backward-char)
