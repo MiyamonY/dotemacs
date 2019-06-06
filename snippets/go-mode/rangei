@@ -1,6 +1,0 @@
-# key: rangei
-# name: rangei
-# --
-for ${2:iter} := range ${1:slice}{
-  $0
-}

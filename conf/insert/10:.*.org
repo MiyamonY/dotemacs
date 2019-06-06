@@ -1,6 +1,0 @@
-#+TITLE:
-#+AUTHOR: ymiyamoto
-#+EMAIL: ymiyamoto324@gmail.com
-#+STARTUP: showall
-#+LANGUAGE:ja
-#+OPTIONS: \n:nil creator:nil indent

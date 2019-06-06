@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: rec
-# key: rec
-# binding: C-c . r
-# --
-let rec ${1:name} ${2:args} = $0

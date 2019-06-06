@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: make
-# key: make
-# --
-${1:var} := make(${2:type}, ${3:num})

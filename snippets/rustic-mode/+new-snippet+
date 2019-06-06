@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: max
-# key: max
-# --
-use std::cmp::max;
