@@ -1,7 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: let_open
-# key: let_open
-# binding: C-c . o
-# --
-let open $1 in
-$0

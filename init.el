@@ -1,15 +1,16 @@
-; (package-initialize)
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
+(straight-use-package 'use-package)
 
-(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
-(setq el-get-user-package-directory "~/.emacs.d/packages")
 
-(load (concat el-get-user-package-directory "/install.el"))
-(load (concat el-get-user-package-directory "/config.el"))

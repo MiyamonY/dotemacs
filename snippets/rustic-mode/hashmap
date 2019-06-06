@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: hashmap
-# key: hashmap
-# --
-use std::collections::HashMap;

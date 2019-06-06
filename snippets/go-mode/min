@@ -1,7 +1,0 @@
-# key: min
-# name: min
-# --
-func min(slice... int)int{
-  sort.Ints(slice)
-  return slice[0]
-}

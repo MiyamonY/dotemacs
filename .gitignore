@@ -1,4 +1,4 @@
-el-get
+straight/*
 elpa
 *.elc
 *~
