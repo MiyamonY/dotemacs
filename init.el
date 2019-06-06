@@ -15,6 +15,7 @@
 
 (use-package bind-key
   :bind (("C-h" . delete-backward-char)
+	 ("C-x j" . split-window-horizontally)
 	 ("C-c i" .
 	  (lambda ()
 	    (interactive)
