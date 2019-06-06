@@ -13,6 +13,9 @@
 
 (straight-use-package 'use-package)
 
+(use-package bind-key
+  :bind (("C-h" . delete-backward-char)))
+
 (use-package dracula-theme
   :straight t)
 
@@ -23,5 +26,5 @@
 	 ("C-c C-g" . magit-status))
   :init
   (setq transient-history-file
-	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el")))
-)
+	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el"))))
+
