@@ -13,4 +13,7 @@
 
 (straight-use-package 'use-package)
 
+(use-package dracula-theme
+  :straight t)
+
 
