@@ -39,3 +39,10 @@
   :commands (rainbow-delimiters-mode)
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package hl-line+
+  :straight t
+  :init
+  (setq hl-line-idle-interval 0.5)
+  :config
+  (toggle-hl-line-when-idle)
+  (set-face-background 'hl-line "gray30"))
