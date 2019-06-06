@@ -13,6 +13,9 @@
 
 (straight-use-package 'use-package)
 
+(use-package util
+  :load-path ".")
+
 (use-package bind-key
   :bind (("C-h" . delete-backward-char)
 	 ("C-x j" . split-window-horizontally)
