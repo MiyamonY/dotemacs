@@ -81,7 +81,14 @@
 
 (use-package counsel
   :straight t
-  :bind (("C-s" . swiper))
+  :bind (("C-s" . swiper)
+	 ("M-x" . counsel-M-x)
+	 ("C-c C-r" . ivy-resume)
+	 ("C-x C-f" . counsel-find-file)
+	 ("<f1> f" . counsel-describe-function)
+	 ("<f1> l" . counsel-find-library)
+	 ("<f1> v" . counsel-describe-variable)
+	 ("C-x l" . counsel-locate))
   :init
   (setq ivy-height 30)
   (setq ivy-use-virtual-buffers t)
