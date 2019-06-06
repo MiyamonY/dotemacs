@@ -14,7 +14,11 @@
 (straight-use-package 'use-package)
 
 (use-package bind-key
-  :bind (("C-h" . delete-backward-char)))
+  :bind (("C-h" . delete-backward-char)
+	 ("C-c i" .
+	  (lambda ()
+	    (interactive)
+	    (find-file (locate-user-emacs-file "init.el"))))))
 
 (use-package dracula-theme
   :straight t)
