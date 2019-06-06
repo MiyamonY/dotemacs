@@ -34,6 +34,10 @@
   (setq transient-history-file
 	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el"))))
 
+(use-package git-gutter+
+  :straight t
+  :hook (prog-mode))
+
 (use-package rainbow-delimiters
   :straight t
   :commands (rainbow-delimiters-mode)
