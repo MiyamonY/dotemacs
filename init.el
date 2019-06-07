@@ -98,6 +98,12 @@
   (setq ivy-count-format "(%d/%d) ")
   :config
   (ivy-mode 1)
+  (dolist (pair `((counsel-evil-registers . ,ivy-height)
+		  (counsel-yank-pop . ,ivy-height)
+		  (counsel-git-log . ,ivy-height)
+		  (counsel--generic . ,ivy-height)
+		  (counsel-el . ,ivy-height)))
+    (add-to-list 'ivy-height-alist pair))
   (use-package all-the-icons-ivy
     :straight t
     :config
