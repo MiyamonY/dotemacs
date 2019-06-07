@@ -52,12 +52,62 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package hl-line+
-  :straight t
+  :straight t 
   :init
   (setq hl-line-idle-interval 0.5)
   :config
   (toggle-hl-line-when-idle)
   (set-face-background 'hl-line "gray30"))
+
+(use-package undo-tree
+  :straight t
+  :bind
+  (("C-." . undo-tree-redo)
+   :map undo-tree-visualizer-mode-map
+   ("C-m" . undo-tree-visualizer-quit)
+   ("C-g" . undo-tree-visualizer-quit))
+  :config
+  (setq undo-tree-mode-lighter ""))
+
+(use-package sequential-command
+  :straight t
+  :config
+  (use-package sequential-command-config
+    :bind (("C-_" . seq-undo))
+    :config
+    (define-sequential-command seq-undo
+      undo-tree-undo undo-tree-visualize)
+    (sequential-command-setup-keys)))
+
+(use-package elscreen 
+ :straight t
+  :bind (("C-c n" . elscreen-next)
+	 ("C-c p" . elscreen-previous)
+	 ("C-c c" . elscreen-create))
+  :config
+  (setq elscreen-display-tab t)
+  (setq elscreen-tab-display-kill-screen nil)
+  (setq elscreen-tab-display-control nil)
+  (let ((dracula-background "#282a36") (dracula-purple "#bd93f9")
+	(dracula-foreground "#f8f8f2"))
+    (set-face-attribute
+     'elscreen-tab-current-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-foreground)
+    (set-face-attribute
+     'elscreen-tab-other-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-background))
+  (elscreen-start))
+
+(use-package smartparens
+  :straight t
+  :config
+  (use-package smartparens-config)
+  (smartparens-global-mode t))
+
+(show-paren-mode 1)
+(setq show-paren-delay 0.1)
+(setq show-paren-style 'expression)
+(set-face-attribute 'show-paren-match nil
+		    :background 'unspecified :foreground 'unspecified
+                    :underline "white")
 
 (use-package recentf
   :init
@@ -141,7 +191,12 @@
   (setq aw-background nil)
   (set-face-attribute  'aw-leading-char-face nil :height 10.0))
 
+
 (use-package format-all
   :straight t
   :config
   (format-all-mode))
+
+(use-package racket-mode
+  :straight t)
+
