@@ -51,5 +51,11 @@
   (toggle-hl-line-when-idle)
   (set-face-background 'hl-line "gray30"))
 
+(use-package smartparens
+  :straight t
+  :config
+  (use-package smartparens-config)
+  (smartparens-global-mode t))
+
 (use-package racket-mode
   :straight t)
