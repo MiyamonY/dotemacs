@@ -147,7 +147,6 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
   :config
-  (ivy-mode 1)
   (dolist (pair `((counsel-evil-registers . ,ivy-height)
 		  (counsel-yank-pop . ,ivy-height)
 		  (counsel-git-log . ,ivy-height)
@@ -159,6 +158,7 @@
     :config
     (setq inhibit-compacting-font-caches t)
     (all-the-icons-ivy-setup)))
+(ivy-mode 1)
 
 (use-package migemo
   :straight t
