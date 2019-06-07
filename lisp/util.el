@@ -11,4 +11,11 @@
 		    :background 'unspecified :foreground 'unspecified
 		    :underline "#bd93f9")
 
+(setq default-frame-alist
+      '((width . 120)
+	(height . 40)
+	(top . 0)
+	(left . 0)
+	(font . "-PfEd-Ricty Diminished Discord-normal-normal-normal-*-*-*-*-*-*-0-iso10646-1")))
+
 (provide 'util)
