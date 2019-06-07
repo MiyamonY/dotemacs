@@ -102,11 +102,11 @@
     (all-the-icons-ivy-setup)))
 
 (use-package migemo
-  :straight t 
- :when (executable-find "cmigemo")
+  :straight t
+  :when (executable-find "cmigemo")
   :config
-  (setq migemo-command "cmigemo") 
- (setq migemo-dictionary "/usr/share/migemo/utf-8/migemo-dict")
+  (setq migemo-command "cmigemo")
+  (setq migemo-dictionary "/usr/share/migemo/utf-8/migemo-dict")
   (setq migemo-options '("-q" "--emacs" "-i" "\a"))
   (setq migemo-user-dictionary nil)
   (setq migemo-regex-dictionary nil)
@@ -131,3 +131,8 @@
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (setq aw-background nil)
   (set-face-attribute  'aw-leading-char-face nil :height 10.0))
+
+(use-package format-all
+  :straight t
+  :config
+  (format-all-mode))
