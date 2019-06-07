@@ -40,6 +40,8 @@
 (use-package git-gutter+
   :straight t
   :hook (prog-mode . git-gutter+-mode)
+  :init
+  (setq git-gutter+-hide-gutter nil)
   :config
   (setq git-gutter+-separator-sign "|")
   (set-face-foreground 'git-gutter+-separator "white"))
