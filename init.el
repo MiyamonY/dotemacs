@@ -51,11 +51,24 @@
   (toggle-hl-line-when-idle)
   (set-face-background 'hl-line "gray30"))
 
+(use-package undo-tree
+  :straight t
+  :bind
+  (("C-." . undo-tree-redo)
+   :map undo-tree-visualizer-mode-map
+   ("C-m" . undo-tree-visualizer-quit)
+   ("C-g" . undo-tree-visualizer-quit))
+  :config
+  (setq undo-tree-mode-lighter ""))
+
 (use-package sequential-command
   :straight t
   :config
   (use-package sequential-command-config
+    :bind (("C-_" . seq-undo))
     :config
+    (define-sequential-command seq-undo
+      undo-tree-undo undo-tree-visualize)
     (sequential-command-setup-keys)))
 
 (use-package elscreen 
