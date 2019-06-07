@@ -50,3 +50,6 @@
   :config
   (toggle-hl-line-when-idle)
   (set-face-background 'hl-line "gray30"))
+
+(use-package racket-mode
+  :straight t)
