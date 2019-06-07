@@ -96,3 +96,26 @@
   :config
   (ivy-mode 1))
 
+(use-package migemo
+  :straight t 
+ :when (executable-find "cmigemo")
+  :config
+  (setq migemo-command "cmigemo") 
+ (setq migemo-dictionary "/usr/share/migemo/utf-8/migemo-dict")
+  (setq migemo-options '("-q" "--emacs" "-i" "\a"))
+  (setq migemo-user-dictionary nil)
+  (setq migemo-regex-dictionary nil)
+  (setq migemo-coding-system 'utf-8-unix))
+
+(use-package avy
+  :straight t
+  :config
+  (use-package avy-migemo
+    :straight t
+    :init
+    (avy-migemo-mode 1)
+    :config
+    (use-package avy-migemo-e.g.swiper
+      :disabled)
+    (setq avy-timeout-seconds 0.1)))
+
