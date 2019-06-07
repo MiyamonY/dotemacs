@@ -94,7 +94,12 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
   :config
-  (ivy-mode 1))
+  (ivy-mode 1)
+  (use-package all-the-icons-ivy
+    :straight t
+    :config
+    (setq inhibit-compacting-font-caches t)
+    (all-the-icons-ivy-setup)))
 
 (use-package migemo
   :straight t 
