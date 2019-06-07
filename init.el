@@ -74,5 +74,12 @@
   (use-package smartparens-config)
   (smartparens-global-mode t))
 
+(show-paren-mode 1)
+(setq show-paren-delay 0.1)
+(setq show-paren-style 'expression)
+(set-face-attribute 'show-paren-match nil
+		    :background 'unspecified :foreground 'unspecified
+                    :underline "white")
+
 (use-package racket-mode
   :straight t)
