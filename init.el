@@ -51,6 +51,23 @@
   (toggle-hl-line-when-idle)
   (set-face-background 'hl-line "gray30"))
 
+(use-package elscreen 
+ :straight t
+  :bind (("C-c n" . elscreen-next)
+	 ("C-c p" . elscreen-previous)
+	 ("C-c c" . elscreen-create))
+  :config
+  (setq elscreen-display-tab t)
+  (setq elscreen-tab-display-kill-screen nil)
+  (setq elscreen-tab-display-control nil)
+  (let ((dracula-background "#282a36") (dracula-purple "#bd93f9")
+	(dracula-foreground "#f8f8f2"))
+    (set-face-attribute
+     'elscreen-tab-current-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-foreground)
+    (set-face-attribute
+     'elscreen-tab-other-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-background))
+  (elscreen-start))
+
 (use-package smartparens
   :straight t
   :config
