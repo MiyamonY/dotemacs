@@ -124,3 +124,10 @@
       :disabled)
     (setq avy-timeout-seconds 0.1)))
 
+(use-package ace-window
+  :straight t
+  :bind (("C-t" . ace-window))
+  :config
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (setq aw-background nil)
+  (set-face-attribute  'aw-leading-char-face nil :height 10.0))
