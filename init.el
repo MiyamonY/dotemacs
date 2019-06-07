@@ -51,6 +51,13 @@
   (toggle-hl-line-when-idle)
   (set-face-background 'hl-line "gray30"))
 
+(use-package sequential-command
+  :straight t
+  :config
+  (use-package sequential-command-config
+    :config
+    (sequential-command-setup-keys)))
+
 (use-package elscreen 
  :straight t
   :bind (("C-c n" . elscreen-next)
