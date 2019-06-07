@@ -43,7 +43,7 @@
   :config
   (setq git-gutter+-separator-sign "|")
   (set-face-foreground 'git-gutter+-separator "white"))
-  
+
 (use-package rainbow-delimiters
   :straight t
   :commands (rainbow-delimiters-mode)
