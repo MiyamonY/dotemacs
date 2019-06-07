@@ -90,6 +90,7 @@
 	 ("<f1> f" . counsel-describe-function)
 	 ("<f1> l" . counsel-find-library)
 	 ("<f1> v" . counsel-describe-variable)
+	 ("M-y" . counsel-yank-pop)
 	 ("C-x l" . counsel-locate))
   :init
   (setq ivy-height 30)
