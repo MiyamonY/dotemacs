@@ -29,6 +29,21 @@
 (use-package dracula-theme
   :straight t)
 
+(use-package doom-modeline
+  :straight t
+  :hook (after-init . doom-modeline-mode)
+  :config
+  (setq doom-modeline-height 20)
+  (setq doom-modeline-icon t)
+  (setq doom-modeline-major-mode-icon t)
+  (setq inhibit-compacting-font-caches t)
+  (setq find-file-visit-truename t)
+  (use-package nyan-mode
+    :straight t
+    :after (doom-modeline)
+    :config
+    (nyan-mode)))
+
 (use-package magit
   :straight t
   :commands (magit-status)
