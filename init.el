@@ -188,6 +188,16 @@
   (ivy-rich-mode))
 (ivy-mode 1)
 
+(use-package ivy-posframe
+  :straight t
+  :after ivy
+  :custom
+  (ivy-display-function #'ivy-posframe-display-at-frame-center)
+  :config
+  (use-package posframe
+    :straight t)
+  (ivy-posframe-enable))
+
 (use-package tempbuf
   :hook ((dired-mode-hook magit-mode-hook). turn-on-tempbuf-mode))
 
