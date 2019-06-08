@@ -29,4 +29,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (delete-selection-mode t)
+(setq kill-whole-line t)
+
 (provide 'util)
