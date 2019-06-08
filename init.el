@@ -133,6 +133,8 @@
 
 (use-package counsel
   :straight t
+  :hook ((after-init . ivy-mode)
+	 (ivy-mode . counsel-mode))
   :bind (("C-s" . swiper)
 	 ("M-x" . counsel-M-x)
 	 ("C-c C-r" . ivy-resume)
@@ -153,40 +155,64 @@
 		  (counsel--generic . ,ivy-height)
 		  (counsel-el . ,ivy-height)))
     (add-to-list 'ivy-height-alist pair))
-  (use-package all-the-icons-ivy
-    :straight t
-    :config
-    (setq inhibit-compacting-font-caches t)
-    (all-the-icons-ivy-setup))
   (use-package counsel-ghq
     :straight (el-patch :type git :host github :repo "windymelt/counsel-ghq") ; not found in melpa
-    :bind (("C-x C-g" . counsel-ghq)))
-  (use-package ivy-rich
-    :straight t
-    :config
-    (defun ivy-rich-switch-buffer-icon (candidate)
-      (with-current-buffer
-   	  (get-buffer candidate)
-	(let ((icon (all-the-icons-icon-for-mode major-mode)))
-	  (if (symbolp icon)
-	      (all-the-icons-icon-for-mode 'fundamental-mode)
-	    icon))))
-    (setq ivy-rich--display-transformers-list
-	  '(ivy-switch-buffer
-	    (:columns
-	     ((ivy-rich-switch-buffer-icon :width 2)
-	      (ivy-rich-candidate (:width 30))
-	      (ivy-rich-switch-buffer-size (:width 7))
-	      (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
-	      (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
-	      (ivy-rich-switch-buffer-project (:width 15 :face success))
-	      (ivy-rich-switch-buffer-path
-	       (:width
-		(lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
-	     :predicate
-	     (lambda (cand) (get-buffer cand))))))
-  (ivy-rich-mode))
-(ivy-mode 1)
+    :bind (("C-x C-g" . counsel-ghq))))
+
+(use-package ivy-rich
+  :straight t
+  :after (ivy)
+  :config
+  (setq ivy-format-function #'ivy-format-function-line)
+  (defun ivy-rich-switch-buffer-icon (candidate)
+    (with-current-buffer
+  	(get-buffer candidate)
+      (let ((icon (all-the-icons-icon-for-mode major-mode)))
+  	(if (symbolp icon)
+  	    (all-the-icons-icon-for-mode 'fundamental-mode)
+  	  icon))))
+  (defun ivy-rich-file-icon (candidate)
+    (when (display-graphic-p)
+      (let ((icon (if (file-directory-p candidate)
+		      (cond
+		       ((and (fboundp 'tramp-tramp-file-p)
+			     (tramp-tramp-file-p default-directory))
+			(all-the-icons-octicon "file-directory"))
+		       ((file-symlink-p candidate)
+			(all-the-icons-octicon "file-symlink-directory"))
+		       ((all-the-icons-dir-is-submodule candidate)
+			(all-the-icons-octicon "file-submodule"))
+		       ((file-exists-p (format "%s/.git" candidate))
+			(all-the-icons-octicon "repo"))
+		       (t (let ((matcher (all-the-icons-match-to-alist candidate all-the-icons-dir-icon-alist)))
+			    (apply (car matcher) (list (cadr matcher))))))
+		    (all-the-icons-icon-for-file candidate))))
+	icon)))
+  (setq ivy-rich-display-transformers-list
+	(plist-put ivy-rich-display-transformers-list
+		   'ivy-switch-buffer
+		   '(:columns
+		     ((ivy-rich-switch-buffer-icon (:width 2))
+		      (ivy-rich-candidate (:width 30))
+		      (ivy-rich-switch-buffer-size (:width 7))
+		      (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
+		      (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
+		      (ivy-rich-switch-buffer-project (:width 15 :face success))
+		      (ivy-rich-switch-buffer-path
+		       (:width
+			(lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
+		     :predicate
+		     (lambda (cand) (get-buffer cand)))))
+  (setq ivy-rich-display-transformers-list
+	(plist-put ivy-rich-display-transformers-list
+		   'counsel-find-file
+		   '(:columns
+		     ((ivy-rich-file-icon (:width 2))
+		      (ivy-read-file-transformer (:width 10))
+		      (ivy-rich-counsel-find-file-truename (:face font-lock-doc-face))))))
+  (use-package all-the-icons
+    :straight t)
+  (ivy-rich-mode 1))
 
 (use-package ivy-posframe
   :straight t
