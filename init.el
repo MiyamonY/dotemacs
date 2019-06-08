@@ -52,7 +52,7 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package hl-line+
-  :straight t 
+  :straight t
   :init
   (setq hl-line-idle-interval 0.5)
   :config
@@ -69,7 +69,7 @@
    ("C-m" . undo-tree-visualizer-quit)
    ("C-g" . undo-tree-visualizer-quit)
    ("C-/" . undo-tree-visualize-undo)
-   ("C-." . undo-tree-visualize-redo))  
+   ("C-." . undo-tree-visualize-redo))
   :config
   (setq undo-tree-mode-lighter ""))
 
@@ -80,7 +80,7 @@
     :config
     (sequential-command-setup-keys)))
 
-(use-package elscreen 
+(use-package elscreen
  :straight t
   :bind (("C-c n" . elscreen-next)
 	 ("C-c p" . elscreen-previous)
@@ -192,7 +192,6 @@
   (setq aw-background nil)
   (set-face-attribute  'aw-leading-char-face nil :height 10.0))
 
-
 (use-package format-all
   :straight t
   :config
@@ -200,4 +199,3 @@
 
 (use-package racket-mode
   :straight t)
-
