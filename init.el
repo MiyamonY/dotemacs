@@ -160,8 +160,34 @@
     (all-the-icons-ivy-setup))
   (use-package counsel-ghq
     :straight (el-patch :type git :host github :repo "windymelt/counsel-ghq") ; not found in melpa
-    :bind (("C-x C-g" . counsel-ghq))))
+    :bind (("C-x C-g" . counsel-ghq)))
+  (use-package ivy-rich
+    :straight t
+    :config
+    (defun ivy-rich-switch-buffer-icon (candidate)
+      (with-current-buffer
+   	  (get-buffer candidate)
+	(let ((icon (all-the-icons-icon-for-mode major-mode)))
+	  (if (symbolp icon)
+	      (all-the-icons-icon-for-mode 'fundamental-mode)
+	    icon))))
+    (setq ivy-rich--display-transformers-list
+	  '(ivy-switch-buffer
+	    (:columns
+	     ((ivy-rich-switch-buffer-icon :width 2)
+	      (ivy-rich-candidate (:width 30))
+	      (ivy-rich-switch-buffer-size (:width 7))
+	      (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
+	      (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
+	      (ivy-rich-switch-buffer-project (:width 15 :face success))
+	      (ivy-rich-switch-buffer-path
+	       (:width
+		(lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
+	     :predicate
+	     (lambda (cand) (get-buffer cand))))))
+  (ivy-rich-mode))
 (ivy-mode 1)
+
 
 (use-package migemo
   :straight t
