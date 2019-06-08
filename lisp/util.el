@@ -1,3 +1,6 @@
+(setq jit-lock-defer-time 0.05)
+(setq-default bidi-display-reordering nil)
+
 (setq auto-save-list-file-prefix nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
