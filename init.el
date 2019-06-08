@@ -20,6 +20,7 @@
   :bind (("C-h" . delete-backward-char)
 	 ("C-x j" . split-window-horizontally)
 	 ("C-x u" . split-window-vertically)
+	 ("C-c f" . describe-function)
 	 ("C-c i" .
 	  (lambda ()
 	    (interactive)
