@@ -63,9 +63,13 @@
   :straight t
   :bind
   (("C-." . undo-tree-redo)
+   ("C-/" . undo-tree-visualize)
+   ("C-/" . undo-tree-visualize)
    :map undo-tree-visualizer-mode-map
    ("C-m" . undo-tree-visualizer-quit)
-   ("C-g" . undo-tree-visualizer-quit))
+   ("C-g" . undo-tree-visualizer-quit)
+   ("C-/" . undo-tree-visualize-undo)
+   ("C-." . undo-tree-visualize-redo))  
   :config
   (setq undo-tree-mode-lighter ""))
 
@@ -73,10 +77,7 @@
   :straight t
   :config
   (use-package sequential-command-config
-    :bind (("C-_" . seq-undo))
     :config
-    (define-sequential-command seq-undo
-      undo-tree-undo undo-tree-visualize)
     (sequential-command-setup-keys)))
 
 (use-package elscreen 
