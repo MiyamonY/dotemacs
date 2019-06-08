@@ -188,6 +188,8 @@
   (ivy-rich-mode))
 (ivy-mode 1)
 
+(use-package tempbuf
+  :hook ((dired-mode-hook magit-mode-hook). turn-on-tempbuf-mode))
 
 (use-package migemo
   :straight t
