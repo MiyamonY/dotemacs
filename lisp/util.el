@@ -18,4 +18,11 @@
 	(left . 0)
 	(font . "-PfEd-Ricty Diminished Discord-normal-normal-normal-*-*-*-*-*-*-0-iso10646-1")))
 
+(setq-default show-trailing-whitespace t)
+(set-face-attribute 'trailing-whitespace nil
+		    :foreground 'unspecified
+		    :background 'unspecified
+		    :underline "red")
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (provide 'util)
