@@ -80,7 +80,7 @@
     (sequential-command-setup-keys)))
 
 (use-package elscreen
- :straight t
+  :straight t
   :bind (("C-c n" . elscreen-next)
 	 ("C-c p" . elscreen-previous)
 	 ("C-c c" . elscreen-create))
@@ -196,6 +196,8 @@
 
 (use-package format-all
   :straight t
+  :hook (prog-mode . format-all-mode))
+
   :config
   (format-all-mode))
 
