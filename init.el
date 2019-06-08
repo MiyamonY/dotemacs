@@ -31,8 +31,7 @@
 (use-package magit
   :straight t
   :commands (magit-status)
-  :bind (("C-c g" . magit-status)
-	 ("C-c C-g" . magit-status))
+  :bind (("C-c g" . magit-status))
   :init
   (setq transient-history-file
 	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el"))))
@@ -158,7 +157,10 @@
     :straight t
     :config
     (setq inhibit-compacting-font-caches t)
-    (all-the-icons-ivy-setup)))
+    (all-the-icons-ivy-setup))
+  (use-package counsel-ghq
+    :straight (el-patch :type git :host github :repo "windymelt/counsel-ghq") ; not found in melpa
+    :bind (("C-x C-g" . counsel-ghq))))
 (ivy-mode 1)
 
 (use-package migemo
