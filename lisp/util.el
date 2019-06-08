@@ -5,7 +5,6 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (tool-bar-mode -1)
-(scroll-bar-mode -1)
 
 (show-paren-mode 1)
 (setq show-paren-dilay 0.2)
@@ -17,6 +16,7 @@
 (setq default-frame-alist
       '((width . 120)
 	(height . 40)
+	(vertical-scroll-bars . nil)
 	(top . 0)
 	(left . 0)
 	(font . "-PfEd-Ricty Diminished Discord-normal-normal-normal-*-*-*-*-*-*-0-iso10646-1")))
