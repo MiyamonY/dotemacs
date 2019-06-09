@@ -11,6 +11,7 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(setq use-package-enable-imenu-support t)
 (straight-use-package 'use-package)
 
 (use-package util
