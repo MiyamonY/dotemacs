@@ -298,4 +298,18 @@
   :after (flycheck)
   :hook (flycheck-mode . flycheck-posframe-mode))
 
+(use-package yasnippet
+  :hook (after-init . yas-global-mode)
+  :bind (:map yas-minor-mode-map
+	      ("C-x i i" . yas-insert-snippet)
+	      ("C-x i n" . yas-new-snippet)
+	      ("C-x i v" . yas-visit-snippet-file)
+	      ("C-x i l" . yas-describe-tables)
+	      ("C-x i g" . yas-reload-all))
+  :init
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets")))
+
+(use-package yasnippet-snippets
+  :after (yasnippet))
+
 (use-package racket-mode)
