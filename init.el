@@ -155,7 +155,9 @@
 	 ("<f1> l" . counsel-find-library)
 	 ("<f1> v" . counsel-describe-variable)
 	 ("M-y" . counsel-yank-pop)
-	 ("C-x l" . counsel-locate))
+	 ("C-x l" . counsel-locate)
+	 (:map ivy-minibuffer-map
+	       ("C-m" . ivy-alt-done)))
   :init
   (setq ivy-height 30)
   (setq ivy-use-virtual-buffers t)
