@@ -266,4 +266,13 @@
   :config
   (setq dumb-jump-selector 'ivy))
 
+(use-package skk
+  :straight ddskk
+  :bind (("C-j" . skk-mode))
+  :init
+  (setq skk-egg-like-newline t)
+  (setq skk-use-color-cursor t)
+  (setq skk-use-azik t)
+  (setq skk-azik-keyboard-type 'jp106))
+
 (use-package racket-mode)
