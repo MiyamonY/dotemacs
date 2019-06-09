@@ -220,9 +220,10 @@
 
 (use-package ivy-posframe
   :after ivy
-  :hook (after-init . ivy-posframe-mode)
+  :hook (ivy-mode . ivy-posframe-mode)
   :config
-  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center))))
+  (setq ivy-posframe-display-functions-alist
+	'((t . ivy-posframe-display-at-frame-center))))
 
 (use-package tempbuf
   :hook ((dired-mode-hook magit-mode-hook). turn-on-tempbuf-mode))
