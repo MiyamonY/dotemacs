@@ -281,4 +281,14 @@
   (setq skk-use-azik t)
   (setq skk-azik-keyboard-type 'jp106))
 
+(use-package flycheck
+  :hook (prog-mode . global-flycheck-mode)
+  :init
+  (setq flycheck-check-syntax-automatically '(save idle-change mode-enabled))
+  (setq flycheck-idle-change-delay 4))
+
+(use-package flycheck-posframe
+  :after (flycheck)
+  :hook (flycheck-mode . flycheck-posframe-mode))
+
 (use-package racket-mode)
