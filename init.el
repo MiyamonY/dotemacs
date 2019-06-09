@@ -29,6 +29,9 @@
 	    (interactive)
 	    (find-file (locate-user-emacs-file "init.el"))))))
 
+(use-package which-key
+  :hook (after-init . which-key-mode))
+
 (use-package dracula-theme)
 
 (use-package doom-modeline
@@ -160,7 +163,7 @@
     (add-to-list 'ivy-height-alist pair))
   (use-package counsel-ghq
     :straight (el-patch :type git :host github :repo "windymelt/counsel-ghq") ; not found in melpa
-    :bind (("C-x C-g" . counsel-ghq))))
+    :bind (("C-x g" . counsel-ghq))))
 
 (use-package ivy-rich
   :after (ivy)
