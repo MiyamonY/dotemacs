@@ -139,6 +139,10 @@
   (setq company-minimum-prefx-length 2)
   (setq company-selection-wrap-around t))
 
+(use-package company-box
+  :hook (company-mode . company-box-mode)
+  :custom ((company-box-icons-alist 'company-box-icons-all-the-icons)))
+
 (use-package counsel
   :hook ((after-init . ivy-mode)
 	 (ivy-mode . counsel-mode))
