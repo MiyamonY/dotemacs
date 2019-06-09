@@ -83,11 +83,9 @@
   :config
   (setq undo-tree-mode-lighter ""))
 
-(use-package sequential-command
-  :commands (sequential-command-setup-keys)
-  :hook (after-init . sequential-command-setup-keys)
-  :config
-  (require 'sequential-command-config))
+(use-package sequential-command-config
+  :straight sequential-command
+  :hook (after-init . sequential-command-setup-keys))
 
 (use-package elscreen
   :bind (("C-c n" . elscreen-next)
@@ -105,10 +103,9 @@
      'elscreen-tab-other-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-background))
   (elscreen-start))
 
-(use-package smartparens
-  :config
-  (require 'smartparens-config nil)
-  (smartparens-global-mode t))
+(use-package smartparens-config
+  :straight smartparens
+  :hook (after-init . smartparens-global-mode))
 
 (show-paren-mode 1)
 (setq show-paren-delay 0.1)
