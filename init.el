@@ -16,6 +16,8 @@
 (use-package util
   :load-path "./lisp")
 
+(setq straight-use-package-by-default t)
+
 (use-package bind-key
   :bind (("C-h" . delete-backward-char)
 	 ("C-x j" . split-window-horizontally)
@@ -26,11 +28,9 @@
 	    (interactive)
 	    (find-file (locate-user-emacs-file "init.el"))))))
 
-(use-package dracula-theme
-  :straight t)
+(use-package dracula-theme)
 
 (use-package doom-modeline
-  :straight t
   :hook (after-init . doom-modeline-mode)
   :config
   (setq doom-modeline-height 20)
@@ -39,13 +39,11 @@
   (setq inhibit-compacting-font-caches t)
   (setq find-file-visit-truename t)
   (use-package nyan-mode
-    :straight t
     :after (doom-modeline)
     :config
     (nyan-mode)))
 
 (use-package magit
-  :straight t
   :commands (magit-status)
   :bind (("C-c g" . magit-status))
   :init
@@ -53,7 +51,6 @@
 	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el"))))
 
 (use-package git-gutter+
-  :straight t
   :hook (prog-mode . git-gutter+-mode)
   :init
   (setq git-gutter+-hide-gutter nil)
@@ -62,12 +59,10 @@
   (set-face-foreground 'git-gutter+-separator "white"))
 
 (use-package rainbow-delimiters
-  :straight t
   :commands (rainbow-delimiters-mode)
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package hl-line+
-  :straight t
   :init
   (setq hl-line-idle-interval 0.5)
   :config
@@ -75,7 +70,6 @@
   (set-face-background 'hl-line "gray30"))
 
 (use-package undo-tree
-  :straight t
   :bind
   (("C-." . undo-tree-redo)
    ("C-/" . undo-tree-visualize)
@@ -89,14 +83,12 @@
   (setq undo-tree-mode-lighter ""))
 
 (use-package sequential-command
-  :straight t
+  :commands (sequential-command-setup-keys)
+  :hook (after-init . sequential-command-setup-keys)
   :config
-  (use-package sequential-command-config
-    :config
-    (sequential-command-setup-keys)))
+  (require 'sequential-command-config))
 
 (use-package elscreen
-  :straight t
   :bind (("C-c n" . elscreen-next)
 	 ("C-c p" . elscreen-previous)
 	 ("C-c c" . elscreen-create))
@@ -113,9 +105,8 @@
   (elscreen-start))
 
 (use-package smartparens
-  :straight t
   :config
-  (use-package smartparens-config)
+  (require 'smartparens-config nil)
   (smartparens-global-mode t))
 
 (show-paren-mode 1)
@@ -134,7 +125,6 @@
   (setq recentf-auto-cleanup 'never))
 
 (use-package company
-  :straight t
   :hook (prog-mode . company-mode)
   :bind (:map company-active-map
 	      ("M-n" . nil)
@@ -148,7 +138,6 @@
   (setq company-selection-wrap-around t))
 
 (use-package counsel
-  :straight t
   :hook ((after-init . ivy-mode)
 	 (ivy-mode . counsel-mode))
   :bind (("C-s" . swiper)
@@ -176,7 +165,6 @@
     :bind (("C-x C-g" . counsel-ghq))))
 
 (use-package ivy-rich
-  :straight t
   :after (ivy)
   :config
   (setq ivy-format-function #'ivy-format-function-line)
@@ -226,25 +214,19 @@
 		     ((ivy-rich-file-icon (:width 2))
 		      (ivy-read-file-transformer (:width 10))
 		      (ivy-rich-counsel-find-file-truename (:face font-lock-doc-face))))))
-  (use-package all-the-icons
-    :straight t)
+  (use-package all-the-icons)
   (ivy-rich-mode 1))
 
 (use-package ivy-posframe
-  :straight t
   :after ivy
-  :custom
-  (ivy-display-function #'ivy-posframe-display-at-frame-center)
+  :hook (after-init . ivy-posframe-mode)
   :config
-  (use-package posframe
-    :straight t)
-  (ivy-posframe-enable))
+  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center))))
 
 (use-package tempbuf
   :hook ((dired-mode-hook magit-mode-hook). turn-on-tempbuf-mode))
 
 (use-package migemo
-  :straight t
   :when (executable-find "cmigemo")
   :config
   (setq migemo-command "cmigemo")
@@ -255,10 +237,8 @@
   (setq migemo-coding-system 'utf-8-unix))
 
 (use-package avy
-  :straight t
   :config
   (use-package avy-migemo
-    :straight t
     :init
     (avy-migemo-mode 1)
     :config
@@ -267,7 +247,6 @@
     (setq avy-timeout-seconds 0.1)))
 
 (use-package ace-window
-  :straight t
   :bind (("C-t" . ace-window))
   :config
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
@@ -275,11 +254,9 @@
   (set-face-attribute  'aw-leading-char-face nil :height 10.0))
 
 (use-package format-all
-  :straight t
   :hook (prog-mode . format-all-mode))
 
 (use-package dumb-jump
-  :straight t
   :bind (("M-g o" . dumb-jump-go-other-window)
 	 ("M-g j" . dumb-jump-go)
 	 ("M-g i" . dumb-jump-go-prompt)
@@ -288,5 +265,4 @@
   :config
   (setq dumb-jump-selector 'ivy))
 
-(use-package racket-mode
-  :straight t)
+(use-package racket-mode)
