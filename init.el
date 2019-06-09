@@ -282,6 +282,11 @@
   (setq skk-use-azik t)
   (setq skk-azik-keyboard-type 'jp106))
 
+(use-package neotree
+  :bind (("C-c t" . neotree-toggle))
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+
 (use-package flycheck
   :hook (prog-mode . global-flycheck-mode)
   :init
