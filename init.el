@@ -292,8 +292,7 @@
 (use-package flycheck
   :hook (prog-mode . global-flycheck-mode)
   :init
-  (setq flycheck-check-syntax-automatically '(save idle-change mode-enabled))
-  (setq flycheck-idle-change-delay 4))
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
 
 (use-package flycheck-posframe
   :after (flycheck)
