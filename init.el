@@ -313,3 +313,5 @@
   :after (yasnippet))
 
 (use-package racket-mode)
+
+(use-package rustic)
