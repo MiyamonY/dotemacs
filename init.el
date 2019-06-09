@@ -134,6 +134,7 @@
 	      ("C-p" . company-select-previous)
 	      ("C-h" . nil))
   :config
+  (setq completion-ignore-case t)
   (setq company-idle-delay 0.1)
   (setq company-minimum-prefx-length 2)
   (setq company-selection-wrap-around t))
