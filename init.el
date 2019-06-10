@@ -21,8 +21,8 @@
 
 (use-package bind-key
   :bind (("C-h" . delete-backward-char)
-	 ("C-x j" . split-window-horizontally)
-	 ("C-x u" . split-window-vertically)
+	 ("C-c j" . split-window-horizontally)
+	 ("C-c u" . split-window-vertically)
 	 ("C-c f" . describe-function)
 	 ("C-c v" . describe-variable)
 	 ("C-c i" .
@@ -92,9 +92,9 @@
   :hook (after-init . sequential-command-setup-keys))
 
 (use-package elscreen
-  :bind (("C-c n" . elscreen-next)
-	 ("C-c p" . elscreen-previous)
-	 ("C-c c" . elscreen-create))
+  :bind (("C-c f" . elscreen-next)
+	 ("C-c b" . elscreen-previous)
+	 ("C-c n" . elscreen-create))
   :config
   (setq elscreen-display-tab t)
   (setq elscreen-tab-display-kill-screen nil)
