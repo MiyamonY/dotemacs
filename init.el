@@ -104,9 +104,9 @@
   (let ((dracula-background "#282a36") (dracula-purple "#bd93f9")
 	(dracula-foreground "#f8f8f2"))
     (set-face-attribute
-     'elscreen-tab-current-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-foreground)
+     'elscreen-tab-current-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-background)
     (set-face-attribute
-     'elscreen-tab-other-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-background))
+     'elscreen-tab-other-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-foreground))
   (elscreen-start))
 
 (use-package smartparens-config
