@@ -93,9 +93,10 @@
   :hook (after-init . sequential-command-setup-keys))
 
 (use-package elscreen
-  :bind (("C-c n" . elscreen-next)
-	 ("C-c p" . elscreen-previous)
-	 ("C-c c" . elscreen-create))
+  :bind (("C-; n" . elscreen-next)
+	 ("C-; p" . elscreen-previous)
+	 ("C-; c" . elscreen-create)
+	 ("C-; k" . elscreen-kill))
   :config
   (setq elscreen-display-tab t)
   (setq elscreen-tab-display-kill-screen nil)
