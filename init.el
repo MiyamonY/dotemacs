@@ -315,6 +315,8 @@
 (use-package yasnippet-snippets
   :after (yasnippet))
 
+(use-package git-auto-commit-mode)
+
 (use-package racket-mode)
 
 (use-package rustic)
