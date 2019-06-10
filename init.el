@@ -316,7 +316,10 @@
 (use-package yasnippet-snippets
   :after (yasnippet))
 
-(use-package git-auto-commit-mode)
+(use-package git-auto-commit-mode
+  :config
+  (setq-default gac-automatically-push-p t))
+
 
 (use-package racket-mode)
 
