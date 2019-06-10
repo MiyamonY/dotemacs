@@ -69,6 +69,11 @@
   :commands (rainbow-delimiters-mode)
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package symbol-overlay
+  :hook (prog-mode . symbol-overlay-mode)
+  :config
+  (set-face-attribute 'symbol-overlay-default-face nil :background "gray40" :foreground "white"))
+
 (use-package hl-line+
   :init
   (setq hl-line-idle-interval 0.5)
