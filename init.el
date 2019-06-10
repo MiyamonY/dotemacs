@@ -277,7 +277,7 @@
 
 (use-package skk
   :straight ddskk
-  :bind (("C-j" . skk-mode))
+  :bind (("C-x C-j" . skk-mode))
   :init
   (setq skk-egg-like-newline t)
   (setq skk-use-color-cursor t)
