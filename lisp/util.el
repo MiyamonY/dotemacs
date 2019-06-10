@@ -31,4 +31,7 @@
 (delete-selection-mode t)
 (setq kill-whole-line t)
 
+(setq bookmark-default-file
+      (locate-user-emacs-file (convert-standard-filename "locals/bookmarks")))
+
 (provide 'util)
