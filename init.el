@@ -292,7 +292,11 @@
   (setq skk-egg-like-newline t)
   (setq skk-use-color-cursor t)
   (setq skk-use-azik t)
-  (setq skk-azik-keyboard-type 'jp106))
+  (setq skk-azik-keyboard-type 'jp106)
+  :config
+  (setq skk-large-jisyo (locate-user-emacs-file (convert-standard-filename "locals/dict/SKK-JISYO.L")))
+  (unless (file-exists-p skk-large-jisyo)
+    (skk-get (locate-user-emacs-file (convert-standard-filename "locals/dict/")))))
 
 (use-package neotree
   :bind (("C-c t" . neotree-toggle))
