@@ -348,6 +348,26 @@
 	   entry (file ,(expand-file-name (concat org-directory "/notes.org")))
 	   "* %?\n   %a\n    %T"))))
 
+(use-package org-pomodoro
+  :after (org org-agenda all-the-icons)
+  :bind (:map org-agenda-mode-map
+              ("p" . org-pomodoro))
+  :hook
+  (org-pomodoro-started .
+			(lambda () (notifications-notify
+                                    :title "org-pomodoro"
+				    :body "Let'(setq ) focus for 25 minutes!")))
+
+  (org-pomodoro-finished .
+			 (lambda () (notifications-notify
+                                     :title "org-pomodoro"
+				     :body "Well done! Take a break.")))
+  :config
+  (setq org-pomodoro-format (concat (all-the-icons-octicon "flame" :face 'all-the-icons-red) "%s"))
+  (setq org-pomodoro-short-break-format (concat (all-the-icons-material "free_breakfast") "%s"))
+  (setq org-pomodoro-long-break-format (concat (all-the-icons-material "free_breakfast") "%s"))
+  (setq org-pomodoro-play-sounds nil))
+
 (use-package racket-mode)
 
 (use-package rustic)
