@@ -358,8 +358,7 @@
   (org-pomodoro-started .
 			(lambda () (notifications-notify
                                     :title "org-pomodoro"
-				    :body "Let'(setq ) focus for 25 minutes!")))
-
+				    :body "Let's focus for 25 minutes!")))
   (org-pomodoro-finished .
 			 (lambda () (notifications-notify
                                      :title "org-pomodoro"
