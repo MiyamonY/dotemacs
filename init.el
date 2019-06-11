@@ -23,8 +23,10 @@
   :bind (("C-h" . delete-backward-char)
 	 ("C-c j" . split-window-horizontally)
 	 ("C-c u" . split-window-vertically)
-	 ("C-c f" . describe-function)
-	 ("C-c v" . describe-variable)
+	 ("C-c d f" . describe-function)
+	 ("C-c d v" . describe-variable)
+	 ("C-c d m" . describe-mode)
+	 ("C-c d b" . describe-bindings)
 	 ("C-c i" .
 	  (lambda ()
 	    (interactive)
@@ -67,6 +69,11 @@
   :commands (rainbow-delimiters-mode)
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package symbol-overlay
+  :hook (prog-mode . symbol-overlay-mode)
+  :config
+  (set-face-attribute 'symbol-overlay-default-face nil :background "gray40" :foreground "white"))
+
 (use-package hl-line+
   :init
   (setq hl-line-idle-interval 0.5)
@@ -92,9 +99,10 @@
   :hook (after-init . sequential-command-setup-keys))
 
 (use-package elscreen
-  :bind (("C-c f" . elscreen-next)
-	 ("C-c b" . elscreen-previous)
-	 ("C-c n" . elscreen-create))
+  :bind (("C-; n" . elscreen-next)
+	 ("C-; p" . elscreen-previous)
+	 ("C-; c" . elscreen-create)
+	 ("C-; k" . elscreen-kill))
   :config
   (setq elscreen-display-tab t)
   (setq elscreen-tab-display-kill-screen nil)
@@ -102,9 +110,9 @@
   (let ((dracula-background "#282a36") (dracula-purple "#bd93f9")
 	(dracula-foreground "#f8f8f2"))
     (set-face-attribute
-     'elscreen-tab-current-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-foreground)
+     'elscreen-tab-current-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-background)
     (set-face-attribute
-     'elscreen-tab-other-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-background))
+     'elscreen-tab-other-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-foreground))
   (elscreen-start))
 
 (use-package smartparens-config
@@ -312,6 +320,31 @@
 
 (use-package yasnippet-snippets
   :after (yasnippet))
+
+(use-package git-auto-commit-mode
+  :config
+  (setq-default gac-automatically-push-p t))
+
+(use-package org
+  :bind (("C-c a" . org-agenda)
+	 ("C-c c" . org-capture))
+  :config
+  (setq org-directory "~/src/github.com/MiyamonY/memo/")
+  (setq org-default-notes-file "notes.org")
+  (setq org-agenda-files `(,(expand-file-name (concat org-directory "/task.org"))))
+  (setq org-enforce-todo-dependencies t)
+  (setq org-log-done 'time)
+  (setq org-todo-keywords
+	'((sequence "TODO(t)" "WAITING(w)" "PENDING(p)" "|" "DONE(d)" "CANCELED(c)")))
+
+  (use-package all-the-icons)
+  (setq org-capture-templates
+	`(("t" ,(concat (all-the-icons-octicon "checklist" :face 'all-the-icons-blue) " Task")
+	   entry (file ,(expand-file-name (concat org-directory "/task.org")))
+	   "* TODO %?\n    %i\n    %T")
+	  ("n" ,(concat (all-the-icons-octicon "book" :face 'all-the-icons-blue) " Note")
+	   entry (file ,(expand-file-name (concat org-directory "/notes.org")))
+	   "* %?\n   %a\n    %T"))))
 
 (use-package racket-mode)
 
