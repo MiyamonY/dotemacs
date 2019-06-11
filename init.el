@@ -48,6 +48,7 @@
   (use-package nyan-mode
     :after (doom-modeline)
     :config
+    (setq nyan-bar-length 15)
     (nyan-mode)))
 
 (use-package magit
