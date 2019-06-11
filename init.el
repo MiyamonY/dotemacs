@@ -363,6 +363,10 @@
 			 (lambda () (notifications-notify
                                      :title "org-pomodoro"
 				     :body "Well done! Take a break.")))
+  (org-pomodoro-short-break-finished .
+				     (lambda (notifications-notify
+					      :title "org-pomdoro"
+					      :body "Short break end. Start new pomodoro.")))
   :config
   (setq org-pomodoro-format (concat (all-the-icons-octicon "flame" :face 'all-the-icons-red) "%s"))
   (setq org-pomodoro-short-break-format (concat (all-the-icons-material "free_breakfast") "%s"))
