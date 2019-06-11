@@ -35,8 +35,6 @@
 (use-package which-key
   :hook (after-init . which-key-mode))
 
-(use-package dracula-theme)
-
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode)
   :config
@@ -375,3 +373,13 @@
 (use-package racket-mode)
 
 (use-package rustic)
+
+(use-package dracula-theme
+  :config
+  (set-face-attribute 'trailing-whitespace nil
+		      :foreground 'unspecified
+		      :background 'unspecified
+		      :underline "red")
+  (set-face-attribute 'show-paren-match nil
+		      :background 'unspecified :foreground 'unspecified
+		      :underline "#bd93f9"))
