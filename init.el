@@ -325,6 +325,26 @@
   :config
   (setq-default gac-automatically-push-p t))
 
+(use-package org
+  :bind (("C-c a" . org-agenda)
+	 ("C-c c" . org-capture))
+  :config
+  (setq org-directory "~/src/github.com/MiyamonY/memo/")
+  (setq org-default-notes-file "notes.org")
+  (setq org-agenda-files `(,(expand-file-name (concat org-directory "/task.org"))))
+  (setq org-enforce-todo-dependencies t)
+  (setq org-log-done 'time)
+  (setq org-todo-keywords
+	'((sequence "TODO(t)" "WAITING(w)" "PENDING(p)" "|" "DONE(d)" "CANCELED(c)")))
+
+  (use-package all-the-icons)
+  (setq org-capture-templates
+	`(("t" ,(concat (all-the-icons-octicon "checklist" :face 'all-the-icons-blue) " Task")
+	   entry (file ,(expand-file-name (concat org-directory "/task.org")))
+	   "* TODO %?\n    %i\n    %T")
+	  ("n" ,(concat (all-the-icons-octicon "book" :face 'all-the-icons-blue) " Note")
+	   entry (file ,(expand-file-name (concat org-directory "/notes.org")))
+	   "* %?\n   %a\n    %T"))))
 
 (use-package racket-mode)
 
