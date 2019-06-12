@@ -70,18 +70,6 @@
 
 (use-package all-the-icons)
 
-(create-fontset-from-ascii-font "Ricty Diminished Discord-12:weight=normal:slant=normal" nil "ricty_diminished_discord")
-(set-fontset-font "fontset-ricty_diminished_discord" 'unicode "Cica-12:weight=normal:slant=normal" nil 'append)
-(set-fontset-font "fontset-ricty_diminished_discord" 'unicode (font-spec :family (all-the-icons-alltheicon-family)) nil 'append)
-(set-fontset-font "fontset-ricty_diminished_discord" 'unicode (font-spec :family (all-the-icons-material-family)) nil 'append)
-(set-fontset-font "fontset-ricty_diminished_discord" 'unicode (font-spec :family (all-the-icons-fileicon-family)) nil 'append)
-(set-fontset-font "fontset-ricty_diminished_discord" 'unicode (font-spec :family (all-the-icons-faicon-family)) nil 'append)
-(set-fontset-font "fontset-ricty_diminished_discord" 'unicode (font-spec :family (all-the-icons-octicon-family)) nil 'append)
-(set-fontset-font "fontset-ricty_diminished_discord" 'unicode (font-spec :family (all-the-icons-wicon-family)) nil 'append)
-
-(setq default-frame-alist
-      '((font . "fontset-ricty_diminished_discord")))
-
 (use-package symbol-overlay
   :hook (prog-mode . symbol-overlay-mode)
   :config
@@ -387,12 +375,7 @@
   (setq org-pomodoro-play-sounds nil))
 
 (use-package org-bullets
-  :hook (org-mode . org-bullets-mode)
-  :config
-  (use-package all-the-icons)
-  (setq org-bullets-bullet-list
-	(mapcar #'all-the-icons-material
-		'("looks" "looks_one" "looks_two" "looks_3" "looks_4" "looks_5" "looks_6"))))
+  :hook (org-mode . org-bullets-mode))
 
 (use-package racket-mode)
 
