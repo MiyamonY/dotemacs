@@ -184,7 +184,7 @@
     :bind (("C-x g" . counsel-ghq))))
 
 (use-package ivy-rich
-  :after (ivy)
+  :after (ivy all-the-icons)
   :config
   (setq ivy-format-function #'ivy-format-function-line)
   (defun ivy-rich-switch-buffer-icon (candidate)
@@ -233,7 +233,6 @@
 		     ((ivy-rich-file-icon (:width 2))
 		      (ivy-read-file-transformer (:width 10))
 		      (ivy-rich-counsel-find-file-truename (:face font-lock-doc-face))))))
-  (use-package all-the-icons)
   (ivy-rich-mode 1))
 
 (use-package ivy-posframe
@@ -332,6 +331,7 @@
   (setq-default gac-automatically-push-p t))
 
 (use-package org
+  :after (all-the-icons)
   :bind (("C-c a" . org-agenda)
 	 ("C-c c" . org-capture))
   :config
@@ -343,7 +343,6 @@
   (setq org-todo-keywords
 	'((sequence "TODO(t)" "WAITING(w)" "PENDING(p)" "|" "DONE(d)" "CANCELED(c)")))
 
-  (use-package all-the-icons)
   (setq org-capture-templates
 	`(("t" ,(concat (all-the-icons-octicon "checklist" :face 'all-the-icons-blue) " Task")
 	   entry (file ,(expand-file-name (concat org-directory "/task.org")))
