@@ -171,7 +171,7 @@
   :bind (("C-s" . swiper)
 	 ("M-x" . counsel-M-x)
 	 ("C-c C-r" . ivy-resume)
-	 ("C-x C-b" . ivy-swtich-buffer)
+	 ("C-x C-b" . ivy-switch-buffer)
 	 ("C-x C-f" . counsel-find-file)
 	 ("<f1> f" . counsel-describe-function)
 	 ("<f1> l" . counsel-find-library)
