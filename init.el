@@ -68,6 +68,8 @@
   :commands (rainbow-delimiters-mode)
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package all-the-icons)
+
 (use-package symbol-overlay
   :hook (prog-mode . symbol-overlay-mode)
   :config
@@ -372,6 +374,14 @@
   (setq org-pomodoro-short-break-format (concat (all-the-icons-material "free_breakfast") "%s"))
   (setq org-pomodoro-long-break-format (concat (all-the-icons-material "free_breakfast") "%s"))
   (setq org-pomodoro-play-sounds nil))
+
+(use-package org-bullets
+  :hook (org-mode . org-bullets-mode)
+  :config
+  (use-package all-the-icons)
+  (setq org-bullets-bullet-list
+	(mapcar #'all-the-icons-material
+		'("looks" "looks_one" "looks_two" "looks_3" "looks_4" "looks_5" "looks_6"))))
 
 (use-package racket-mode)
 
