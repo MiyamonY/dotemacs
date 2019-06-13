@@ -27,4 +27,6 @@
 (setq bookmark-default-file
       (locate-user-emacs-file (convert-standard-filename "locals/bookmarks")))
 
+(setq make-backup-files nil)
+
 (provide 'util)
