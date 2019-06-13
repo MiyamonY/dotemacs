@@ -379,6 +379,8 @@
 
 (use-package racket-mode)
 
+(use-package yaml-mode)
+
 (use-package rustic)
 
 (use-package dracula-theme
