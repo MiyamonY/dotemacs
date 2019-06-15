@@ -54,6 +54,13 @@
 	    (interactive)
 	    (find-file (locate-user-emacs-file "init.el"))))))
 
+(use-package hydra
+  :config
+  (defhydra hydra-zoom (global-map "<f2>")
+    "zoom"
+    ("g" text-scale-increase "in")
+    ("l" text-scale-decrease "out")))
+
 (use-package which-key
   :hook (after-init . which-key-mode))
 
