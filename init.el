@@ -399,7 +399,11 @@
 (use-package org-bullets
   :hook (org-mode . org-bullets-mode))
 
-(use-package racket-mode)
+(use-package racket-mode
+  :config
+  (defun my-racket-mode-hook ()
+    (add-hook 'before-save-hook 'delete-trailing-whitespace nil 'local))
+  (add-hook 'racket-mode-hook #'my-racket-mode-hook))
 
 (use-package rustic)
 
