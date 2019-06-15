@@ -104,6 +104,14 @@
   (toggle-hl-line-when-idle)
   (set-face-background 'hl-line "gray30"))
 
+(use-package display-line-numbers
+  :hook
+  ((prog-mode yaml-mode systemd-mode) . display-line-numbers-mode)
+  :config
+  (setq-default indicate-empty-lines t)
+  (setq indicate-buffer-boundaries 'left)
+  (set-face-attribute 'line-number-current-line nil :foreground "#bd93f9" :background "gray30"))
+
 (use-package undo-tree
   :bind
   (("C-." . undo-tree-redo)
