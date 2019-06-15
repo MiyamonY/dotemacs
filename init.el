@@ -47,6 +47,7 @@
 	 ("C-c d f" . describe-function)
 	 ("C-c d v" . describe-variable)
 	 ("C-c d m" . describe-mode)
+	 ("C-c d s" . describe-symbol)
 	 ("C-c d b" . describe-bindings)
 	 ("C-c i" .
 	  (lambda ()
