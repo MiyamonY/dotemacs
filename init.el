@@ -19,6 +19,28 @@
 
 (setq straight-use-package-by-default t)
 
+(use-package dashboard
+  :bind (:map dashboard-mode-map
+	      ("f" . counsel-recentf)
+	      ("b" . counsel-bookmark)
+	      ("a" . org-agenda)
+	      ("g" . counsel-ghq))
+  :config
+  (setq dashboard-center-content t)
+  (setq dashboard-set-navigator t)
+  (setq dashboard-set-footer nil)
+
+  (defun dashboard-insert-commands (list-size)
+    (insert "   Recentf: (f)   Bookmarks: (b)   Agend: (a)  ghq: (g)"))
+
+  (add-to-list 'dashboard-item-generators
+	       '(commands . dashboard-insert-commands))
+  (setq dashboard-items '((recents  . 10)
+			  (commands . t)))
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))))
+
+(dashboard-setup-startup-hook)
+
 (use-package bind-key
   :bind (("C-h" . delete-backward-char)
 	 ("C-c j" . split-window-horizontally)
