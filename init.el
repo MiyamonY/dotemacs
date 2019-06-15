@@ -38,7 +38,6 @@
   (setq dashboard-items '((recents  . 10)
 			  (commands . t)))
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))))
-
 (dashboard-setup-startup-hook)
 
 (use-package bind-key
@@ -147,7 +146,7 @@
 (setq show-paren-style 'expression)
 (set-face-attribute 'show-paren-match nil
 		    :background 'unspecified :foreground 'unspecified
-                    :underline "white")
+		    :underline "white")
 
 (use-package recentf
   :init
@@ -211,11 +210,11 @@
   (setq ivy-format-function #'ivy-format-function-line)
   (defun ivy-rich-switch-buffer-icon (candidate)
     (with-current-buffer
-  	(get-buffer candidate)
+	(get-buffer candidate)
       (let ((icon (all-the-icons-icon-for-mode major-mode)))
-  	(if (symbolp icon)
-  	    (all-the-icons-icon-for-mode 'fundamental-mode)
-  	  icon))))
+	(if (symbolp icon)
+	    (all-the-icons-icon-for-mode 'fundamental-mode)
+	  icon))))
   (defun ivy-rich-file-icon (candidate)
     (when (display-graphic-p)
       (let ((icon (if (file-directory-p candidate)
@@ -376,15 +375,15 @@
 (use-package org-pomodoro
   :after (org org-agenda all-the-icons)
   :bind (:map org-agenda-mode-map
-              ("p" . org-pomodoro))
+	      ("p" . org-pomodoro))
   :hook
   (org-pomodoro-started .
 			(lambda () (notifications-notify
-                                    :title "org-pomodoro"
+				    :title "org-pomodoro"
 				    :body "Let's focus for 25 minutes!")))
   (org-pomodoro-finished .
 			 (lambda () (notifications-notify
-                                     :title "org-pomodoro"
+				     :title "org-pomodoro"
 				     :body "Well done! Take a break.")))
   (org-pomodoro-short-break-finished .
 				     (lambda (notifications-notify
