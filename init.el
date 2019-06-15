@@ -80,11 +80,8 @@
 
 (use-package git-gutter+
   :hook (prog-mode . git-gutter+-mode)
-  :init
-  (setq git-gutter+-hide-gutter nil)
   :config
-  (setq git-gutter+-separator-sign "|")
-  (set-face-foreground 'git-gutter+-separator "white"))
+  (use-package git-gutter-fringe+))
 
 (use-package rainbow-delimiters
   :commands (rainbow-delimiters-mode)
