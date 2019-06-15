@@ -99,7 +99,7 @@
 
 (use-package hl-line+
   :init
-  (setq hl-line-idle-interval 0.5)
+  (setq hl-line-idle-interval 0.1)
   :config
   (toggle-hl-line-when-idle)
   (set-face-background 'hl-line "gray30"))
