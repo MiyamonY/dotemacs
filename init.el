@@ -80,7 +80,7 @@
 
 (use-package magit
   :commands (magit-status)
-  :bind (("C-c g" . magit-status))
+  :bind (("C-x g" . magit-status))
   :init
   (setq transient-history-file
 	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el"))))
@@ -215,7 +215,7 @@
     (add-to-list 'ivy-height-alist pair))
   (use-package counsel-ghq
     :straight (el-patch :type git :host github :repo "windymelt/counsel-ghq") ; not found in melpa
-    :bind (("C-x g" . counsel-ghq))))
+    :bind (("C-c g" . counsel-ghq))))
 
 (use-package ivy-rich
   :after (ivy all-the-icons)
