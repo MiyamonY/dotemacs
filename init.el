@@ -418,6 +418,8 @@
     (add-hook 'before-save-hook #'(lambda () (indent-region (point-min) (point-max))) nil 'local))
   (add-hook 'racket-mode-hook #'my-racket-mode-hook))
 
+(use-package yaml-mode)
+
 (use-package rustic)
 
 (use-package scheme
