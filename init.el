@@ -443,6 +443,13 @@
       (run-scheme scheme-program-name)
       (switch-to-buffer-other-window
        (get-buffer-create buf-name)))))
+
+(use-package adoc-mode
+  :mode "\\.adoc\\'"
+  :config
+  (set-face-attribute 'markup-meta-hide-face nil :foreground "gray90" :weight 'bold)
+  (set-face-attribute 'markup-list-face nil :background 'unspecified :weight 'bold))
+
 (use-package dracula-theme
   :config
   (set-face-attribute 'trailing-whitespace nil
