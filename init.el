@@ -420,6 +420,29 @@
 
 (use-package rustic)
 
+(use-package scheme
+  :mode (("\\.scm\\'" . scheme-mode))
+  :interpreter "gosh"
+  :bind (:map scheme-mode-map
+	      ("C-c C-c" . scheme-other-window))
+  :config
+  (defun my-scheme-mode-hook ()
+    (add-hook 'before-save-hook 'delete-trailing-whitespace nil 'local)
+    (add-hook 'before-save-hook #'(lambda () (indent-region (point-min) (point-max))) nil 'local))
+  (add-hook 'scheme-mode-hook #'my-racket-mode-hook)
+  (setq scheme-program-name "gosh -i")
+  (use-package cmuscheme)
+  (defun scheme-other-window ()
+    "Run Gauche on other window"
+    (interactive)
+    (split-window-horizontally (/ (frame-width) 2))
+    (let ((buf-name (buffer-name (current-buffer))))
+      (scheme-mode)
+      (switch-to-buffer-other-window
+       (get-buffer-create "*scheme*"))
+      (run-scheme scheme-program-name)
+      (switch-to-buffer-other-window
+       (get-buffer-create buf-name)))))
 (use-package dracula-theme
   :config
   (set-face-attribute 'trailing-whitespace nil
