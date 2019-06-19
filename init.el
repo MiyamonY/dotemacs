@@ -446,6 +446,20 @@
       (switch-to-buffer-other-window
        (get-buffer-create buf-name)))))
 
+(use-package go-mode
+  :after (company)
+  :init
+  (setq gofmt-command "goimports")
+  :config
+  (use-package company-go)
+  (defun my-go-mode-hook ()
+    (set (make-local-variable 'company-backends) '(company-go))
+    (setq indent-tabs-mode nil)
+    (setq c-basic-offset 4)
+    (setq tab-width 4))
+  (add-hook 'go-mode-hook #'gofmt-before-save)
+  (add-hook 'go-mode-hook #'my-go-mode-hook))
+
 (use-package adoc-mode
   :mode "\\.adoc\\'"
   :config
