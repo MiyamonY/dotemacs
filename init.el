@@ -346,7 +346,6 @@
   :hook (flycheck-mode . flycheck-posframe-mode))
 
 (use-package yasnippet
-  :after (ivy)
   :hook (after-init . yas-global-mode)
   :bind (:map yas-minor-mode-map
 	      ("C-x i i" . yas-insert-snippet)
@@ -356,9 +355,12 @@
 	      ("C-x i l" . yas-describe-tables)
 	      ("C-x i g" . yas-reload-all))
   :init
-  (setq yas-snippet-dirs (locate-user-emacs-file (convert-standard-filename "conf/snippets")))
+  (setq yas-snippet-dirs
+	`(,(locate-user-emacs-file (convert-standard-filename "conf/snippets"))))
   :config
-  (use-package ivy-yasnippet))
+  (use-package ivy-yasnippet
+    :after (ivy)))
+
 
 (use-package yasnippet-snippets
   :after (yasnippet))
