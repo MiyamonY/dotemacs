@@ -361,9 +361,15 @@
   (use-package ivy-yasnippet
     :after (ivy)))
 
-
 (use-package yasnippet-snippets
   :after (yasnippet))
+
+(use-package yatemplate
+  :hook (after-init . yatemplate-fill-alist)
+  :config
+  (setq yatemplate-dir (locate-user-emacs-file (convert-standard-filename "conf/templates")))
+  (setq auto-insert-query nil)
+  (auto-insert-mode))
 
 (use-package git-auto-commit-mode
   :config
