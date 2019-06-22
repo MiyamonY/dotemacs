@@ -356,7 +356,7 @@
 	      ("C-x i l" . yas-describe-tables)
 	      ("C-x i g" . yas-reload-all))
   :init
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets")))
+  (setq yas-snippet-dirs (locate-user-emacs-file (convert-standard-filename "conf/snippets")))
   :config
   (use-package ivy-yasnippet))
 
