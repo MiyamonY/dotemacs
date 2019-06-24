@@ -30,4 +30,18 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
+(setq-default prettify-symbols-alist
+	      '(("lambda" . λ)
+		("->" . 8594)
+		("=>" . 8658)
+		("!=" . 8800)
+		("nil". 8709)
+		("<=" . 8804)
+		(">=" . 8805)
+		("==" . 10869)
+		(":=" . 8788)))
+(setq prettify-symbols-unprettify-at-point 'right-edge)
+(add-hook 'prog-mode-hook 'prettify-symbols-mode)
+(global-prettify-symbols-mode +1)
+
 (provide 'util)
