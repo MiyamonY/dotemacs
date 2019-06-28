@@ -31,7 +31,7 @@
 (setq auto-save-default nil)
 
 (setq-default prettify-symbols-alist
-	      '(("lambda" . λ)
+	      '(("lambda" . 955)
 		("->" . 8594)
 		("=>" . 8658)
 		("!=" . 8800)
