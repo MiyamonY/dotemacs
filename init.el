@@ -326,6 +326,7 @@
   (setq skk-use-color-cursor t)
   (setq skk-use-azik t)
   (setq skk-azik-keyboard-type 'jp106)
+  (setq-default skk-kutouten-type 'en)
   :config
   (setq skk-large-jisyo (locate-user-emacs-file (convert-standard-filename "locals/dict/SKK-JISYO.L")))
   (unless (file-exists-p skk-large-jisyo)
