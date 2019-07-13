@@ -321,7 +321,8 @@
 (use-package skk
   :straight ddskk
   :bind (("C-x C-j" . skk-mode))
-  :hook ((fundamental-mode prog-mode text-mode) . skk-mode)
+  :hook ((fundamental-mode prog-mode text-mode) .
+	 (lambda () (skk-mode 1) (skk-latin-mode 1)))
   :init
   (setq skk-egg-like-newline t)
   (setq skk-use-color-cursor t)
