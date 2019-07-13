@@ -86,7 +86,7 @@
 	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el"))))
 
 (use-package git-gutter+
-  :hook (prog-mode . git-gutter+-mode)
+  :hook (after-init . global-git-gutter+-mode)
   :config
   (use-package git-gutter-fringe+))
 
