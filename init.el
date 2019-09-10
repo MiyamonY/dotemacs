@@ -492,3 +492,5 @@
 
 (use-package vue-mode)
 
+(use-package json-mode
+  :mode "\\.json\\'")
