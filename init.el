@@ -489,3 +489,6 @@
   (set-face-attribute 'show-paren-match nil
 		      :background 'unspecified :foreground 'unspecified
 		      :underline "#bd93f9"))
+
+(use-package vue-mode)
+
