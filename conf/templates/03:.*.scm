@@ -20,10 +20,14 @@
   (syntax-rules ()
     ((_ lis)
       (print (string-join (map number->string lis) " ")))))
- 
+
 (define-syntax 1+ (syntax-rules () ((_ x) (+ x 1))))
 
 (define-syntax 1- (syntax-rules () ((_ x) (- x 1))))
+
+;; for gauche 0.9.3.3
+(define (append-map thunk l)
+  (apply append (map thunk l)))
 
 (define MOD 1000000007)
 
