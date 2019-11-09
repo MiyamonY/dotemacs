@@ -504,5 +504,9 @@
 
 (use-package json-mode
   :mode "\\.json\\'")
+
 (use-package tuareg)
 
+(use-package gist
+  :init
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
