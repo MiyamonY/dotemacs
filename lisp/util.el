@@ -44,4 +44,6 @@
 (add-hook 'prog-mode-hook 'prettify-symbols-mode)
 (global-prettify-symbols-mode +1)
 
+(setq-default fill-column 120)
+
 (provide 'util)
