@@ -432,6 +432,11 @@
     (add-hook 'before-save-hook #'(lambda () (indent-region (point-min) (point-max))) nil 'local))
   (add-hook 'racket-mode-hook #'my-racket-mode-hook))
 
+(straight-use-package
+ '(ob-racket :type git :host github :repo "wallyqs/ob-racket"))
+
+(use-package ob-racket)
+
 (use-package yaml-mode)
 
 (use-package rustic)
