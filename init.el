@@ -161,6 +161,9 @@
 		    :background 'unspecified :foreground 'unspecified
 		    :underline "white")
 
+(use-package shrink-whitespace
+  :bind ("M-SPC" . shrink-whitespace))
+
 (use-package recentf
   :init
   (setq recentf-save-file
