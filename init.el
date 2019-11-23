@@ -131,7 +131,10 @@
 
 (use-package sequential-command-config
   :straight sequential-command
-  :hook (after-init . sequential-command-setup-keys))
+  :hook (after-init . sequential-command-setup-keys)
+  :config
+  (define-sequential-command fill-unfill-paragraph fill-paragraph delete-indentation)
+  (bind-key "M-q" #'fill-unfill-paragraph))
 
 (use-package elscreen
   :bind (("C-; n" . elscreen-next)
