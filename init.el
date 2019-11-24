@@ -429,6 +429,10 @@
   (setq org-pomodoro-long-break-format (concat (all-the-icons-material "free_breakfast") "%s"))
   (setq org-pomodoro-play-sounds nil))
 
+(use-package org
+  :init
+  (setq org-confirm-babel-evaluate nil))
+
 (use-package org-bullets
   :hook (org-mode . org-bullets-mode))
 
