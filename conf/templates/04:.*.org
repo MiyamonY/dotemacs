@@ -1,0 +1,4 @@
+#+title: $0
+#+author: MiyamonY
+#+category: $1
+#+startup: showall
