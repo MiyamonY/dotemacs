@@ -22,6 +22,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (tool-bar-mode -1)
+(toggle-scroll-bar -1)
 
 (show-paren-mode 1)
 (setq show-paren-dilay 0.2)
