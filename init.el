@@ -42,6 +42,7 @@
 
 (use-package bind-key
   :bind (("C-h" . delete-backward-char)
+	 ("C-c l" . toggle-truncate-lines)
 	 ("C-c j" . split-window-horizontally)
 	 ("C-c u" . split-window-vertically)
 	 ("C-c d f" . describe-function)
