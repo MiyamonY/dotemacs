@@ -1,13 +1,22 @@
 (setq jit-lock-defer-time 0.05)
 (setq-default bidi-display-reordering nil)
 
-(setq default-frame-alist
-      '((width . 120)
-	(height . 40)
-	(vertical-scroll-bars . nil)
-	(top . 0)
-	(left . 0)
-	(font . "-PfEd-Ricty Diminished Discord-normal-normal-normal-*-*-*-*-*-*-0-iso10646-1")))
+(defun add-font-setting (&optional frame)
+  (with-selected-frame (or frame (selected-frame))
+    (let* ((font-name "Ricty Diminished Discord")
+	   (default-font (format "%s:weight=normal:slant=normal" font-name))
+	   (fontset-base-name "rdd")
+	   (fontset-name (format "fontset-%s" fontset-base-name)))
+      (create-fontset-from-ascii-font default-font nil fontset-base-name)
+      (set-fontset-font fontset-name 'unicode (font-spec :family font-name) nil 'append)
+      (set-frame-font fontset-name)
+      (setq default-frame-alist
+	    `((vertical-scroll-bars . nil)
+	      (font . ,fontset-name)))
+      (set-frame-parameter (selected-frame) 'font fontset-name)
+      (remove-hook 'after-make-frame-functions #'add-font-setting))))
+
+(add-hook 'after-make-frame-functions #'add-font-setting)
 
 (setq auto-save-list-file-prefix nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
