@@ -111,7 +111,7 @@
 
 (use-package display-line-numbers
   :hook
-  ((prog-mode yaml-mode systemd-mode) . display-line-numbers-mode)
+  ((prog-mode yaml-mode systemd-mode org-mode) . display-line-numbers-mode)
   :config
   (setq-default indicate-empty-lines t)
   (setq indicate-buffer-boundaries 'left)
