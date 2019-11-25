@@ -434,6 +434,7 @@
   (setq org-confirm-babel-evaluate nil))
 
 (use-package org-bullets
+  :custom (org-bullets-bullet-list '("" "" "" "" ""))
   :hook (org-mode . org-bullets-mode))
 
 (use-package racket-mode
