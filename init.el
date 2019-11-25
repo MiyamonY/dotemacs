@@ -391,6 +391,7 @@
   :bind (("C-c a" . org-agenda)
 	 ("C-c c" . org-capture))
   :config
+  (require 'org-tempo)
   (setq org-directory "~/src/github.com/MiyamonY/memo/")
   (setq org-default-notes-file "notes.org")
   (setq org-agenda-files `(,(expand-file-name (concat org-directory "/task.org"))))
