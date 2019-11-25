@@ -405,7 +405,8 @@
 	   "* TODO %?\n    %i\n    %T")
 	  ("n" ,(concat (all-the-icons-octicon "book" :face 'all-the-icons-blue) " Note")
 	   entry (file ,(expand-file-name (concat org-directory "/notes.org")))
-	   "* %?\n   %a\n    %T"))))
+	   "* %?\n   %a\n    %T")))
+  (setq org-confirm-babel-evaluate nil))
 
 (use-package org-pomodoro
   :after (org org-agenda all-the-icons)
@@ -429,10 +430,6 @@
   (setq org-pomodoro-short-break-format (concat (all-the-icons-material "free_breakfast") "%s"))
   (setq org-pomodoro-long-break-format (concat (all-the-icons-material "free_breakfast") "%s"))
   (setq org-pomodoro-play-sounds nil))
-
-(use-package org
-  :init
-  (setq org-confirm-babel-evaluate nil))
 
 (use-package org-bullets
   :custom (org-bullets-bullet-list '("" "" "" "" ""))
