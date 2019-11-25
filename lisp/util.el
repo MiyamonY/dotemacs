@@ -14,6 +14,7 @@
 	    `((vertical-scroll-bars . nil)
 	      (font . ,fontset-name)))
       (set-frame-parameter (selected-frame) 'font fontset-name)
+      (toggle-scroll-bar -1)
       (remove-hook 'after-make-frame-functions #'add-font-setting))))
 
 (add-hook 'after-make-frame-functions #'add-font-setting)
