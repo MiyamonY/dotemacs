@@ -50,6 +50,7 @@
 	 ("C-c d m" . describe-mode)
 	 ("C-c d s" . describe-symbol)
 	 ("C-c d b" . describe-bindings)
+	 ("C-c d k" . describe-key)
 	 ("C-c i" .
 	  (lambda ()
 	    (interactive)
