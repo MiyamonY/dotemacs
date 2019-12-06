@@ -526,3 +526,8 @@
 (use-package gist
   :init
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+
+(use-package emr
+  :bind (("C-c ;" . iedit-mode)
+	 :map prog-mode-map
+	 ("M-RET" . emr-show-refactor-menu)))
