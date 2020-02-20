@@ -6,6 +6,10 @@
 // Created on `(current-time-string)`
 //
 package $1
+
+const MOD = 1e9+7
+
 $0
+
 ${1:$(if (string= yas-text "main")
          "func main(){\n\n}")}
