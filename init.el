@@ -129,7 +129,8 @@
    ("C-/" . undo-tree-visualize-undo)
    ("C-." . undo-tree-visualize-redo))
   :config
-  (setq undo-tree-mode-lighter ""))
+  (setq undo-tree-mode-lighter "")
+  (undo-tree-mode t))
 
 (use-package sequential-command-config
   :straight sequential-command
