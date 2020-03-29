@@ -522,7 +522,10 @@
 (use-package json-mode
   :mode "\\.json\\'")
 
-(use-package tuareg)
+(use-package merlin)
+
+(use-package tuareg
+  :hook (tuareg-mode . merlin-mode))
 
 (use-package gist
   :init
