@@ -57,4 +57,6 @@
 
 (setq-default fill-column 120)
 
+(global-auto-revert-mode t)
+
 (provide 'util)
