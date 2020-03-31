@@ -275,7 +275,7 @@
 		   'counsel-find-file
 		   '(:columns
 		     ((ivy-rich-file-icon (:width 2))
-		      (ivy-read-file-transformer (:width 10))
+		      (ivy-read-file-transformer)
 		      (ivy-rich-counsel-find-file-truename (:face font-lock-doc-face))))))
   (ivy-rich-mode 1))
 
