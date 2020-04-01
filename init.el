@@ -238,23 +238,35 @@
 	(if (symbolp icon)
 	    (all-the-icons-icon-for-mode 'fundamental-mode)
 	  icon))))
-  (defun ivy-rich-file-icon (candidate)
-    (when (display-graphic-p)
-      (let ((icon (if (file-directory-p candidate)
-		      (cond
-		       ((and (fboundp 'tramp-tramp-file-p)
-			     (tramp-tramp-file-p default-directory))
-			(all-the-icons-octicon "file-directory"))
-		       ((file-symlink-p candidate)
-			(all-the-icons-octicon "file-symlink-directory"))
-		       ((all-the-icons-dir-is-submodule candidate)
-			(all-the-icons-octicon "file-submodule"))
-		       ((file-exists-p (format "%s/.git" candidate))
-			(all-the-icons-octicon "repo"))
-		       (t (let ((matcher (all-the-icons-match-to-alist candidate all-the-icons-dir-icon-alist)))
-			    (apply (car matcher) (list (cadr matcher))))))
-		    (all-the-icons-icon-for-file candidate))))
-	icon)))
+
+  (if (display-graphic-p)
+      (progn
+	(setq my-icon-hash (make-hash-table))
+	(defun ivy-rich-file-icon (candidate)
+	  (when (equal (gethash candidate my-icon-hash nil) nil)
+	    (let ((icon
+		   (if (file-directory-p candidate)
+		       (cond
+			((and (fboundp 'tramp-tramp-file-p)
+			      (tramp-tramp-file-p default-directory))
+			 (all-the-icons-octicon "file-directory"))
+			((file-symlink-p candidate)
+			 (all-the-icons-octicon "file-symlink-directory"))
+			((all-the-icons-dir-is-submodule candidate)
+			 (all-the-icons-octicon "file-submodule"))
+			((file-exists-p (format "%s/.git" candidate))
+			 (all-the-icons-octicon "repo"))
+			(t
+			 (let ((matcher
+				(all-the-icons-match-to-alist candidate all-the-icons-dir-icon-alist)))
+			   (apply (car matcher) (list (cadr matcher))))))
+
+		     (all-the-icons-icon-for-file candidate))))
+	      (puthash candidate icon my-icon-hash)))
+	  (gethash candidate my-icon-hash))
+	)
+    (defun ivy-rich-file-icon (candidate) ""))
+
   (setq ivy-rich-display-transformers-list
 	(plist-put ivy-rich-display-transformers-list
 		   'ivy-switch-buffer
@@ -275,7 +287,7 @@
 		   'counsel-find-file
 		   '(:columns
 		     ((ivy-rich-file-icon (:width 2))
-		      (ivy-read-file-transformer)
+		      (ivy-rich-candidate)
 		      (ivy-rich-counsel-find-file-truename (:face font-lock-doc-face))))))
   (ivy-rich-mode 1))
 
