@@ -129,8 +129,11 @@
    ("C-/" . undo-tree-visualize-undo)
    ("C-." . undo-tree-visualize-redo))
   :config
+  (advice-add #'undo-tree-overridden-undo-bindings-p
+	      :filter-return
+	      (lambda (x) nil))
   (setq undo-tree-mode-lighter "")
-  (undo-tree-mode t))
+  (undo-tree-mode 1))
 
 (use-package sequential-command-config
   :straight sequential-command
