@@ -360,7 +360,11 @@
     (skk-get (locate-user-emacs-file (convert-standard-filename "locals/dict/")))))
 
 (use-package neotree
-  :bind (("C-c t" . neotree-toggle))
+  :bind (("C-c t" . neotree-toggle)
+	 (:map neotree-mode-map
+	       ("d" . neotree-delete-node)))
+  :init
+  (setq neo-hidden-regexp-list '("\\.pyc$" "~$" "^#.*#$" "\\.elc$"))
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
