@@ -19,16 +19,19 @@ let scan_lines n fmt f =
     List.map (fun _ -> scan fmt f) (1 ++ n)
     |> List.enum
 
-let scan_list cnv =
-  String.split_on_char ' ' @@ read_line ()
+let scan_list sep cnv =
+  let line = read_line () in
+  (match sep with
+   | None -> List.map String.of_char @@ String.to_list line
+   | Some sep -> String.split_on_char sep line)
   |> List.map cnv
 
-let scan_array cnv = Array.of_list @@ scan_list cnv
+let scan_array ?sep cnv = Array.of_list @@ scan_list sep cnv
 
-let scan_matrix n m e conv =
+let scan_matrix n m e ?sep conv =
   let arr = Array.make_matrix n m e in
   ListL.iter (0 ++^ n)
-    ~f:(fun i -> arr.(i) <- Array.of_list @@ scan_list conv);
+    ~f:(fun i -> arr.(i) <- Array.of_list @@ scan_list sep conv);
   arr
 
 let rec powerset e =
@@ -64,6 +67,8 @@ let lower_bound n f =
       if f m then aux l m
       else aux m u
     else u in aux (-1) n
+
+let between n x m = n <= x && x < m
 
 let () =
   $0
