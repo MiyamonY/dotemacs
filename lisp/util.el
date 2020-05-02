@@ -59,4 +59,8 @@
 
 (global-auto-revert-mode t)
 
+;; tramp-mode
+(setq tramp-persistency-file-name
+      (locate-user-emacs-file (convert-standard-filename "locals/tramp")))
+
 (provide 'util)
