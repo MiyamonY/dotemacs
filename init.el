@@ -457,6 +457,18 @@
   :custom (org-bullets-bullet-list '("" "" "" "" ""))
   :hook (org-mode . org-bullets-mode))
 
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :hook (go-mode . lsp-deferred)
+  :init
+  (setq lsp-session-file
+	(locate-user-emacs-file (convert-standard-filename "locals/.lsp-session-v1")))
+  (setq lsp-keymap-prefix "s-l"))
+
+(use-package lsp-ui
+  :after (lsp-mode)
+  :hook   (lsp-mode . lsp-ui-mode))
+
 (use-package racket-mode
   :config
   (defun my-racket-mode-hook ()
@@ -500,7 +512,6 @@
 (use-package go-mode
   :after (company)
   :config
-  (use-package company-go)
   (setq gofmt-command "goimports")
 
   (defun my-go-mode-hook ()
@@ -508,8 +519,23 @@
     (setq indent-tabs-mode nil)
     (setq c-basic-offset 4)
     (setq tab-width 4)
-    (add-hook 'before-save-hook #'gofmt-before-save nil 'local))
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t)
+    (add-hook 'before-save-hook #'gofmt-before-save))
   (add-hook 'go-mode-hook #'my-go-mode-hook))
+
+(use-package lsp-go
+  :after (lsp-mode go-mode)
+  :hook (go-mode . lsp-go-enable)
+  :commands lsp-go-enable
+  :init
+  (setq lsp-go-language-server-flags
+	'("-gocodecompletion"
+	  "-diagnostics"
+	  "-lint-tool=golint")))
+
+(use-package company-lsp
+  :commands company-lsp)
 
 (use-package adoc-mode
   :mode "\\.adoc\\'"
