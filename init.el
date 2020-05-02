@@ -574,6 +574,8 @@
 
 (use-package gist
   :init
+  (setq pcache-directory
+	(locate-user-emacs-file (convert-standard-filename "locals/pcache/")))
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 (use-package emr
