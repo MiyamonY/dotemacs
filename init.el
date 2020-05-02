@@ -87,6 +87,10 @@
   (setq transient-history-file
 	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el"))))
 
+(use-package magit-gitflow
+  :after (magit)
+  :hook (magit-mode . turn-on-magit-gitflow))
+
 (use-package git-gutter+
   :hook (after-init . global-git-gutter+-mode)
   :config
