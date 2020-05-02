@@ -555,3 +555,5 @@
   :bind (("C-c ;" . iedit-mode)
 	 :map prog-mode-map
 	 ("M-RET" . emr-show-refactor-menu)))
+
+(use-package fsharp-mode)
