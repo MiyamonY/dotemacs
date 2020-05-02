@@ -518,6 +518,11 @@
   :config
   (setq gofmt-command "goimports")
 
+  (setq lsp-go-language-server-flags
+	'("-gocodecompletion"
+	  "-diagnostics"
+	  "-lint-tool=golint"))
+
   (defun my-go-mode-hook ()
     (set (make-local-variable 'company-backends) '(company-go))
     (setq indent-tabs-mode nil)
@@ -527,16 +532,6 @@
     (add-hook 'before-save-hook #'lsp-organize-imports t t)
     (add-hook 'before-save-hook #'gofmt-before-save))
   (add-hook 'go-mode-hook #'my-go-mode-hook))
-
-(use-package lsp-go
-  :after (lsp-mode go-mode)
-  :hook (go-mode . lsp-go-enable)
-  :commands lsp-go-enable
-  :init
-  (setq lsp-go-language-server-flags
-	'("-gocodecompletion"
-	  "-diagnostics"
-	  "-lint-tool=golint")))
 
 (use-package company-lsp
   :commands company-lsp)
