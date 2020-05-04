@@ -14,10 +14,8 @@ let (++^) n m = if n < m then List.range n \`To (pred m) else []
 let scan fmt = Scanf.sscanf (read_line ()) fmt
 
 let scan_lines n fmt f =
-  if n = 0 then Enum.empty ()
-  else
-    List.map (fun _ -> scan fmt f) (1 ++ n)
-    |> List.enum
+  if n = 0 then []
+  else List.map (fun _ -> scan fmt f) (1 ++ n)
 
 let scan_list sep cnv =
   let line = read_line () in
@@ -71,4 +69,4 @@ let lower_bound n f =
 let between n x m = n <= x && x < m
 
 let () =
-  $0
+  () $0
