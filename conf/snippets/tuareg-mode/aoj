@@ -22,7 +22,7 @@ let (++^) n m = n ++ (m-1)
 let scan fmt f = Scanf.sscanf (read_line ()) fmt f
 
 let scan_lines n fmt f =
-  List.map (fun _ -> scanf fmt f) (0++^n)
+  List.map (fun _ -> scan fmt f) (0++^n)
 
 let scan_matrix n m e conv =
   let arr = Array.make_matrix n m e in
