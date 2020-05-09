@@ -59,6 +59,10 @@ let permutations l =
 let intersection l =
   EnumL.filter ~f:(fun x -> EnumL.exists ~f:((=) x) @@ Enum.clone l)
 
+let zip l m =
+  let n = min (List.length l) (List.length m) in
+  List.combine (List.take n l) (List.take n m)
+
 let lower_bound n f =
   let rec aux l u =
     if u - l > 1 then
