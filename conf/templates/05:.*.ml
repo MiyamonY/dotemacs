@@ -9,6 +9,7 @@ let dbg1 x = dbg0 x; x
 let id = identity
 
 let (++) n m = List.range n \`To m
+let (++-) n m = if n >= m then List.range n \`Downto m else []
 let (++^) n m = if n < m then List.range n \`To (pred m) else []
 
 let scan fmt = Scanf.sscanf (read_line ()) fmt
