@@ -232,7 +232,9 @@
     (add-to-list 'ivy-height-alist pair))
   (use-package counsel-ghq
     :straight (el-patch :type git :host github :repo "windymelt/counsel-ghq") ; not found in melpa
-    :bind (("C-c g" . counsel-ghq))))
+    :bind (("C-c g" . counsel-ghq))
+    :config
+    (defalias 'counsel-symbol-at-point 'ivy-thing-at-point)))
 
 (use-package ivy-rich
   :after (ivy all-the-icons)
