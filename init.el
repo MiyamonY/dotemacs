@@ -137,7 +137,7 @@
 	      :filter-return
 	      (lambda (x) nil))
   (setq undo-tree-mode-lighter "")
-  (undo-tree-mode 1))
+  (global-undo-tree-mode 1))
 
 (use-package sequential-command-config
   :straight sequential-command
@@ -232,7 +232,9 @@
     (add-to-list 'ivy-height-alist pair))
   (use-package counsel-ghq
     :straight (el-patch :type git :host github :repo "windymelt/counsel-ghq") ; not found in melpa
-    :bind (("C-c g" . counsel-ghq))))
+    :bind (("C-c g" . counsel-ghq))
+    :config
+    (defalias 'counsel-symbol-at-point 'ivy-thing-at-point)))
 
 (use-package ivy-rich
   :after (ivy all-the-icons)
@@ -441,16 +443,16 @@
   :hook
   (org-pomodoro-started .
 			(lambda () (notifications-notify
-				    :title "org-pomodoro"
-				    :body "Let's focus for 25 minutes!")))
+			       :title "org-pomodoro"
+			       :body "Let's focus for 25 minutes!")))
   (org-pomodoro-finished .
 			 (lambda () (notifications-notify
-				     :title "org-pomodoro"
-				     :body "Well done! Take a break.")))
+				:title "org-pomodoro"
+				:body "Well done! Take a break.")))
   (org-pomodoro-short-break-finished .
 				     (lambda (notifications-notify
-					      :title "org-pomdoro"
-					      :body "Short break end. Start new pomodoro.")))
+					 :title "org-pomdoro"
+					 :body "Short break end. Start new pomodoro.")))
   :config
   (setq org-pomodoro-format (concat (all-the-icons-octicon "flame" :face 'all-the-icons-red) "%s"))
   (setq org-pomodoro-short-break-format (concat (all-the-icons-material "free_breakfast") "%s"))

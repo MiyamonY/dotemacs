@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: fold
+# key: fold
+# --
+ListL.fold_left $1 ~init:$2 ~f:(fun $3 ->
+  $0
+)
