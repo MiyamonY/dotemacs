@@ -18,20 +18,22 @@ let scan_lines n fmt f =
   if n = 0 then []
   else List.map (fun _ -> scan fmt f) (1 ++ n)
 
-let scan_list sep cnv =
+let scan_list ?sep cnv =
   let line = read_line () in
   (match sep with
-   | None -> List.map String.of_char @@ String.to_list line
+ta   | None -> List.map String.of_char @@ String.to_list line
    | Some sep -> String.split_on_char sep line)
   |> List.map cnv
 
-let scan_array ?sep cnv = Array.of_list @@ scan_list sep cnv
+let scan_array ?sep cnv = Array.of_list @@ scan_list ?sep cnv
 
 let scan_matrix n m e ?sep conv =
   let arr = Array.make_matrix n m e in
   ListL.iter (0 ++^ n)
-    ~f:(fun i -> arr.(i) <- Array.of_list @@ scan_list sep conv);
+    ~f:(fun i -> arr.(i) <- Array.of_list @@ scan_list ?sep conv);
   arr
+
+let atoi c = Char.code c - Char.code '0'
 
 let rec powerset e =
   match Enum.get e with
