@@ -63,4 +63,6 @@
 (setq tramp-persistency-file-name
       (locate-user-emacs-file (convert-standard-filename "locals/tramp")))
 
+(menu-bar-mode -1)
+
 (provide 'util)
