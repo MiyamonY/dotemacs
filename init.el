@@ -569,9 +569,10 @@
 (use-package json-mode
   :mode "\\.json\\'")
 
-(use-package merlin)
+(use-package tuareg)
 
-(use-package tuareg
+(use-package merlin
+  :after tuareg
   :hook (tuareg-mode . merlin-mode))
 
 (use-package gist
