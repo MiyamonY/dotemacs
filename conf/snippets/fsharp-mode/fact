@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: fact
+# key: fact
+# --
+[<Fact>]
+let \`\`$0\`\` () =
+    ()
