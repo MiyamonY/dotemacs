@@ -65,4 +65,11 @@
 
 (menu-bar-mode -1)
 
+;; ediff
+(set-face-attribute 'ediff-even-diff-A nil :background "gray20")
+(set-face-attribute 'ediff-odd-diff-A nil :background "gray30")
+(set-face-attribute 'ediff-even-diff-B nil :background "gray20")
+(set-face-attribute 'ediff-odd-diff-B nil :background "gray30")
+(setq ediff-split-window-function 'split-window-horizontally)
+
 (provide 'util)
