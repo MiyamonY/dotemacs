@@ -589,3 +589,6 @@
 (use-package fsharp-mode
   :config
   (remove-hook 'project-find-functions #'fsharp-mode-project-root))
+(use-package scala-mode
+  :interpreter
+  ("scala" . scala-mode))
