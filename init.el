@@ -589,6 +589,16 @@
 (use-package fsharp-mode
   :config
   (remove-hook 'project-find-functions #'fsharp-mode-project-root))
+
+(use-package elpy
+  :after flycheck
+  :init
+  (advice-add 'python-mode :before 'elpy-enable)
+  :config
+  (setq elpy-rpc-virtualenv-path 'current)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
 (use-package scala-mode
   :interpreter
   ("scala" . scala-mode))
