@@ -602,3 +602,6 @@
 (use-package scala-mode
   :interpreter
   ("scala" . scala-mode))
+(use-package php-mode
+  :mode "\\.php\\'")
+
