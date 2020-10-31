@@ -2,5 +2,5 @@
 # name: map
 # key: map
 # --
-ListL.map $1 ~f:(fun $2 ->
+List.map $1 ~f:(fun $2 ->
   $0)

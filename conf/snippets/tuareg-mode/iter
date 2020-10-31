@@ -2,6 +2,6 @@
 # name: iter
 # key: iter
 # --
-ListL.iter $1 ~f:(fun $2 ->
+List.iter $1 ~f:(fun $2 ->
   $0
 )
