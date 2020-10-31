@@ -570,10 +570,6 @@
 	 :map prog-mode-map
 	 ("M-RET" . emr-show-refactor-menu)))
 
-(use-package fsharp-mode
-  :config
-  (remove-hook 'project-find-functions #'fsharp-mode-project-root))
-
 (use-package elpy
   :after flycheck
   :init
