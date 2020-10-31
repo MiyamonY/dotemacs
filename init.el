@@ -605,3 +605,6 @@
 (use-package php-mode
   :mode "\\.php\\'")
 
+(use-package docker)
+
+(use-package dockerfile-mode)
