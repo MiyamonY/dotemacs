@@ -15,7 +15,7 @@
 (straight-use-package 'use-package)
 
 (use-package util
-  :load-path "./lisp")
+  :load-path "lisp")
 
 (setq straight-use-package-by-default t)
 
