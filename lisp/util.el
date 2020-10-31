@@ -70,4 +70,12 @@
 (set-face-attribute 'ediff-odd-diff-B nil :background "gray30")
 (setq ediff-split-window-function 'split-window-horizontally)
 
+;;  tab
+(tab-bar-mode)
+(tab-bar-history-mode +1)
+
+(bind-key "C-; p" #'tab-previous)
+(bind-key "C-; n" #'tab-next)
+(bind-key "C-; c" #'tab-new)
+
 (provide 'util)

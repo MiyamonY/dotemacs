@@ -146,22 +146,6 @@
   (define-sequential-command fill-unfill-paragraph fill-paragraph delete-indentation)
   (bind-key "M-q" #'fill-unfill-paragraph))
 
-(use-package elscreen
-  :bind (("C-; n" . elscreen-next)
-	 ("C-; p" . elscreen-previous)
-	 ("C-; c" . elscreen-create)
-	 ("C-; k" . elscreen-kill))
-  :config
-  (setq elscreen-display-tab t)
-  (setq elscreen-tab-display-kill-screen nil)
-  (setq elscreen-tab-display-control nil)
-  (let ((dracula-background "#282a36") (dracula-purple "#bd93f9")
-	(dracula-foreground "#f8f8f2"))
-    (set-face-attribute
-     'elscreen-tab-current-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-background)
-    (set-face-attribute
-     'elscreen-tab-other-screen-face nil :weight 'bold :foreground dracula-purple :background dracula-foreground))
-  (elscreen-start))
 
 (use-package smartparens-config
   :straight smartparens
