@@ -73,12 +73,7 @@
   (setq doom-modeline-icon t)
   (setq doom-modeline-major-mode-icon t)
   (setq inhibit-compacting-font-caches t)
-  (setq find-file-visit-truename t)
-  (use-package nyan-mode
-    :after (doom-modeline)
-    :config
-    (setq nyan-bar-length 15)
-    (nyan-mode)))
+  (setq find-file-visit-truename t))
 
 (use-package magit
   :commands (magit-status)
