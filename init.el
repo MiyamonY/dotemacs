@@ -80,7 +80,8 @@
   :bind (("C-x g" . magit-status))
   :init
   (setq transient-history-file
-	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el"))))
+	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el")))
+  (setq magit-diff-refine-ignore-whitespace t))
 
 (use-package magit-gitflow
   :after (magit)
@@ -422,16 +423,16 @@
   :hook
   (org-pomodoro-started .
 			(lambda () (notifications-notify
-			       :title "org-pomodoro"
-			       :body "Let's focus for 25 minutes!")))
+				    :title "org-pomodoro"
+				    :body "Let's focus for 25 minutes!")))
   (org-pomodoro-finished .
 			 (lambda () (notifications-notify
-				:title "org-pomodoro"
-				:body "Well done! Take a break.")))
+				     :title "org-pomodoro"
+				     :body "Well done! Take a break.")))
   (org-pomodoro-short-break-finished .
 				     (lambda (notifications-notify
-					 :title "org-pomdoro"
-					 :body "Short break end. Start new pomodoro.")))
+					      :title "org-pomdoro"
+					      :body "Short break end. Start new pomodoro.")))
   :config
   (setq org-pomodoro-format (concat (all-the-icons-octicon "flame" :face 'all-the-icons-red) "%s"))
   (setq org-pomodoro-short-break-format (concat (all-the-icons-material "free_breakfast") "%s"))
@@ -577,6 +578,7 @@
 (use-package scala-mode
   :interpreter
   ("scala" . scala-mode))
+
 (use-package php-mode
   :mode "\\.php\\'")
 
