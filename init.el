@@ -216,6 +216,10 @@
     :config
     (defalias 'counsel-symbol-at-point 'ivy-thing-at-point)))
 
+(use-package counsel-projectile
+  :after (counsel)
+  :bind (("C-c f" . counsel-projectile-find-file)))
+
 (use-package ivy-rich
   :after (ivy all-the-icons)
   :config
