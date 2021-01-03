@@ -2,7 +2,12 @@
 # name: aoj
 # key: aoj
 # --
-module ArrayL = ArrayLabels
+module Array = struct
+  include ArrayLabels
+  let min arr = Array.fold_left (fun a v -> min a v) Int.max_int arr
+  let sum arr = Array.fold_left (+) 0 arr
+end
+
 module List = struct
   include ListLabels
 
@@ -57,9 +62,15 @@ module List = struct
         aux rest |> ListLabels.map ~f:(interleave a) |> List.concat in
     aux l
 
+  let rec zip a b =
+    match a, b with
+    | [], _ -> []
+    | _, [] -> []
+    | x::a, y::b -> (x,y) :: zip a b
+
   let sum  = ListLabels.fold_left ~f:(+) ~init:0
   let min ~cmp ls = List.hd @@ ListLabels.stable_sort ~cmp ls
-  let max ~cmp ls = List.hd @@ ListLabels.stable_sort ~cmp:(fun a b -> - (cmp a b)) ls 
+  let max ~cmp ls = List.hd @@ ListLabels.stable_sort ~cmp:(fun a b -> - (cmp a b)) ls
   let of_string s = ListLabels.map ~f:(String.get s) (0 ++^ String.length s)
 end
 
@@ -75,15 +86,6 @@ module Option = struct
 end
 
 module Util = struct
-let id = fun x -> x
-let tuple2 x y = (x,y)
-let tuple3 x y z = (x,y,z)
-let succ x = x + 1
-let pred x = x - 1
-let diff a b = if a > b then a - b else b - a
-let neg a = - a
-end
-module Util = struct
   let id = fun x -> x
   let tuple2 x y = (x,y)
   let tuple3 x y z = (x,y,z)
@@ -91,8 +93,10 @@ module Util = struct
   let pred x = x - 1
   let diff a b = if a > b then a - b else b - a
   let neg a = - a
+  let between n x m = n <= x && x < m
 end
 
+open Util
 open List.Op
 
 let dbg = Printf.printf "[debug]%s"
@@ -110,14 +114,13 @@ let scan_lines n fmt f =
   List.map ~f:(fun _ -> scan fmt f) (0++^n)
 
 let scan_matrix n m e conv =
-  let arr = Array.make_matrix n m e in
-  Array.iteri (fun i line ->
+  let arr = Array.make_matrix ~dimx:n ~dimy:m e in
+  Array.iteri ~f:(fun i line ->
       let s = Scanf.Scanning.from_string @@ read_line () in
-      Array.iteri (fun j _ ->
+      Array.iteri ~f:(fun j _ ->
           arr.(i).(j) <- Scanf.bscanf s " %s" conv;
         ) line) arr; arr
 
-let between n x m = n <= x && x < m
 
 let () =
     ()
