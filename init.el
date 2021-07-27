@@ -538,15 +538,15 @@
   (set-face-attribute 'markup-meta-hide-face nil :foreground "gray90" :weight 'bold)
   (set-face-attribute 'markup-list-face nil :background 'unspecified :weight 'bold))
 
-(use-package dracula-theme
+(use-package modus-themes
+  :straight (modus-themes :type git :host github :repo "protesilaos/modus-themes" :branch "main")
+  :init
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs nil
+        modus-themes-region '(bg-only no-extend))
+  (modus-themes-load-themes)
   :config
-  (set-face-attribute 'trailing-whitespace nil
-		      :foreground 'unspecified
-		      :background 'unspecified
-		      :underline "red")
-  (set-face-attribute 'show-paren-match nil
-		      :background 'unspecified :foreground 'unspecified
-		      :underline "#bd93f9"))
+  (modus-themes-load-vivendi))
 
 (use-package vue-mode)
 
