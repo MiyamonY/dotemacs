@@ -107,8 +107,7 @@
   :init
   (setq hl-line-idle-interval 0.1)
   :config
-  (toggle-hl-line-when-idle)
-  (set-face-background 'hl-line "gray30"))
+  (toggle-hl-line-when-idle))
 
 (use-package display-line-numbers
   :hook
@@ -146,13 +145,6 @@
 (use-package smartparens-config
   :straight smartparens
   :hook (after-init . smartparens-global-mode))
-
-(show-paren-mode 1)
-(setq show-paren-delay 0.1)
-(setq show-paren-style 'expression)
-(set-face-attribute 'show-paren-match nil
-		    :background 'unspecified :foreground 'unspecified
-		    :underline "white")
 
 (use-package shrink-whitespace
   :bind ("M-SPC" . shrink-whitespace))
@@ -547,6 +539,14 @@
   (modus-themes-load-themes)
   :config
   (modus-themes-load-vivendi))
+
+(show-paren-mode 1)
+(setq show-paren-delay 0.1)
+(setq show-paren-style 'expression)
+(setq show-paren-style 'expression)
+(set-face-attribute 'show-paren-match-expression nil
+                    :background nil :foreground nil
+                    :underline "#ff0000")
 
 (use-package vue-mode)
 
