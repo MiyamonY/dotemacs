@@ -314,7 +314,9 @@
   (set-face-attribute  'aw-leading-char-face nil :height 10.0))
 
 (use-package format-all
-  :hook (prog-mode . format-all-mode))
+  :hook (prog-mode . format-all-mode)
+  :init
+  (setq-default format-all-show-errors 'errors))
 
 (use-package dumb-jump
   :bind (("M-g o" . dumb-jump-go-other-window)
