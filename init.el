@@ -397,45 +397,23 @@
 	 ("C-c c" . org-capture))
   :config
   (require 'org-tempo)
-  (setq org-directory "~/src/github.com/MiyamonY/memo/")
+  (setq org-directory "~/org")
   (setq org-default-notes-file "notes.org")
-  (setq org-agenda-files `(,(expand-file-name (concat org-directory "/task.org"))))
+  (setq org-agenda-files (list org-directory))
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 1)))
   (setq org-enforce-todo-dependencies t)
   (setq org-log-done 'time)
   (setq org-todo-keywords
-	'((sequence "TODO(t)" "WAITING(w)" "PENDING(p)" "|" "DONE(d)" "CANCELED(c)")))
+	'((sequence "TODO(t)" "DOING(d)" "WAITING(w)" "|" "DONE(d)" "SOMEDAY(s)" "CANCELED(c)")))
 
   (setq org-capture-templates
 	`(("t" ,(concat (all-the-icons-octicon "checklist" :face 'all-the-icons-blue) " Task")
-	   entry (file ,(expand-file-name (concat org-directory "/task.org")))
-	   "* TODO %?\n    %i\n    %T")
+	   entry (file+headline ,(expand-file-name (concat org-directory "/inbox.org")) "inbox")
+	   "* TODO %?\nCREATED: %T")
 	  ("n" ,(concat (all-the-icons-octicon "book" :face 'all-the-icons-blue) " Note")
 	   entry (file ,(expand-file-name (concat org-directory "/notes.org")))
 	   "* %?\n   %a\n    %T")))
   (setq org-confirm-babel-evaluate nil))
-
-(use-package org-pomodoro
-  :after (org org-agenda all-the-icons)
-  :bind (:map org-agenda-mode-map
-	      ("p" . org-pomodoro))
-  :hook
-  (org-pomodoro-started .
-			(lambda () (notifications-notify
-				    :title "org-pomodoro"
-				    :body "Let's focus for 25 minutes!")))
-  (org-pomodoro-finished .
-			 (lambda () (notifications-notify
-				     :title "org-pomodoro"
-				     :body "Well done! Take a break.")))
-  (org-pomodoro-short-break-finished .
-				     (lambda (notifications-notify
-					      :title "org-pomdoro"
-					      :body "Short break end. Start new pomodoro.")))
-  :config
-  (setq org-pomodoro-format (concat (all-the-icons-octicon "flame" :face 'all-the-icons-red) "%s"))
-  (setq org-pomodoro-short-break-format (concat (all-the-icons-material "free_breakfast") "%s"))
-  (setq org-pomodoro-long-break-format (concat (all-the-icons-material "free_breakfast") "%s"))
-  (setq org-pomodoro-play-sounds nil))
 
 (use-package org-bullets
   :custom (org-bullets-bullet-list '("" "" "" "" ""))
