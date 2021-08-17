@@ -404,7 +404,12 @@
   (setq org-enforce-todo-dependencies t)
   (setq org-log-done 'time)
   (setq org-todo-keywords
-	'((sequence "TODO(t)" "DOING(d)" "WAITING(w)" "|" "DONE(d)" "SOMEDAY(s)" "CANCELED(c)")))
+	'((sequence "TODO(t)" "DOING(i)" "WAITING(w)" "|" "DONE(d)" "SOMEDAY(s)" "CANCELED(c)")))
+
+  (setq org-todo-keyword-faces
+        '(("TODO" . org-todo)
+          ("WAITING" . "dim gray")
+          ("DOING" . "red")))
 
   (setq org-capture-templates
 	`(("t" ,(concat (all-the-icons-octicon "checklist" :face 'all-the-icons-blue) " Task")
