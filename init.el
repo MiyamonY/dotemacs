@@ -196,6 +196,7 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
   :config
+  (ivy-rich-project-root-cache-mode)
   (dolist (pair `((counsel-evil-registers . ,ivy-height)
 		  (counsel-yank-pop . ,ivy-height)
 		  (counsel-git-log . ,ivy-height)
