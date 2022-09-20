@@ -102,6 +102,30 @@ module List = struct
          aux v (w::acc) l
     in List.rev @@ aux init [] l
 
+  let filteri l ~f  =
+    let rec aux n = function
+      | [] -> []
+      | x::ls ->
+         if f n x then x::aux (succ n) ls
+         else aux (succ n) ls
+    in aux 0 l
+
+  let by l ~f =
+    let rec aux acc = function
+      | _::[] | [] -> acc
+      | x::y::l -> aux (f y x::acc) (y::l)
+    in List.rev @@ aux [] l
+
+  let rec compare ls ts ~cmp =
+    match ls, ts with
+      | [], [] -> 0
+      | a::ls, b ::ts ->
+         let c = cmp a b in
+         if c = 0 then compare ls ts ~cmp
+         else c
+      | [], _ -> 1
+      | _, [] ->  -1
+
   let sum  = ListLabels.fold_left ~f:(+) ~init:0
   let min ~cmp ls = List.hd @@ ListLabels.stable_sort ~cmp ls
   let max ~cmp ls = List.hd @@ ListLabels.stable_sort ~cmp:(fun a b -> - (cmp a b)) ls
@@ -110,7 +134,7 @@ end
 
 open List.Op
 
-module Scan = struct
+module Scanf = struct
   let scan fmt f = Scanf.sscanf (read_line ()) fmt f
 
   let lines n fmt f =
@@ -132,11 +156,17 @@ module Scan = struct
           ) line) arr; arr
 end
 
+module Char = struct
+  include Char
+
+  let join cs =  String.concat "" (List.map (String.make 1) cs)
+end
+
 module String = struct
   include StringLabels
 
   let explode s =
-    Array.init (String.length s) ~f:(fun i -> String.get s i)
+      List.init ~len:(String.length s) ~f:(fun i -> String.get s i)
 end
 
 module Counter = struct
@@ -160,6 +190,8 @@ module Counter = struct
         | Some n -> Hashtbl.replace c v (succ n));
     c
 
+  let to_list c = Hashtbl.to_seq c |> List.of_seq
+
   let get c v = Hashtbl.find_opt c v |> Option.value ~default:0
 end
 
@@ -173,6 +205,8 @@ module Util = struct
   let neg a = - a
   let between n x m = n <= x && x < m
   let sqrt_int n = int_of_float @@ sqrt @@ float_of_int n
+  let even n = n mod 2 = 0
+  let odd n = not @@ even n
 end
 
 module Debug = struct
@@ -185,8 +219,6 @@ module Debug = struct
                |> String.concat ~sep:";"
                |> Printf.eprintf "[debug] [%s]\n"
 end
-
-open Util
 
 let () =
     ()
