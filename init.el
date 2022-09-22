@@ -195,6 +195,7 @@
   (setq ivy-height 30)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
+  (setq counsel-find-file-ignore-regexp "~undo-tree~")
   :config
   (ivy-rich-project-root-cache-mode)
   (dolist (pair `((counsel-evil-registers . ,ivy-height)
