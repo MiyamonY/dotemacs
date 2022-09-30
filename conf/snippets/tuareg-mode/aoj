@@ -159,7 +159,7 @@ end
 module Char = struct
   include Char
 
-  let join cs =  String.concat "" (List.map (String.make 1) cs)
+  let join cs =  String.concat "" @@ List.map cs ~f:(String.make 1)
 end
 
 module String = struct
@@ -174,25 +174,24 @@ module Counter = struct
 
   let make n = Hashtbl.create n
 
+  let get c v = Hashtbl.find_opt c v |> Option.value ~default:0
+
+  let add c v =
+    match Hashtbl.find_opt c v with
+    | None -> Hashtbl.add c v 1
+    | Some n -> Hashtbl.replace c v (succ n)
+
   let of_array arr =
     let c = make @@ Array.length arr in
-    Array.iter arr ~f:(fun v ->
-        match Hashtbl.find_opt c v with
-        | None -> Hashtbl.add c v 1
-        | Some n -> Hashtbl.replace c v (succ n));
+    Array.iter arr ~f:(fun v -> add c v);
     c
 
   let of_list l =
     let c = make @@ List.length l in
-    List.iter l ~f:(fun v ->
-        match Hashtbl.find_opt c v with
-        | None -> Hashtbl.add c v 1
-        | Some n -> Hashtbl.replace c v (succ n));
+    List.iter l ~f:(fun v -> add c v);
     c
 
   let to_list c = Hashtbl.to_seq c |> List.of_seq
-
-  let get c v = Hashtbl.find_opt c v |> Option.value ~default:0
 end
 
 module Util = struct
