@@ -40,7 +40,8 @@ module List = struct
 
     let (++^) n m = n ++ (m-1)
     let (--) n m = List.rev (m ++ n)
-    let (--^) n m = ((m+1) -- n)
+    let (--^) n m = (n -- (m+1))
+    let (^--) n m = ((n-1) -- m)
   end
 
   open Op
@@ -192,6 +193,11 @@ module Counter = struct
     c
 
   let to_list c = Hashtbl.to_seq c |> List.of_seq
+
+  let max c  =
+    to_list c
+    |> List.sort ~cmp:(fun (_, n) (_, m) -> -(Int.compare n m))
+    |> List.hd
 end
 
 module Util = struct
