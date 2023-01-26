@@ -87,10 +87,14 @@
   :after (magit)
   :hook (magit-mode . turn-on-magit-gitflow))
 
+(use-package fringe-helper)
+
 (use-package git-gutter+
-  :hook (after-init . global-git-gutter+-mode)
-  :config
-  (use-package git-gutter-fringe+))
+  :after (fringe-helper)
+  :hook (after-init . global-git-gutter+-mode))
+
+(use-package git-gutter-fringe+
+  :after (git-gutter+))
 
 (use-package rainbow-delimiters
   :commands (rainbow-delimiters-mode)
