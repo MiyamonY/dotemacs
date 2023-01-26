@@ -576,3 +576,22 @@
 (use-package docker)
 
 (use-package dockerfile-mode)
+
+(use-package web-mode
+  :init
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-enable-auto-indentation nil)
+
+  (defun my-web-mode-hook ()
+    (setq indent-tabs-mode nil)
+    (setq c-basic-offset 2)
+    (setq  format-all-formatters '(("TSX" prettier)))
+    (add-hook 'XXX-mode-hook #'lsp-deferred))
+
+  (add-hook 'web-mode-hook #'my-web-mode-hook))
+
+;; use-packageの:modeに書くとエラーになる
+(add-to-list 'auto-mode-alist '("\\.ts[x]\\'" . web-mode))
+
