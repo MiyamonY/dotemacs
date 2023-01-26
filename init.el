@@ -489,9 +489,6 @@
     (add-hook 'before-save-hook #'gofmt-before-save))
   (add-hook 'go-mode-hook #'my-go-mode-hook))
 
-(use-package company-lsp
-  :commands company-lsp)
-
 (use-package adoc-mode
   :mode "\\.adoc\\'"
   :config
