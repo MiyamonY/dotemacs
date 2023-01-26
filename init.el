@@ -389,10 +389,6 @@
   (setq auto-insert-query nil)
   (auto-insert-mode))
 
-(use-package git-auto-commit-mode
-  :config
-  (setq-default gac-automatically-push-p t))
-
 (use-package org
   :after (all-the-icons)
   :bind (("C-c a" . org-agenda)
@@ -436,23 +432,19 @@
 
 (use-package lsp-ui
   :after (lsp-mode)
-  :hook   (lsp-mode . lsp-ui-mode))
+  :hook   (lsp-mode . lsp-ui-mode)
+  :bind (([remap xref-find-definitions] . #'lsp-ui-peek-find-definitions) ; M-.
+	 ([remap xref-find-references] . #'lsp-ui-peek-find-references) ; M-?
+         ([remap xref-pop-marker-stack] . #'lsp-ui-peek-jump-backward)  ; M-,
+         )
+  :init
+  (defun my-lsp-ui-mode-hook ()
+    (lsp-ui-imenu))
+  (add-hook 'lsp-ui-mode-hook #'my-lsp-ui-mode-hook)
+  (setq lsp-ui-imenu-kind-position 'top))
 
-(use-package racket-mode
-  :config
-  (defun my-racket-mode-hook ()
-    (add-hook 'before-save-hook 'delete-trailing-whitespace nil 'local)
-    (add-hook 'before-save-hook #'(lambda () (indent-region (point-min) (point-max))) nil 'local))
-  (add-hook 'racket-mode-hook #'my-racket-mode-hook))
-
-(straight-use-package
- '(ob-racket :type git :host github :repo "wallyqs/ob-racket"))
-
-(use-package ob-racket)
 
 (use-package yaml-mode)
-
-(use-package rustic)
 
 (use-package scheme
   :mode (("\\.scm\\'" . scheme-mode))
@@ -535,8 +527,6 @@
                     :background nil :foreground nil
                     :underline "#ff0000")
 
-(use-package vue-mode)
-
 (use-package json-mode
   :mode "\\.json\\'")
 
@@ -551,24 +541,6 @@
   (setq pcache-directory
 	(locate-user-emacs-file (convert-standard-filename "locals/pcache/")))
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
-
-(use-package emr
-  :bind (("C-c ;" . iedit-mode)
-	 :map prog-mode-map
-	 ("M-RET" . emr-show-refactor-menu)))
-
-(use-package elpy
-  :after flycheck
-  :init
-  (advice-add 'python-mode :before 'elpy-enable)
-  :config
-  (setq elpy-rpc-virtualenv-path 'current)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-(use-package scala-mode
-  :interpreter
-  ("scala" . scala-mode))
 
 (use-package php-mode
   :mode "\\.php\\'")
