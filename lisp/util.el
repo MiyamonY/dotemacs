@@ -1,7 +1,7 @@
 (setq jit-lock-defer-time 0.05)
 (setq-default bidi-display-reordering nil)
 
-(let* ((font-name "Ricty Diminished Discord")
+(let* ((font-name "Cica")
        (default-font (format "%s:weight=normal:slant=normal" font-name))
        (fontset-base-name "rdd")
        (fontset-name (format "fontset-%s" fontset-base-name)))
