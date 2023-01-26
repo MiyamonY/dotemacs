@@ -482,7 +482,6 @@
 
   (defun my-go-mode-hook ()
     (set (make-local-variable 'company-backends) '(company-go))
-    (setq indent-tabs-mode nil)
     (setq c-basic-offset 4)
     (setq tab-width 4)
     (add-hook 'before-save-hook #'lsp-format-buffer t t)
@@ -557,7 +556,6 @@
   (setq web-mode-enable-auto-indentation nil)
 
   (defun my-web-mode-hook ()
-    (setq indent-tabs-mode nil)
     (setq c-basic-offset 2)
     (setq  format-all-formatters '(("TSX" prettier)))
     (add-hook 'XXX-mode-hook #'lsp-deferred))

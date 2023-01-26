@@ -67,6 +67,8 @@
 (tab-bar-mode)
 (tab-bar-history-mode +1)
 
+(setq-default indent-tabs-mode nil)
+
 (bind-key "C-; p" #'tab-previous)
 (bind-key "C-; n" #'tab-next)
 (bind-key "C-; c" #'tab-new)
