@@ -571,7 +571,12 @@
 ;; use-packageの:modeに書くとエラーになる
 (add-to-list 'auto-mode-alist '("\\.ts[x]\\'" . web-mode))
 
-(use-package graphql-mode)
+(use-package graphql-mode
+  :init
+  (defun my-graphql-mode-hook ()
+    (setq  format-all-formatters '(("GraphQL" prettier)))
+
+  (add-hook 'graphql-mode-hook #'my-graphql-mode-hook)))
 
 (add-to-list 'auto-mode-alist '("\\.graphql[s]\\'" . graphql-mode))
 
