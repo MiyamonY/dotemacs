@@ -12,6 +12,7 @@
   (load bootstrap-file nil 'nomessage))
 
 (setq use-package-enable-imenu-support t)
+
 (straight-use-package 'use-package)
 
 (use-package util
@@ -423,11 +424,14 @@
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-  :hook (go-mode . lsp-deferred)
+  :hook ((go-mode web-mode). lsp-deferred)
   :init
+  (setq lsp-keymap-prefix "s-m")
+  (setq lsp-prefer-capf t)              ; capf(completion-at-point) companyを使用する
+  (setq lsp-disabled-clients '(eslint))
+  (setq lsp-javascript-format-enable nil)
   (setq lsp-session-file
-	(locate-user-emacs-file (convert-standard-filename "locals/.lsp-session-v1")))
-  (setq lsp-keymap-prefix "s-l"))
+	(locate-user-emacs-file (convert-standard-filename "locals/.lsp-session-v1"))))
 
 (use-package lsp-ui
   :after (lsp-mode)
@@ -437,10 +441,9 @@
          ([remap xref-pop-marker-stack] . #'lsp-ui-peek-jump-backward)  ; M-,
          )
   :init
-  (defun my-lsp-ui-mode-hook ()
-    (lsp-ui-imenu))
-  (add-hook 'lsp-ui-mode-hook #'my-lsp-ui-mode-hook)
-  (setq lsp-ui-imenu-kind-position 'top))
+  (setq lsp-ui-imenu-kind-position 'top)
+  :config
+  (lsp-ui-imenu))
 
 (use-package lsp-treemacs
   :after (lsp-mode treemacs)
@@ -484,12 +487,11 @@
 	  "-lint-tool=golint"))
 
   (defun my-go-mode-hook ()
-    (set (make-local-variable 'company-backends) '(company-go))
     (setq c-basic-offset 4)
     (setq tab-width 4)
-    (add-hook 'before-save-hook #'lsp-format-buffer t t)
     (add-hook 'before-save-hook #'lsp-organize-imports t t)
-    (add-hook 'before-save-hook #'gofmt-before-save))
+    (add-hook 'before-save-hook #'gofmt-before-save t t))
+
   (add-hook 'go-mode-hook #'my-go-mode-hook))
 
 (use-package adoc-mode
