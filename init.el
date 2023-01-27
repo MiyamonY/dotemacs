@@ -354,6 +354,10 @@
   :ensure t
   :defer t)
 
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
 (use-package flycheck
   :hook (prog-mode . global-flycheck-mode)
   :init
