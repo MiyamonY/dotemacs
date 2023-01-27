@@ -349,14 +349,9 @@
   (unless (file-exists-p skk-large-jisyo)
     (skk-get (locate-user-emacs-file (convert-standard-filename "locals/dict/")))))
 
-(use-package neotree
-  :bind (("C-c t" . neotree-toggle)
-	 (:map neotree-mode-map
-	       ("d" . neotree-delete-node)))
-  :init
-  (setq neo-hidden-regexp-list '("\\.pyc$" "~$" "^#.*#$" "\\.elc$"))
-  :config
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+(use-package treemacs
+  :ensure t
+  :defer t)
 
 (use-package flycheck
   :hook (prog-mode . global-flycheck-mode)
@@ -447,6 +442,10 @@
   (add-hook 'lsp-ui-mode-hook #'my-lsp-ui-mode-hook)
   (setq lsp-ui-imenu-kind-position 'top))
 
+(use-package lsp-treemacs
+  :after (lsp-mode treemacs)
+  :config
+  (lsp-treemacs-sync-mode 1))
 
 (use-package yaml-mode)
 
