@@ -352,7 +352,8 @@
 
 (use-package treemacs
   :ensure t
-  :defer t)
+  :defer t
+  :bind (("C-c t" . treemacs)))
 
 (use-package treemacs-magit
   :after (treemacs magit)
