@@ -355,11 +355,19 @@
 (use-package treemacs
   :ensure t
   :defer t
-  :bind (("C-c t" . treemacs)))
+  :bind (("C-c t" . treemacs))
+  :config
+  (treemacs-follow-mode t))
 
 (use-package treemacs-magit
   :after (treemacs magit)
   :ensure t)
+
+(use-package treemacs-tab-bar
+  :after (treemacs)
+  :ensure t
+  :config
+  (treemacs-set-scope-type 'Tabs))
 
 (use-package flycheck
   :hook (prog-mode . flycheck-mode)
