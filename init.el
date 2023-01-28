@@ -521,9 +521,8 @@
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs nil
         modus-themes-region '(bg-only no-extend))
-  (modus-themes-load-themes)
   :config
-  (modus-themes-load-vivendi))
+  (load-theme 'modus-vivendi :no-confirm))
 
 (show-paren-mode 1)
 (setq show-paren-delay 0.1)
