@@ -324,8 +324,8 @@
 
 (use-package format-all
   :hook (prog-mode . format-all-mode)
-  :init
-  (setq-default format-all-show-errors 'errors))
+  :custom
+  ((format-all-show-errors 'never "エラーメッセージは表示させない")))
 
 (use-package dumb-jump
   :bind (("M-g o" . dumb-jump-go-other-window)
@@ -362,13 +362,8 @@
   :ensure t)
 
 (use-package flycheck
-  :hook (prog-mode . global-flycheck-mode)
-  :init
-  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
-
-(use-package flycheck-posframe
-  :after (flycheck)
-  :hook (flycheck-mode . flycheck-posframe-mode))
+  :hook (prog-mode . flycheck-mode)
+  :custom ((flycheck-display-errors-delay  0.3 "表示のdelayを入れる")))
 
 (use-package yasnippet
   :hook (after-init . yas-global-mode)
@@ -432,39 +427,54 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook ((go-mode web-mode). lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "s-m")
-  (setq lsp-prefer-capf t)              ; capf(completion-at-point) companyを使用する
-  (setq lsp-javascript-format-enable nil)
-  (setq lsp-typescript-format-enable nil)
-  (setq lsp-typescript-validate-enable nil)
-  (setq lsp-eslint-enable nil)
-  (setq lsp-javascript-display-parameter-name-hints-when-argument-matches-name t)
-  (setq lsp-session-file
-	(locate-user-emacs-file (convert-standard-filename "locals/.lsp-session-v1"))))
+  :custom
+  ((lsp-keymap-prefix "C-c k")
+   (lsp-print-performance t)
+   (lsp-prefer-capf t "capf(completion-at-point) companyを使用する")
+   (lsp-diagnostics-provider :flycheck)
+   (lsp-response-timeout 5)
+   (lsp-idle-delay 0.5)
+   (lsp-enable-file-watchers nil)
+   (lsp-enable-completion-at-point t)
+
+   (lsp-modeline-diagnostics-enable t)
+
+   (lsp-javascript-format-enable nil)
+   (lsp-typescript-format-enable nil)
+   (lsp-typescript-validate-enable nil)
+
+   (lsp-session-file
+    (locate-user-emacs-file (convert-standard-filename "locals/.lsp-session-v1"))))
+  :config
+  (defun my-lsp-mode-hook ()
+    (lsp-enable-which-key-integration))
+
+  (add-hook 'lsp-mode-hook #'my-lsp-mode-hook))
 
 (use-package lsp-ui
   :after (lsp-mode)
   :hook   (lsp-mode . lsp-ui-mode)
   :bind (([remap xref-find-definitions] . #'lsp-ui-peek-find-definitions) ; M-.
 	 ([remap xref-find-references] . #'lsp-ui-peek-find-references) ; M-?
-         )
-  :init
-  (setq lsp-ui-imenu-kind-position 'top)
-  :config
-  (setq lsp-ui-peek-enable t)
-  (setq lsp-ui-peek-always-show t)
-  (setq lsp-ui-peek-peek-height 30)
-  (setq lsp-ui-peek-list-width 30)
+         ("C-c m" . #'lsp-ui-imenu))
+  :custom
+  ((lsp-ui-flycheck t)
 
-  (setq lsp-ui-sideline-show-code-actions t)
+   (lsp-ui-imenu-kind-position 'top)
 
-  (setq lsp-ui-doc-enable t)
-  (setq lsp-ui-doc-show-with-cursor t)
-  (setq lsp-ui-doc-show-with-mouse nil)
-  (setq lsp-ui-doc-position 'at-point)
+   (lsp-ui-peek-enable t)
+   (lsp-ui-peek-always-show t)
+   (lsp-ui-peek-peek-height 30)
+   (lsp-ui-peek-list-width 30)
 
-  (lsp-ui-imenu))
+   (lsp-ui-sideline-enable t)
+   (lsp-ui-sideline-show-diagnostics t)
+   (lsp-ui-sideline-show-code-actions t)
+
+   (lsp-ui-doc-enable t)
+   (lsp-ui-doc-show-with-cursor t)
+   (lsp-ui-doc-show-with-mouse nil)
+   (lsp-ui-doc-position 'at-point)))
 
 (use-package lsp-treemacs
   :after (lsp-mode treemacs)
