@@ -172,9 +172,11 @@
 	      ("C-h" . nil))
   :config
   (setq completion-ignore-case t)
-  (setq company-idle-delay 0.4)
-  (setq company-minimum-prefx-length 2)
-  (setq company-selection-wrap-around t))
+  (setq company-idle-delay 0.1)
+  (setq company-minimum-prefx-length 3)
+  (setq company-selection-wrap-around t)
+  (setq company-tooltip-limit 20)      ; 候補を何個出すか
+  )
 
 (use-package company-box
   :hook (company-mode . company-box-mode)
