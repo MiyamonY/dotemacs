@@ -435,8 +435,11 @@
   :init
   (setq lsp-keymap-prefix "s-m")
   (setq lsp-prefer-capf t)              ; capf(completion-at-point) companyを使用する
-  (setq lsp-disabled-clients '(eslint))
   (setq lsp-javascript-format-enable nil)
+  (setq lsp-typescript-format-enable nil)
+  (setq lsp-typescript-validate-enable nil)
+  (setq lsp-eslint-enable nil)
+  (setq lsp-javascript-display-parameter-name-hints-when-argument-matches-name t)
   (setq lsp-session-file
 	(locate-user-emacs-file (convert-standard-filename "locals/.lsp-session-v1"))))
 
@@ -445,11 +448,22 @@
   :hook   (lsp-mode . lsp-ui-mode)
   :bind (([remap xref-find-definitions] . #'lsp-ui-peek-find-definitions) ; M-.
 	 ([remap xref-find-references] . #'lsp-ui-peek-find-references) ; M-?
-         ([remap xref-pop-marker-stack] . #'lsp-ui-peek-jump-backward)  ; M-,
          )
   :init
   (setq lsp-ui-imenu-kind-position 'top)
   :config
+  (setq lsp-ui-peek-enable t)
+  (setq lsp-ui-peek-always-show t)
+  (setq lsp-ui-peek-peek-height 30)
+  (setq lsp-ui-peek-list-width 30)
+
+  (setq lsp-ui-sideline-show-code-actions t)
+
+  (setq lsp-ui-doc-enable t)
+  (setq lsp-ui-doc-show-with-cursor t)
+  (setq lsp-ui-doc-show-with-mouse nil)
+  (setq lsp-ui-doc-position 'at-point)
+
   (lsp-ui-imenu))
 
 (use-package lsp-treemacs
