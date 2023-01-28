@@ -560,6 +560,7 @@
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-enable-auto-indentation nil)
+  (setq web-mode-enable-auto-quoting nil)
 
   (defun my-web-mode-hook ()
     (setq c-basic-offset 2)
