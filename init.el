@@ -460,7 +460,9 @@
   :custom
   ((lsp-ui-flycheck t)
 
+   (lsp-ui-imenu-auto-refresh t)
    (lsp-ui-imenu-kind-position 'top)
+   (lsp-ui-imenu-refresh-delay 0.5)
 
    (lsp-ui-peek-enable t)
    (lsp-ui-peek-always-show t)
