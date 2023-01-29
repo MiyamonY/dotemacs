@@ -360,6 +360,7 @@
   (treemacs-follow-mode t))
 
 (use-package treemacs-magit
+  :disabled t
   :after (treemacs magit)
   :ensure t)
 
