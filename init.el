@@ -592,6 +592,7 @@
 (use-package dockerfile-mode)
 
 (use-package web-mode
+  :mode "\\.tsx?\\'"
   :init
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
@@ -605,9 +606,6 @@
     (add-hook 'XXX-mode-hook #'lsp-deferred))
 
   (add-hook 'web-mode-hook #'my-web-mode-hook))
-
-;; use-packageの:modeに書くとエラーになる
-(add-to-list 'auto-mode-alist '("\\.ts[x]\\'" . web-mode))
 
 (use-package graphql-mode
   :init
