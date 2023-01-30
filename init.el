@@ -94,16 +94,18 @@
 
   (bind-key "C-; p" #'tab-previous)
   (bind-key "C-; n" #'tab-next)
-  (bind-key "C-; c" #'tab-new))
+  (bind-key "C-; c" #'tab-new)
+
+  (setq enable-recursive-minibuffers t))
 
 (setq straight-use-package-by-default t)
 
 (use-package dashboard
   :bind (:map dashboard-mode-map
-	      ("f" . counsel-recentf)
-	      ("b" . counsel-bookmark)
-	      ("a" . org-agenda)
-	      ("g" . counsel-ghq))
+	      ("f" . counsel-buffer)
+	      ("b" . consult-buffer)
+	      ("a" . org-agenda))
+  ;; ("g" . counsel-ghq))
   :config
   (setq dashboard-center-content t)
   (setq dashboard-set-navigator t)
@@ -260,115 +262,59 @@
   :hook (company-mode . company-box-mode)
   :custom ((company-box-icons-alist 'company-box-icons-all-the-icons)))
 
-(use-package counsel
-  :hook ((after-init . ivy-mode)
-	 (ivy-mode . counsel-mode))
-  :bind (("C-s" . swiper)
-	 ("M-x" . counsel-M-x)
-	 ("C-c C-r" . ivy-resume)
-	 ("C-x C-b" . ivy-switch-buffer)
-	 ("C-x C-f" . counsel-find-file)
-	 ("<f1> f" . counsel-describe-function)
-	 ("<f1> l" . counsel-find-library)
-	 ("<f1> v" . counsel-describe-variable)
-	 ("C-c s" . counsel-rg)
-	 ("M-y" . counsel-yank-pop)
-	 ("C-x l" . counsel-locate)
-	 (:map ivy-minibuffer-map
-	       ("C-m" . ivy-alt-done)))
+(use-package vertico
+  :custom
+  ((vertico-cycle t)
+   (vertico-count 20))
   :init
-  (setq ivy-height 30)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  (setq counsel-find-file-ignore-regexp "~undo-tree~")
-  :config
-  (ivy-rich-project-root-cache-mode)
-  (dolist (pair `((counsel-evil-registers . ,ivy-height)
-		  (counsel-yank-pop . ,ivy-height)
-		  (counsel-git-log . ,ivy-height)
-		  (counsel--generic . ,ivy-height)
-		  (counsel-el . ,ivy-height)))
-    (add-to-list 'ivy-height-alist pair))
-  (use-package counsel-ghq
-    :straight (consel-ghq :type git :host github :repo "windymelt/counsel-ghq") ; not found in melpa
-    :bind (("C-c g" . counsel-ghq))
-    :config
-    (defalias 'counsel-symbol-at-point 'ivy-thing-at-point)))
+  (vertico-mode))
 
-(use-package counsel-projectile
-  :after (counsel)
-  :bind (("C-c f" . counsel-projectile-find-file)))
+(use-package savehist
+  :init
+  (savehist-mode))
 
-(use-package ivy-rich
-  :after (ivy all-the-icons)
-  :config
-  (setq ivy-format-function #'ivy-format-function-line)
-  (defun ivy-rich-switch-buffer-icon (candidate)
-    (with-current-buffer
-	(get-buffer candidate)
-      (let ((icon (all-the-icons-icon-for-mode major-mode)))
-	(if (symbolp icon)
-	    (all-the-icons-icon-for-mode 'fundamental-mode)
-	  icon))))
+(use-package orderless
+  :after (vertico)
+  :custom
+  ((completion-styles '(orderless basic))
+   (completion-category-defaults nil)
+   (completion-category-overrides '((file (styles partial-completion))))))
 
-  (if (display-graphic-p)
-      (progn
-	(setq my-icon-hash (make-hash-table))
-	(defun ivy-rich-file-icon (candidate)
-	  (when (equal (gethash candidate my-icon-hash nil) nil)
-	    (let ((icon
-		   (if (file-directory-p candidate)
-		       (cond
-			((and (fboundp 'tramp-tramp-file-p)
-			      (tramp-tramp-file-p default-directory))
-			 (all-the-icons-octicon "file-directory"))
-			((file-symlink-p candidate)
-			 (all-the-icons-octicon "file-symlink-directory"))
-			((all-the-icons-dir-is-submodule candidate)
-			 (all-the-icons-octicon "file-submodule"))
-			((file-exists-p (format "%s/.git" candidate))
-			 (all-the-icons-octicon "repo"))
-			(t
-			 (let ((matcher
-				(all-the-icons-match-to-alist candidate all-the-icons-dir-icon-alist)))
-			   (apply (car matcher) (list (cadr matcher))))))
+(defun my-filename-upto-parent ()
+  "Move to parent directory like \"cd ..\" in find-file."
+  (interactive)
+  (let ((sep (eval-when-compile (regexp-opt '("/" "\\")))))
+    (save-excursion
+      (left-char 1)
+      (when (looking-at-p sep)
+        (delete-char 1)))
+    (save-match-data
+      (when (search-backward-regexp sep nil t)
+        (right-char 1)
+        (filter-buffer-substring (point) (line-end-position)
+                                 #'delete)))))
 
-		     (all-the-icons-icon-for-file candidate))))
-	      (puthash candidate icon my-icon-hash)))
-	  (gethash candidate my-icon-hash))
-	)
-    (defun ivy-rich-file-icon (candidate) ""))
+(use-package consult
+  :after (vertico)
+  :commands (consult-line consult-locate)
+  :bind (("C-s" . consult-line)
+         ("C-x b" . consult-buffer)
+         ("C-x l" . consult-locate)
+         ("M-g g" . consult-goto-line)
+         (:map vertico-map
+               ("C-l" . my-filename-upto-parent))))
 
-  (setq ivy-rich-display-transformers-list
-	(plist-put ivy-rich-display-transformers-list
-		   'ivy-switch-buffer
-		   '(:columns
-		     ((ivy-rich-switch-buffer-icon (:width 2))
-		      (ivy-rich-candidate (:width 30))
-		      (ivy-rich-switch-buffer-size (:width 7))
-		      (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
-		      (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
-		      (ivy-rich-switch-buffer-project (:width 15 :face success))
-		      (ivy-rich-switch-buffer-path
-		       (:width
-			(lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
-		     :predicate
-		     (lambda (cand) (get-buffer cand)))))
-  (setq ivy-rich-display-transformers-list
-	(plist-put ivy-rich-display-transformers-list
-		   'counsel-find-file
-		   '(:columns
-		     ((ivy-rich-file-icon (:width 2))
-		      (ivy-rich-candidate)
-		      (ivy-rich-counsel-find-file-truename (:face font-lock-doc-face))))))
-  (ivy-rich-mode 1))
+(use-package affe
+  :after (consult)
+  :bind
+  (("C-x f" . affe-find)
+   ("C-c s" . affe-grep)))
 
-(use-package ivy-posframe
-  :after ivy
-  :hook (ivy-mode . ivy-posframe-mode)
-  :config
-  (setq ivy-posframe-display-functions-alist
-	'((t . ivy-posframe-display-at-frame-center))))
+(use-package consult-ls-git
+  :after (consult)
+  :bind
+  (("C-c f" . #'consult-ls-git)
+   ("C-c F" . #'consult-ls-git-other-window)))
 
 (use-package tempbuf
   :hook ((dired-mode-hook magit-mode-hook). turn-on-tempbuf-mode))
@@ -382,16 +328,6 @@
   (setq migemo-user-dictionary nil)
   (setq migemo-regex-dictionary nil)
   (setq migemo-coding-system 'utf-8-unix))
-
-(use-package avy
-  :config
-  (use-package avy-migemo
-    :init
-    (avy-migemo-mode 1)
-    :config
-    (use-package avy-migemo-e.g.swiper
-      :disabled)
-    (setq avy-timeout-seconds 0.1)))
 
 (use-package ace-window
   :bind (("C-t" . ace-window))
