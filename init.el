@@ -18,7 +18,12 @@
 (use-package emacs
   :init
   (setq jit-lock-defer-time 0.05)
+
   (setq-default bidi-display-reordering nil)
+
+  (setq gc-cons-threshold (* 128 1024 1024))
+
+  (setq read-process-output-max (* 1024 1024))
 
   (let* ((font-name "Cica")
          (default-font (format "%s:weight=normal:slant=normal" font-name))
