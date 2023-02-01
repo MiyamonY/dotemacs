@@ -105,6 +105,12 @@
 
 (setq straight-use-package-by-default t)
 
+(use-package exec-path-from-shell
+  :init
+  (setq exec-path-from-shell-shell-name "fish")
+  :config
+  (exec-path-from-shell-copy-envs '("PATH")))
+
 (use-package dashboard
   :bind (:map dashboard-mode-map
 	      ("f" . counsel-buffer)
