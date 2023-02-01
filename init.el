@@ -469,10 +469,10 @@
 
    (lsp-javascript-format-enable nil)
    (lsp-typescript-format-enable nil)
-   (lsp-typescript-validate-enable nil)
-
-   (lsp-session-file
-    (locate-user-emacs-file (convert-standard-filename "locals/.lsp-session-v1"))))
+   (lsp-typescript-validate-enable nil))
+  :init
+  (setq lsp-session-file
+        (locate-user-emacs-file (convert-standard-filename "locals/.lsp-session-v1")))
   :config
   (defun my-lsp-mode-hook ()
     (lsp-enable-which-key-integration))
