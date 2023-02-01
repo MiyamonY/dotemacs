@@ -411,10 +411,7 @@
 	      ("C-x i g" . yas-reload-all))
   :init
   (setq yas-snippet-dirs
-	`(,(locate-user-emacs-file (convert-standard-filename "conf/snippets"))))
-  :config
-  (use-package ivy-yasnippet
-    :after (ivy)))
+	`(,(locate-user-emacs-file (convert-standard-filename "conf/snippets")))))
 
 (use-package yasnippet-snippets
   :after (yasnippet))
@@ -638,7 +635,6 @@
   (defun my-graphql-mode-hook ()
     (setq  format-all-formatters '(("GraphQL" prettier)))
 
-  (add-hook 'graphql-mode-hook #'my-graphql-mode-hook)))
+    (add-hook 'graphql-mode-hook #'my-graphql-mode-hook)))
 
 (add-to-list 'auto-mode-alist '("\\.graphql[s]\\'" . graphql-mode))
-
