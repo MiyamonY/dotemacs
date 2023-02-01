@@ -304,6 +304,7 @@
   :commands (consult-line consult-locate)
   :bind (("C-s" . consult-line)
          ("C-x b" . consult-buffer)
+         ("C-x C-b" . consult-buffer)
          ("C-x l" . consult-locate)
          ("M-g g" . consult-goto-line)
          (:map vertico-map
