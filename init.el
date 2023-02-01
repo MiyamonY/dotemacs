@@ -343,6 +343,8 @@
 
 (use-package ace-window
   :bind (("C-t" . ace-window))
+  :init
+  (add-to-list 'aw-ignored-buffers 'lsp-ui-imenu-mode)
   :config
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (setq aw-background nil)
