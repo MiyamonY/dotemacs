@@ -101,6 +101,8 @@
   (bind-key "C-; n" #'tab-next)
   (bind-key "C-; c" #'tab-new)
 
+  (setq warning-suppress-types '((lsp-mode)))
+
   (setq enable-recursive-minibuffers t))
 
 (setq straight-use-package-by-default t)
