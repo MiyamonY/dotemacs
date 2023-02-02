@@ -635,10 +635,9 @@
   (add-hook 'web-mode-hook #'my-web-mode-hook))
 
 (use-package graphql-mode
+  :mode "\\.graphqls?\\'"
   :init
   (defun my-graphql-mode-hook ()
-    (setq  format-all-formatters '(("GraphQL" prettier)))
+    (setq  format-all-formatters '(("GraphQL" prettier))))
 
-    (add-hook 'graphql-mode-hook #'my-graphql-mode-hook)))
-
-(add-to-list 'auto-mode-alist '("\\.graphql[s]\\'" . graphql-mode))
+  (add-hook 'graphql-mode-hook #'my-graphql-mode-hook))
