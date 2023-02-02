@@ -113,7 +113,7 @@
 
 (use-package dashboard
   :bind (:map dashboard-mode-map
-	      ("f" . counsel-buffer)
+	      ("f" . consult-buffer)
 	      ("b" . consult-buffer)
 	      ("a" . org-agenda))
   ;; ("g" . counsel-ghq))
@@ -325,8 +325,7 @@
 (use-package consult-ls-git
   :after (consult)
   :bind
-  (("C-c f" . #'consult-ls-git)
-   ("C-c F" . #'consult-ls-git-other-window)))
+  (("C-c F" . #'consult-ls-git-other-window)))
 
 (use-package tempbuf
   :hook ((dired-mode-hook magit-mode-hook). turn-on-tempbuf-mode))
@@ -351,6 +350,8 @@
 
 (use-package format-all
   :hook (prog-mode . format-all-mode)
+  :bind
+  (("C-c f" . format-all-buffer))
   :custom
   ((format-all-show-errors 'never "エラーメッセージは表示させない")))
 
