@@ -343,12 +343,11 @@
 
 (use-package ace-window
   :bind (("C-t" . ace-window))
-  :init
-  (add-to-list 'aw-ignored-buffers 'lsp-ui-imenu-mode)
   :config
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (setq aw-background nil)
-  (set-face-attribute  'aw-leading-char-face nil :height 10.0))
+  (set-face-attribute  'aw-leading-char-face nil :height 10.0)
+  (add-to-list 'aw-ignored-buffers 'lsp-ui-imenu-mode))
 
 (use-package format-all
   :hook (prog-mode . format-all-mode)
