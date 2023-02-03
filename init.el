@@ -469,8 +469,9 @@
   :hook (org-mode . org-bullets-mode))
 
 (use-package lsp-mode
-  :commands (lsp lsp-deferred)
+  :commands (lsp lsp-deferred lsp-rename)
   :hook ((go-mode web-mode). lsp-deferred)
+  :bind (("C-c r" . #'lsp-rename))
   :custom
   ((lsp-keymap-prefix "C-c k")
    (lsp-print-performance t)
