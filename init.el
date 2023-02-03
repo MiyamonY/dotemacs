@@ -329,6 +329,14 @@
   :bind
   (("C-c F" . #'consult-ls-git-other-window)))
 
+(use-package marginalia
+  :after (vertico consult)
+  :bind (("M-A" . marginalia-cycle)
+         :map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+  :init
+  (marginalia-mode))
+
 (use-package tempbuf
   :hook ((dired-mode-hook magit-mode-hook). turn-on-tempbuf-mode))
 
