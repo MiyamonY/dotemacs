@@ -103,7 +103,7 @@
 
   (setq warning-suppress-types '((lsp-mode)))
 
-  (setq enable-recursive-minibuffers t))
+  (setq enable-recursive-minibuffers nil))
 
 (setq straight-use-package-by-default t)
 
