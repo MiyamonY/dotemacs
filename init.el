@@ -351,7 +351,9 @@
   (setq migemo-coding-system 'utf-8-unix))
 
 (use-package ace-window
-  :bind (("C-t" . ace-window))
+  :bind (("C-t" . ace-window)
+         :map dired-mode-map
+         ("C-t" . ace-window))
   :config
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (setq aw-background nil)
