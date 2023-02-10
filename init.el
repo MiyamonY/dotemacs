@@ -650,3 +650,6 @@
     (setq  format-all-formatters '(("GraphQL" prettier))))
 
   (add-hook 'graphql-mode-hook #'my-graphql-mode-hook))
+
+(use-package ox-reveal
+  :ensure t)
