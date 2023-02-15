@@ -650,7 +650,9 @@
   :mode "\\.graphqls?\\'"
   :init
   (defun my-graphql-mode-hook ()
-    (setq  format-all-formatters '(("GraphQL" prettier))))
+    (setq comment-start "\"\"\"")
+    (setq comment-end "\"\"\"")
+    (setq format-all-formatters '(("GraphQL" prettier))))
 
   (add-hook 'graphql-mode-hook #'my-graphql-mode-hook))
 
