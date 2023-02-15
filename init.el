@@ -570,6 +570,8 @@
   (defun my-go-mode-hook ()
     (setq c-basic-offset 4)
     (setq tab-width 4)
+    (setq format-all-formatters '(("Go" goimports)))
+
     (add-hook 'before-save-hook #'lsp-organize-imports t t)
     (add-hook 'before-save-hook #'gofmt-before-save t t))
 
