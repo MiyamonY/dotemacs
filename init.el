@@ -175,7 +175,8 @@
   :init
   (setq transient-history-file
 	(locate-user-emacs-file (convert-standard-filename "locals/transient/history.el")))
-  (setq magit-diff-refine-ignore-whitespace t))
+  (setq magit-diff-refine-ignore-whitespace t)
+  (setq magit-repository-directories '(("~/src/github.com" . 2))))
 
 (use-package magit-gitflow
   :after (magit)
