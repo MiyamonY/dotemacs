@@ -103,6 +103,12 @@
 
   (setq warning-suppress-types '((lsp-mode)))
 
+  (setenv "PATH"
+          (concat (getenv "PATH")
+                  ":"
+                  (replace-regexp-in-string "\n$" ""
+                                            (shell-command-to-string "npm bin -g"))))
+
   (setq enable-recursive-minibuffers nil))
 
 (setq straight-use-package-by-default t)
