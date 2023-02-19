@@ -484,12 +484,18 @@
    (lsp-idle-delay 0.5)
    (lsp-enable-file-watchers nil)
    (lsp-enable-completion-at-point t)
-
+   (lsp-eslint-run "onSave")
+   (lsp-eslint-options '((cache . t)))
    (lsp-modeline-diagnostics-enable t)
 
+   (lsp-log-io t)
+
    (lsp-javascript-format-enable nil)
-   (lsp-typescript-format-enable nil)
-   (lsp-typescript-validate-enable nil))
+   (lsp-javascript-preferences-import-module-specifier "non-relative")
+   (lsp-typescript-format-enable t)
+   (lsp-typescript-validate-enable nil)
+   (lsp-typescript-preferences-import-module-specifier "non-relative"))
+
   :init
   (setq lsp-session-file
         (locate-user-emacs-file (convert-standard-filename "locals/.lsp-session-v1")))
