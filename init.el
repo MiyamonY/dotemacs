@@ -643,7 +643,7 @@
 
   (defun my-web-mode-hook ()
     (setq c-basic-offset 2)
-    (setq  format-all-formatters '(("TSX" prettier)))
+    (setq  format-all-formatters '(("TSX" prettierd)))
     (add-hook 'XXX-mode-hook #'lsp-deferred))
 
   (add-hook 'web-mode-hook #'my-web-mode-hook))
@@ -654,7 +654,7 @@
   (defun my-graphql-mode-hook ()
     (setq comment-start "\"\"\"")
     (setq comment-end "\"\"\"")
-    (setq format-all-formatters '(("GraphQL" prettier))))
+    (setq format-all-formatters '(("GraphQL" prettierd))))
 
   (add-hook 'graphql-mode-hook #'my-graphql-mode-hook))
 
