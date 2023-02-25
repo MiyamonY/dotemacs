@@ -367,13 +367,6 @@
   (set-face-attribute  'aw-leading-char-face nil :height 10.0)
   (add-to-list 'aw-ignored-buffers 'lsp-ui-imenu-mode))
 
-(use-package format-all
-  :hook (prog-mode . format-all-mode)
-  :bind
-  (("C-c f" . format-all-buffer))
-  :custom
-  ((format-all-show-errors 'never "エラーメッセージは表示させない")))
-
 (use-package dumb-jump
   :bind (("M-g o" . dumb-jump-go-other-window)
 	 ("M-g j" . dumb-jump-go)
@@ -582,7 +575,6 @@
   (defun my-go-mode-hook ()
     (setq c-basic-offset 4)
     (setq tab-width 4)
-    (setq format-all-formatters '(("Go" goimports)))
 
     (add-hook 'before-save-hook #'lsp-organize-imports t t)
     (add-hook 'before-save-hook #'gofmt-before-save t t))
@@ -655,7 +647,6 @@
 
   (defun my-web-mode-hook ()
     (setq c-basic-offset 2)
-    (setq  format-all-formatters '(("TSX" prettierd)))
     (add-hook 'XXX-mode-hook #'lsp-deferred))
 
   (add-hook 'web-mode-hook #'my-web-mode-hook))
@@ -665,10 +656,12 @@
   :init
   (defun my-graphql-mode-hook ()
     (setq comment-start "\"\"\"")
-    (setq comment-end "\"\"\"")
-    (setq format-all-formatters '(("GraphQL" prettierd))))
+    (setq comment-end "\"\"\""))
 
   (add-hook 'graphql-mode-hook #'my-graphql-mode-hook))
 
 (use-package ox-reveal
   :ensure t)
+
+(use-package prettier
+  :hook (after-init . global-prettier-mode))
