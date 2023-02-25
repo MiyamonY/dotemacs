@@ -21,7 +21,7 @@
 
   (setq-default bidi-display-reordering nil)
 
-  (setq gc-cons-threshold (* 128 1024 1024))
+  (setq gc-cons-threshold (* 256 1024 1024))
 
   (setq read-process-output-max (* 1024 1024))
 
