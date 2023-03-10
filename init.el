@@ -289,6 +289,17 @@
   :init
   (vertico-mode))
 
+(use-package vertico-directory
+  :after (vertico)
+  :straight nil
+  :ensure nil
+  :load-path "straight/build/vertico/extensions"
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+
 (use-package savehist
   :init
   (savehist-mode))
