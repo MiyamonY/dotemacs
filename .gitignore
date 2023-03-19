@@ -6,3 +6,4 @@ locals/*
 .cache
 image-dired/*
 history
+request/*

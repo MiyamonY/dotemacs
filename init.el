@@ -662,7 +662,10 @@
 
   (add-hook 'web-mode-hook #'my-web-mode-hook))
 
+(use-package request)
+
 (use-package graphql-mode
+  :after (request)
   :mode "\\.graphqls?\\'"
   :init
   (defun my-graphql-mode-hook ()
