@@ -681,3 +681,17 @@
 
 (use-package prettier
   :hook (after-init . global-prettier-mode))
+
+(use-package copilot
+  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :ensure t
+  :config
+  (defun my/copilot-tab ()
+    (interactive)
+    (or (copilot-accept-completion)
+        (indent-for-tab-command)))
+
+  (add-hook 'prog-mode-hook 'copilot-mode)
+
+  (with-eval-after-load 'copilot
+    (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab)))
