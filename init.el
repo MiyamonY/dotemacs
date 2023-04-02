@@ -695,3 +695,11 @@
 
   (with-eval-after-load 'copilot
     (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab)))
+
+(use-package chatgpt-shell
+  :straight (:host github :repo "xenodium/chatgpt-shell" :files ("dist" "*.el"))
+  :ensure t
+  :init
+  (setq chatgpt-shell-openai-key
+        (plist-get (car (auth-source-search :max 1 :host "openai.com"))
+                   :secret)))
