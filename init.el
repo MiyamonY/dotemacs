@@ -489,8 +489,8 @@
   :bind (("C-c r" . #'lsp-rename))
   :custom
   ((lsp-keymap-prefix "C-c k")
-   (lsp-print-performance t)
    (lsp-prefer-capf t "capf(completion-at-point) companyを使用する")
+   (lsp-print-performance nil)
    (lsp-diagnostics-provider :flycheck)
    (lsp-response-timeout 5)
    (lsp-idle-delay 0.5)
@@ -500,7 +500,7 @@
    (lsp-eslint-options '((cache . t)))
    (lsp-modeline-diagnostics-enable t)
 
-   (lsp-log-io t)
+   (lsp-log-io nil)
 
    (lsp-javascript-format-enable nil)
    (lsp-javascript-preferences-import-module-specifier "non-relative")
