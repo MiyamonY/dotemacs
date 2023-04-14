@@ -272,13 +272,12 @@
 	      ("C-n" . company-select-next)
 	      ("C-p" . company-select-previous)
 	      ("C-h" . nil))
-  :config
-  (setq completion-ignore-case t)
-  (setq company-idle-delay 0.1)
-  (setq company-minimum-prefx-length 3)
-  (setq company-selection-wrap-around t)
-  (setq company-tooltip-limit 20)      ; 候補を何個出すか
-  )
+  :custom
+  ((completion-ignore-case t)
+   (company-idle-delay 0.2)
+   (company-minimum-prefx-length 3)
+   (company-selection-wrap-around t)
+   (company-tooltip-limit 20 "候補を何個出すか")))
 
 (use-package company-box
   :hook (company-mode . company-box-mode)
@@ -489,13 +488,13 @@
   :bind (("C-c r" . #'lsp-rename))
   :custom
   ((lsp-keymap-prefix "C-c k")
-   (lsp-prefer-capf t "capf(completion-at-point) companyを使用する")
    (lsp-print-performance nil)
+   (lsp-prefer-capf t "capf(completion-at-point) companyを使用する")
+   (lsp-enable-completion-at-point t)
    (lsp-diagnostics-provider :flycheck)
    (lsp-response-timeout 5)
-   (lsp-idle-delay 0.5)
+   (lsp-idle-delay 0.2)
    (lsp-enable-file-watchers nil)
-   (lsp-enable-completion-at-point t)
    (lsp-eslint-run "onSave")
    (lsp-eslint-options '((cache . t)))
    (lsp-modeline-diagnostics-enable t)
@@ -512,7 +511,10 @@
   (setq lsp-session-file
         (locate-user-emacs-file (convert-standard-filename "locals/.lsp-session-v1")))
   :config
+
   (defun my-lsp-mode-hook ()
+    (setq-local company-backends
+                '(company-capf company-dabbrev company-dabbrev-code))
     (lsp-enable-which-key-integration))
 
   (add-hook 'lsp-mode-hook #'my-lsp-mode-hook))
@@ -529,6 +531,7 @@
    (lsp-ui-imenu-auto-refresh t)
    (lsp-ui-imenu-kind-position 'top)
    (lsp-ui-imenu-refresh-delay 0.5)
+   (lsp-ui-sideline-show-hover nil)
 
    (lsp-ui-peek-enable t)
    (lsp-ui-peek-always-show t)
