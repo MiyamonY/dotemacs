@@ -485,7 +485,7 @@
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred lsp-rename)
-  :hook ((go-mode web-mode). lsp-deferred)
+  :hook ((go-mode tsx-ts-mode typescript-ts-mode) . lsp-deferred)
   :bind (("C-c r" . #'lsp-rename))
   :custom
   ((lsp-keymap-prefix "C-c k")
@@ -649,20 +649,24 @@
 
 (use-package dockerfile-mode)
 
-(use-package web-mode
-  :mode "\\.tsx?\\'"
+(use-package typescript-mode
+  :after (prettier)
+  :mode
+  (("\\.ts\\'" . typescript-mode)
+   ("\\.tsx\\'" . tsx-ts-mode))
+  :custom
+  ((typescript-indent-level 2))
   :init
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-enable-auto-indentation nil)
-  (setq web-mode-enable-auto-quoting nil)
+  (setq typescript-tsx-indent-offset 2)
 
-  (defun my-web-mode-hook ()
-    (setq c-basic-offset 2)
-    (add-hook 'XXX-mode-hook #'lsp-deferred))
+  (defun my-typescript-mode-hook ()
+    (message "my-typescript-mode-mode-hook")
+    (subword-mode +1)
+    (add-hook 'before-save-hook #'prettier-prettify)
+    (setq c-basic-offset 2))
 
-  (add-hook 'web-mode-hook #'my-web-mode-hook))
+  (add-hook 'tsx-ts-mode-hook 'my-typescript-mode-hook)
+  (add-hook 'typescript-mode-hook 'my-typescript-mode-hook))
 
 (use-package request)
 
@@ -703,3 +707,8 @@
   (setq chatgpt-shell-openai-key
         (plist-get (car (auth-source-search :max 1 :host "openai.com"))
                    :secret)))
+
+(use-package treesit-auto
+  :config
+  (setq treesit-auto-install 'prompt)
+  (global-treesit-auto-mode))
