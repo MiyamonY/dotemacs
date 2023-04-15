@@ -543,8 +543,7 @@
 
 (use-package lsp-treemacs
   :after (lsp-mode treemacs)
-  :config
-  (lsp-treemacs-sync-mode 1))
+  :hook ((go-ts-mode tsx-ts-mode typescript-ts-mode) . lsp-treemacs-sync-mode))
 
 (use-package yaml-mode)
 
