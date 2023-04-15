@@ -105,21 +105,15 @@
 
   (setq warning-suppress-types '((lsp-mode)))
 
-  (setenv "PATH"
-          (concat (getenv "PATH")
-                  ":"
-                  (replace-regexp-in-string "\n$" ""
-                                            (shell-command-to-string "npm bin -g"))))
-
   (setq enable-recursive-minibuffers nil))
 
 (setq straight-use-package-by-default t)
 
 (use-package exec-path-from-shell
   :init
-  (setq exec-path-from-shell-shell-name "fish")
+  (setq exec-path-from-shell-shell-name "bash")
   :config
-  (exec-path-from-shell-copy-envs '("PATH")))
+  (exec-path-from-shell-initialize))
 
 (use-package dashboard
   :bind (:map dashboard-mode-map
