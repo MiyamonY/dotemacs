@@ -500,10 +500,8 @@
            (lsp-print-performance nil))
   :config
   (defun my-lsp-mode-hook ()
-    (setq-local company-backends
-                '(company-capf company-dabbrev company-dabbrev-code))
+    (setq-local company-backends '(company-capf company-dabbrev company-dabbrev-code))
     (lsp-enable-which-key-integration))
-
   (add-hook 'lsp-mode-hook #'my-lsp-mode-hook))
 
 (use-package lsp-ui
