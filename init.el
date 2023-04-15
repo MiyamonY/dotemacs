@@ -261,17 +261,16 @@
 (use-package company
   :hook (prog-mode . company-mode)
   :bind (:map company-active-map
-	      ("M-n" . nil)
-	      ("M-p" . nil)
-	      ("C-n" . company-select-next)
-	      ("C-p" . company-select-previous)
-	      ("C-h" . nil))
-  :custom
-  ((completion-ignore-case t)
-   (company-idle-delay 0.2)
-   (company-minimum-prefx-length 3)
-   (company-selection-wrap-around t)
-   (company-tooltip-limit 20 "候補を何個出すか")))
+              ("M-n" . nil)
+              ("M-p" . nil)
+              ("C-n" . company-select-next)
+              ("C-p" . company-select-previous)
+              ("C-h" . nil))
+  :custom ((completion-ignore-case t)
+           (company-idle-delay 0.2)
+           (company-minimum-prefx-length 3)
+           (company-selection-wrap-around t)
+           (company-tooltip-limit 20 "候補を何個出すか")))
 
 (use-package company-box
   :hook (company-mode . company-box-mode)
@@ -480,32 +479,26 @@
   :commands (lsp lsp-deferred lsp-rename)
   :hook ((go-ts-mode tsx-ts-mode typescript-ts-mode) . lsp-deferred)
   :bind (("C-c r" . #'lsp-rename))
-  :custom
-  ((lsp-keymap-prefix "C-c k")
-   (lsp-print-performance nil)
-   (lsp-prefer-capf t "capf(completion-at-point) companyを使用する")
-   (lsp-enable-completion-at-point t)
-   (lsp-diagnostics-provider :flycheck)
-   (lsp-response-timeout 5)
-   (lsp-idle-delay 0.2)
-   (lsp-enable-file-watchers nil)
-   (lsp-eslint-run "onSave")
-   (lsp-eslint-options '((cache . t)))
-   (lsp-modeline-diagnostics-enable t)
+  :custom ((lsp-keymap-prefix "C-c k")
+           (lsp-prefer-capf t "capf(completion-at-point) companyを使用する")
+           (lsp-enable-completion-at-point t)
+           (lsp-diagnostics-provider :flycheck)
+           (lsp-response-timeout 5)
+           (lsp-idle-delay 0.2)
+           (lsp-enable-file-watchers nil)
+           (lsp-eslint-run "onSave")
+           (lsp-eslint-options '((cache . t)))
+           (lsp-modeline-diagnostics-enable t)
 
-   (lsp-log-io nil)
+           (lsp-javascript-format-enable nil)
+           (lsp-javascript-preferences-import-module-specifier "non-relative")
+           (lsp-typescript-format-enable t)
+           (lsp-typescript-validate-enable nil)
+           (lsp-typescript-preferences-import-module-specifier "non-relative")
 
-   (lsp-javascript-format-enable nil)
-   (lsp-javascript-preferences-import-module-specifier "non-relative")
-   (lsp-typescript-format-enable t)
-   (lsp-typescript-validate-enable nil)
-   (lsp-typescript-preferences-import-module-specifier "non-relative"))
-
-  :init
-  (setq lsp-session-file
-        (locate-user-emacs-file (convert-standard-filename "locals/.lsp-session-v1")))
+           (lsp-log-io nil)
+           (lsp-print-performance nil))
   :config
-
   (defun my-lsp-mode-hook ()
     (setq-local company-backends
                 '(company-capf company-dabbrev company-dabbrev-code))
