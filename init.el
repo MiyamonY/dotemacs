@@ -484,7 +484,7 @@
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred lsp-rename)
-  :hook ((go-mode tsx-ts-mode typescript-ts-mode) . lsp-deferred)
+  :hook ((go-mode go-ts-mode tsx-ts-mode typescript-ts-mode) . lsp-deferred)
   :bind (("C-c r" . #'lsp-rename))
   :custom
   ((lsp-keymap-prefix "C-c k")
