@@ -578,24 +578,23 @@
       (switch-to-buffer-other-window
        (get-buffer-create buf-name)))))
 
+(defun my-go-mode-hook ()
+  (setq c-basic-offset 4)
+  (setq tab-width 4)
+  (setq go-ts-mode-indent-offset 4)
+
+  (add-hook 'before-save-hook #'gofmt t t))
+
 (use-package go-mode
   :after (company)
+  :hook ((go-mode  go-ts-mode) . my-go-mode-hook)
   :config
   (setq gofmt-command "goimports")
 
   (setq lsp-go-language-server-flags
 	'("-gocodecompletion"
 	  "-diagnostics"
-	  "-lint-tool=golint"))
-
-  (defun my-go-mode-hook ()
-    (setq c-basic-offset 4)
-    (setq tab-width 4)
-
-    (add-hook 'before-save-hook #'lsp-organize-imports t t)
-    (add-hook 'before-save-hook #'gofmt-before-save t t))
-
-  (add-hook 'go-mode-hook #'my-go-mode-hook))
+	  "-lint-tool=golint")))
 
 (use-package adoc-mode
   :mode "\\.adoc\\'"
