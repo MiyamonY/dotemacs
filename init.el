@@ -458,6 +458,9 @@
   :hook (org-mode . org-bullets-mode))
 
 (use-package corfu
+  :bind (:map corfu-map
+              ("<tab>" . #'copilot-accept-completion)
+              ("TAB" . #'copilot-accept-completion))
   :custom
   ((corfu-cycle t)
    (corfu-auto t)
