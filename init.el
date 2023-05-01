@@ -457,6 +457,8 @@
   :custom (org-bullets-bullet-list '("" "" "" "" ""))
   :hook (org-mode . org-bullets-mode))
 
+(use-package cape)
+
 (use-package corfu
   :bind (:map corfu-map
               ("<tab>" . #'copilot-accept-completion)
@@ -466,7 +468,10 @@
    (corfu-auto t)
    (corfu-separator ?\s)
    (corfu-preselect 'prompt))
+  :config
+  (advice-add #'lsp-completion-at-point :around #'cape-wrap-noninterruptible)
   :init
+  (setq-default pgtk-wait-for-event-timeout 0)
   (global-corfu-mode))
 
 (use-package lsp-mode
