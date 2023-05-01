@@ -647,6 +647,7 @@
     (setq c-basic-offset 2))
 
   (add-hook 'tsx-ts-mode-hook 'my-typescript-mode-hook)
+  (add-hook 'typescript-ts-mode 'my-typescript-mode-hook)
   (add-hook 'typescript-mode-hook 'my-typescript-mode-hook))
 
 (use-package request)
