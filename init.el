@@ -331,6 +331,22 @@
   :init
   (marginalia-mode))
 
+(use-package wgrep)
+
+(use-package embark
+  :ensure t
+  :bind
+  (("C-c ;" . #'embark-act)         ;; pick some comfortable binding
+   ("C-c :" . #'embark-dwim)        ;; good alternative: M-.
+   ("C-c d B" . #'embark-bindings))
+  :init
+  (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target))
+
+(use-package embark-consult
+  :ensure t ; only need to install it, embark loads it after consult if found
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
 (use-package tempbuf
   :hook ((dired-mode-hook magit-mode-hook). turn-on-tempbuf-mode))
 
