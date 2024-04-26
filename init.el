@@ -715,3 +715,6 @@
   :config
   (setq treesit-auto-install 'prompt)
   (global-treesit-auto-mode))
+(put 'set-goal-column 'disabled nil)
+
+(use-package web-mode)
