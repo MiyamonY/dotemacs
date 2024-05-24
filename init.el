@@ -229,6 +229,7 @@
    ("C-/" . undo-tree-visualize-undo)
    ("C-." . undo-tree-visualize-redo))
   :config
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/locals")))
   (advice-add #'undo-tree-overridden-undo-bindings-p
 	      :filter-return
 	      (lambda (x) nil))
