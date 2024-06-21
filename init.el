@@ -233,6 +233,7 @@
   (advice-add #'undo-tree-overridden-undo-bindings-p
 	      :filter-return
 	      (lambda (x) nil))
+  (setq undo-tree-auto-save-history nil)
   (setq undo-tree-mode-lighter "")
   (global-undo-tree-mode 1))
 
