@@ -702,6 +702,8 @@
 
   (add-hook 'prog-mode-hook 'copilot-mode)
 
+  (setq copilot-indent-offset-warning-disable t)
+
   (with-eval-after-load 'copilot
     (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab)))
 
