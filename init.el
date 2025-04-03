@@ -722,3 +722,18 @@
 (put 'set-goal-column 'disabled nil)
 
 (use-package web-mode)
+
+(use-package lsp-biome
+  :straight (:host github :repo "cxa/lsp-biome")
+  :config
+  (setq lsp-biome-organize-imports-on-save  t))
+
+(use-package racket-mode)
+
+(setq straight-check-for-modifications nil)
+
+(use-package aidermacs
+  :bind (("C-c a" . aidermacs-transient-menu))
+  :custom
+  ; See the Configuration section below
+  (aidermacs-use-architect-mode t))
