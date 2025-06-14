@@ -499,6 +499,7 @@
   :bind (("C-c r" . #'lsp-rename))
   :custom
   ((lsp-keymap-prefix "C-c k")
+   (lsp-keep-workspace-alive t)
    (lsp-print-performance nil)
    (lsp-completion-provider :none)
    (lsp-enable-completion-at-point t)
