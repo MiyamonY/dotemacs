@@ -510,7 +510,7 @@
    (lsp-eslint-run "onSave")
    (lsp-eslint-options '((cache . t)))
    (lsp-modeline-diagnostics-enable t)
-
+   (lsp-copilot-enabled t)
    (lsp-javascript-format-enable nil)
    (lsp-javascript-preferences-import-module-specifier "non-relative")
    (lsp-typescript-format-enable t)
@@ -691,22 +691,6 @@
 
 (use-package prettier
   :hook (after-init . global-prettier-mode))
-
-(use-package copilot
-  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
-  :ensure t
-  :config
-  (defun my/copilot-tab ()
-    (interactive)
-    (or (copilot-accept-completion)
-        (indent-for-tab-command)))
-
-  (add-hook 'prog-mode-hook 'copilot-mode)
-
-  (setq copilot-indent-offset-warning-disable t)
-
-  (with-eval-after-load 'copilot
-    (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab)))
 
 (use-package chatgpt-shell
   :straight (:host github :repo "xenodium/chatgpt-shell" :files ("dist" "*.el"))
