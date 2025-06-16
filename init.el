@@ -38,10 +38,7 @@
 	  `((vertical-scroll-bars . nil)
 	    (font . ,fontset-name)))
     (set-frame-parameter (selected-frame) 'font fontset-name)
-    (toggle-scroll-bar -1)
-    (remove-hook 'after-make-frame-functions #'add-font-setting))
-
-  (add-hook 'after-make-frame-functions #'add-font-setting)
+    (toggle-scroll-bar -1))
 
   (setq auto-save-list-file-prefix nil)
   (defalias 'yes-or-no-p 'y-or-n-p)
@@ -186,12 +183,12 @@
 
 (use-package fringe-helper)
 
-(use-package git-gutter+
-  :after (fringe-helper)
-  :hook (after-init . global-git-gutter+-mode))
+(use-package git-gutter
+ :after (fringe-helper)
+ :hook (after-init . global-git-gutter-mode))
 
-(use-package git-gutter-fringe+
-  :after (git-gutter+))
+(use-package git-gutter-fringe
+ :after (git-gutter))
 
 (use-package rainbow-delimiters
   :commands (rainbow-delimiters-mode)
