@@ -27,7 +27,7 @@
 
   (setq read-process-output-max (* 1024 1024))
 
-  (let* ((font-name "Cica")
+  (let* ((font-name "HackGen35")
          (default-font (format "%s:weight=normal:slant=normal" font-name))
          (fontset-base-name "rdd")
          (fontset-name (format "fontset-%s" fontset-base-name)))
