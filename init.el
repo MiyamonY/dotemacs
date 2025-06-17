@@ -689,14 +689,6 @@
 (use-package prettier
   :hook (after-init . global-prettier-mode))
 
-(use-package chatgpt-shell
-  :straight (:host github :repo "xenodium/chatgpt-shell" :files ("dist" "*.el"))
-  :ensure t
-  :init
-  (setq chatgpt-shell-openai-key
-        (plist-get (car (auth-source-search :max 1 :host "openai.com"))
-                   :secret)))
-
 (use-package treesit-auto
   :config
   (setq treesit-auto-install 'prompt)
