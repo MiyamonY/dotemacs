@@ -706,3 +706,18 @@
 
 (setq straight-check-for-modifications nil)
 
+(use-package gptel
+  :ensure t
+  :init
+  (let* ((gemini-api-info (auth-source-search :host "api.gemini.google.com" :max 1))
+         (gemini-api-key (and gemini-api-info (car gemini-api-info)
+                              (plist-get (car gemini-api-info) :secret))))
+
+    (if gemini-api-key
+        (setq gptel-backend (gptel-make-gemini "Google Gemini"
+                                               :key gemini-api-key
+                                               :stream t))
+      (message "Warning: Gemini API key not found in authinfo.gpg or environment.")))
+
+  ;; 使用するモデルの設定
+  (setq gptel-model 'gemini-2.5-flash))
