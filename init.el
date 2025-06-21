@@ -720,4 +720,5 @@
       (message "Warning: Gemini API key not found in authinfo.gpg or environment.")))
 
   ;; 使用するモデルの設定
+  (setq gptel-default-mode 'org-mode)
   (setq gptel-model 'gemini-2.5-flash))
