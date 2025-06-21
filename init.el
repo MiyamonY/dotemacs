@@ -706,8 +706,3 @@
 
 (setq straight-check-for-modifications nil)
 
-(use-package aidermacs
-  :bind (("C-c a" . aidermacs-transient-menu))
-  :custom
-  ; See the Configuration section below
-  (aidermacs-use-architect-mode t))
