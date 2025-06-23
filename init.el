@@ -708,6 +708,7 @@
 
 (use-package gptel
   :ensure t
+  :bind ("C-c e" . gptel)
   :init
   (let* ((gemini-api-info (auth-source-search :host "api.gemini.google.com" :max 1))
          (gemini-api-key (and gemini-api-info (car gemini-api-info)
