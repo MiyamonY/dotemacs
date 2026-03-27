@@ -734,3 +734,12 @@
   (setq gptel-default-mode 'org-mode)
   (setq gptel-model 'claude-sonnet-4-20250514))
 
+
+(use-package vterm
+  :ensure t)
+
+(use-package claude-code-ide
+  :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
+  :bind ("C-c C-'" . claude-code-ide-menu)
+  :config
+  (claude-code-ide-emacs-tools-setup))
