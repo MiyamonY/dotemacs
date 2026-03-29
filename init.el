@@ -180,6 +180,10 @@
   (setq magit-diff-refine-ignore-whitespace t)
   (setq magit-repository-directories '(("~/src/github.com" . 2))))
 
+(use-package magit-gh
+  :ensure t
+  :after magit)
+
 (use-package ediff
   :custom
   ((ediff-window-setup-function 'ediff-setup-windows-plain
