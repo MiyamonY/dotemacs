@@ -168,8 +168,11 @@
   (setq doom-modeline-height 20)
   (setq doom-modeline-icon t)
   (setq doom-modeline-major-mode-icon t)
+  (setq doom-modeline-check-simple-format t)
   (setq inhibit-compacting-font-caches t)
-  (setq find-file-visit-truename t))
+  (setq find-file-visit-truename t)
+  ;; next-line/previous-line のたびに走る line-move-partial の再描画を抑制する
+  (setq auto-window-vscroll nil))
 
 (use-package magit
   :commands (magit-status)
