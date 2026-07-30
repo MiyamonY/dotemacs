@@ -438,7 +438,9 @@
 
 (use-package flycheck
   :hook (prog-mode . flycheck-mode)
-  :custom ((flycheck-display-errors-delay  0.3 "表示のdelayを入れる")))
+  :custom ((flycheck-display-errors-delay  0.3 "表示のdelayを入れる")
+           (flycheck-check-syntax-automatically '(save idle-change mode-enabled) "改行ごとのチェックを外す")
+           (flycheck-idle-change-delay 10 "変更後10秒手が止まってからチェックする")))
 
 (use-package yasnippet
   :hook (after-init . yas-global-mode)
