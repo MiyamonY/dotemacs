@@ -183,10 +183,6 @@
   (setq magit-diff-refine-ignore-whitespace t)
   (setq magit-repository-directories '(("~/src/github.com" . 2))))
 
-(use-package magit-gh
-  :ensure t
-  :after magit)
-
 (use-package ediff
   :custom
   ((ediff-window-setup-function 'ediff-setup-windows-plain
@@ -737,26 +733,3 @@
 
 (setq straight-check-for-modifications nil)
 
-(use-package gptel
-  :ensure t
-  :bind ("C-c g" . gptel)
-  :config
-  (setq gptel-backend (gptel-make-bedrock "bedrock"
-                        :stream t
-                        :region "ap-northeast-1"
-                        :models '(claude-sonnet-4-20250514)
-                        :model-region 'apac))
-
-  ;; 使用するモデルの設定
-  (setq gptel-default-mode 'org-mode)
-  (setq gptel-model 'claude-sonnet-4-20250514))
-
-
-(use-package vterm
-  :ensure t)
-
-(use-package claude-code-ide
-  :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
-  :bind ("C-c C-'" . claude-code-ide-menu)
-  :config
-  (claude-code-ide-emacs-tools-setup))
