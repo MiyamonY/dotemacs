@@ -728,7 +728,12 @@
   :config
   (setq lsp-biome-organize-imports-on-save  t))
 
-(use-package racket-mode)
+(use-package racket-mode
+  :hook (racket-mode . my/racket-mode-setup)
+  :config
+  (defun my/racket-mode-setup ()
+    (flycheck-mode -1)
+    (racket-xp-mode 1)))
 
 (setq straight-check-for-modifications nil)
 
