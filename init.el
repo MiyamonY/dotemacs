@@ -525,7 +525,7 @@
    (lsp-eslint-run "onSave")
    (lsp-eslint-options '((cache . t)))
    (lsp-modeline-diagnostics-enable t)
-   (lsp-copilot-enabled t)
+   (lsp-copilot-enabled nil)
    (lsp-javascript-format-enable nil)
    (lsp-javascript-preferences-import-module-specifier "non-relative")
    (lsp-typescript-format-enable t)
