@@ -728,3 +728,7 @@
 
 (setq straight-check-for-modifications nil)
 
+(use-package format-all
+  :commands (format-all-mode format-all-ensure-formatter)
+  :hook ((racket-mode . format-all-mode)
+         (racket-mode . format-all-ensure-formatter)))
