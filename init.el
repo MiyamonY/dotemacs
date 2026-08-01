@@ -353,7 +353,6 @@
 (use-package wgrep)
 
 (use-package embark
-  :ensure t
   :bind
   (("C-c ;" . #'embark-act)         ;; pick some comfortable binding
    ("C-c :" . #'embark-dwim)        ;; good alternative: M-.
@@ -362,7 +361,7 @@
   (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target))
 
 (use-package embark-consult
-  :ensure t ; only need to install it, embark loads it after consult if found
+  ;; only need to install it, embark loads it after consult if found
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
@@ -415,7 +414,6 @@
     (skk-get (locate-user-emacs-file (convert-standard-filename "locals/dict/")))))
 
 (use-package treemacs
-  :ensure t
   :defer t
   :bind (("C-c t" . treemacs))
   :config
@@ -423,12 +421,10 @@
 
 (use-package treemacs-magit
   :disabled t
-  :after (treemacs magit)
-  :ensure t)
+  :after (treemacs magit))
 
 (use-package treemacs-tab-bar
   :after (treemacs)
-  :ensure t
   :config
   (treemacs-set-scope-type 'Tabs))
 
@@ -705,8 +701,7 @@
 
   (add-hook 'graphql-mode-hook #'my-graphql-mode-hook))
 
-(use-package ox-reveal
-  :ensure t)
+(use-package ox-reveal)
 
 (use-package prettier
   :hook (after-init . global-prettier-mode))
